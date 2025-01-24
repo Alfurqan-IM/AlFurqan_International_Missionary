@@ -1,0 +1,207 @@
+/* Section Container */
+.aboutUsSection {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: #333; /* Dark text color for readability */
+  padding-top: 0;
+  width: 100% !important;
+}
+
+/* Top Section */
+.aboutUsTop {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+
+  background-color: rgba(243, 236, 228, 1);
+}
+
+.sectionTitle {
+  color: #004d40; /* Deep green color */
+  margin-top: 20px;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 56px;
+}
+
+.description {
+  text-align: center;
+  margin-top: 30px;
+  font-size: 18px;
+  line-height: 28px;
+  font-weight: 400;
+  width: 56%;
+  font-family: "Quintessential";
+  color: rgba(0, 0, 0, 1); /* Soft gray for readability */
+}
+
+/* Mission/Vision Section */
+.missionVisionSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #fff;
+
+  background-color: rgba(243, 249, 246, 1);
+  margin: 0 auto;
+  overflow: hidden;
+  /* Background image with blur */
+  background: url("../../assets/backgroundAbout.jpg") center center / cover
+    no-repeat;
+  filter: blur(0.5px); /* Blurs the entire section including content */
+}
+
+/* Add overlay using background color */
+.missionVisionSectionOverlay {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(25, 110, 72, 0.8); /* Dark green overlay */
+  height: 100%;
+  width: 100%;
+  border-radius: 10px;
+
+  /* Content remains unaffected by blur */
+  backdrop-filter: blur(0px);
+}
+.missionVisionSectionOverlay_padding {
+  padding: 6%;
+}
+
+.sectionSubTitle {
+  font-size: 20px;
+  text-transform: uppercase;
+  font-weight: 600;
+  line-height: 52px;
+}
+
+.statement {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  width: 100%;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+}
+
+.cardTitle {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 40px;
+  color: #ffffff; /* Soft yellow for emphasis */
+  margin-top: 50px;
+  border-radius: 8px;
+  background-color: rgba(8, 90, 54, 1);
+
+  padding: 10px 24px;
+  align-self: center;
+}
+
+.cardText {
+  font-size: 20px;
+  font-family: "Quintessential";
+  font-weight: 400;
+  line-height: 40px;
+  color: rgba(243, 236, 228, 1); /* Soft yellow for emphasis */
+}
+
+.donateButtonContainer {
+  display: none;
+}
+
+.donateButton {
+  display: flex;
+  background-color: rgba(8, 90, 54, 1);
+  padding: 12px 50px;
+  font-weight: 600;
+  font-size: 18px;
+  cursor: pointer;
+  line-height: 46px;
+  color: rgba(255, 255, 255, 1);
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
+  border: none;
+}
+
+.donateButton:hover {
+  background-color: rgb(38, 89, 51);
+}
+
+/* Donate Button */
+
+/* Responsive Design */
+
+@media (min-width: 768px) {
+  .aboutUsTop {
+    height: 400px;
+  }
+  .missionVisionSection_container {
+    display: flex;
+    height: 360px;
+  }
+  .missionVisionSection {
+    height: 620px;
+    position: relative;
+    bottom: 29%;
+    width: 64%;
+  }
+  .card {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    height: 200px;
+    margin-bottom: 40px;
+  }
+  .donateButtonContainer {
+    display: flex;
+    position: relative;
+    top: -65%;
+    right: auto;
+    width: 300px;
+    height: 200px;
+    transform: none;
+    align-self: flex-end;
+    align-items: flex-end;
+    justify-content: center;
+
+    transform: rotate(270deg);
+  }
+}
+
+@media (max-width: 768px) {
+  .statement {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .card {
+    max-width: 100%;
+  }
+
+  .description {
+    width: 80%;
+    margin-top: 10px;
+    margin-bottom: 20px;
+  }
+  .missionVisionSection {
+    position: static;
+    width: 100%;
+    background-color: rgba(243, 249, 246, 1);
+    margin: 0 auto;
+    overflow: hidden;
+    /* Background image with blur */
+    background: url("../../assets/backgroundAbout.jpg") center center / cover
+      no-repeat;
+    filter: blur(0.5px); /* Blurs the entire section including content */
+  }
+}

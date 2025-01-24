@@ -1,0 +1,109 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: rgba(255, 251, 245, 1);
+  padding: 0 10px;
+  font: "Inknut Antiqua";
+  line-height: 46px;
+  font-size: 18px;
+  font-weight: 600;
+  margin-top: -5px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.loginButton {
+  border: 1px solid #004d40;
+  font: "Inknut Antiqua";
+  font-size: 16px;
+  font-weight: 600;
+  color: #004d40;
+}
+
+.logoImage {
+  height: 50px;
+  margin-right: 10px;
+}
+
+.logoText {
+  font-size: 18px;
+  font-weight: bold;
+  color: #004d40;
+  line-height: 1.2;
+}
+
+.desktopMenu {
+  flex: 1;
+  justify-content: center;
+  display: none; /* Hidden on mobile */
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.donateButton {
+  padding: 8px 24px;
+  background-color: rgba(8, 90, 54, 1);
+  border-radius: 4px;
+  font-weight: 500;
+  font-size: 14px;
+  font-family: "Inknut Antiqua";
+  line-height: 26px;
+  color: #ffffff;
+  cursor: pointer;
+  border: none;
+}
+
+.donateButton :hover {
+  color: rgb(28, 162, 104) !important;
+  border-color: rgba(8, 90, 54, 1) !important;
+}
+
+.icon {
+  font-size: 20px;
+  color: #ffffff;
+  cursor: pointer;
+  border: none;
+  height: 36px;
+  width: 36px;
+  border-radius: 50%;
+  background: #004d40;
+  justify-content: center;
+  align-items: center;
+}
+
+.menuIcon {
+  font-size: 24px;
+  color: #004d40;
+  cursor: pointer;
+  display: block; /* Only show on mobile */
+}
+
+/* Responsive Styles */
+@media (min-width: 768px) {
+  .desktopMenu {
+    display: flex; /* Show on desktop */
+  }
+
+  .menuIcon {
+    display: none; /* Hide on desktop */
+  }
+}
+
+@media (max-width: 768px) {
+  .naviagtion_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .donateButton {
+    padding: 5px 12px;
+  }
+}

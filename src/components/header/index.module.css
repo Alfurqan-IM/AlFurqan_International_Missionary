@@ -1,0 +1,35 @@
+.headerd {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(255, 251, 245, 1); /* Matches the light beige color */
+  padding-top: 5px;
+  margin-bottom: -10px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logoImage {
+  height: 80px;
+}
+
+.logoText {
+  text-align: left;
+  color: #004d40; /* Dark green for the text */
+}
+
+.mainText {
+  font-size: 20px;
+  font-weight: bold;
+  line-height: 1.2;
+  margin-top: 10px;
+}
+
+.subText {
+  font-size: 14px;
+  color: #004d40; /* Matching green */
+}

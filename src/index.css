@@ -1,0 +1,81 @@
+@import url("https://fonts.googleapis.com/css2?family=Inknut+Antiqua:wght@300;400;500;600;700;800;900&family=Manrope:wght@300&family=Montserrat:wght@100&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Quintessential&display=swap");
+
+body {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+
+  font-family: "Inknut Antiqua", "Quintessential", "Manrope", "Montserrat",
+    serif;
+}
+.app_container {
+  display: flex;
+  width: 100%;
+  min-height: 100vh;
+}
+
+/* h1 40px iknut height 57.58 700px
+h2  21px iknut height 53px 600
+h3 button iknut 18px line height 46px 600
+h4 16px iknut height 41px 600
+p quintessential 400px 18px 27.6px 
+p2 inter 400px 15px 18.15px */
+
+h1 {
+  font: "Inknut Antiqua";
+  font-size: 40px;
+  height: 57.58px;
+  font-weight: 700;
+  margin: 0;
+}
+
+h2 {
+  font: "Inknut Antiqua";
+  height: 53px;
+  font-size: 21px;
+  font-weight: 600;
+  margin: 0;
+}
+h3 {
+  font: "Inknut Antiqua";
+  height: 46px;
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0;
+}
+h4 {
+  font: "Inknut Antiqua";
+  height: 41px;
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0;
+}
+p {
+  font: "Quintessential";
+  height: 27.68px;
+  font-size: 18px;
+  font-weight: 400;
+}
+
+p {
+  font: "inter";
+  height: 18.15px;
+  font-size: 15px;
+  font-weight: 400;
+}
+
+.publicNav_desktopMenu__1sSOw .ant-menu .ant-menu-title-content {
+  color: rgba(8, 90, 54, 1) !important;
+  background-color: rgba(255, 251, 245, 1);
+  font-size: 14px;
+  line-height: 36px;
+  font-weight: 500;
+}
+
+.ant-layout-header .ant-menu {
+  background-color: rgba(255, 251, 245, 1) !important;
+  box-shadow: none !important;
+  border-bottom: none;
+  width: 80%;
+}
