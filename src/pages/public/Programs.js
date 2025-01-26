@@ -30,7 +30,7 @@ const Programs = () => {
         imageSrc={
           program &&
           program[0]?.programmesimages &&
-          program[0]?.programmesimages[0]?.image0
+          program[0]?.programmesimages[0]?.image1
         }
         title={program && program[0]?.title}
         description={program && program[0]?.description}
@@ -67,7 +67,7 @@ const Programs = () => {
         imageSrc={
           program &&
           program[0]?.programmesimages &&
-          program[0]?.programmesimages[0]?.image0
+          program[0]?.programmesimages[0]?.image2
         }
         title={program && program[0]?.heading}
         description={program && program[0]?.about}
