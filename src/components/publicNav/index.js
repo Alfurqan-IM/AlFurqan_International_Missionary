@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Layout, Menu, Button, Drawer } from "antd";
+import { Layout, Menu, Drawer } from "antd";
 import {
   MenuOutlined,
   FacebookOutlined,
@@ -23,7 +23,7 @@ const PublicNav = () => {
   };
 
   const menuItems = [
-    { key: "home", label: "Home" },
+    { key: "home", label: <a href="/">Home</a> },
     {
       key: "about",
       label: "About Us",

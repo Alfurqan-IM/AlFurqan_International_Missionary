@@ -1,6 +1,13 @@
 import React from "react";
 
-const QuranVerse = () => {
+const QuranVerse = ({
+  text,
+  translitration,
+  translation,
+  verse,
+  surah,
+  loading,
+}) => {
   const styles = {
     container: {
       backgroundColor: "rgba(232, 243, 238, 1)", // Light greenish background
@@ -28,7 +35,7 @@ const QuranVerse = () => {
       lineheight: "27px",
       fontWeight: "400",
       fontFamily: "Quintessential",
-      marginBottom: "10px",
+      marginTop: "10px",
     },
     translation: {
       fontSize: "18px",
@@ -40,16 +47,18 @@ const QuranVerse = () => {
 
   return (
     <div style={styles.container}>
-      <div style={styles.verseBox}>
-        <div style={styles.arabicText}>
-          {`يَا أَيُّهَا الَّذِينَ آمَنُوا إِن تَنصُرُوا اللَّهَ يَنصُرْكُمْ وَيُثَبِّتْ أَقْدَامَكُمْ`}
+      {loading ? (
+        <div style={styles.verseBox}>loading quran verse...</div>
+      ) : (
+        <div style={styles.verseBox}>
+          <div style={styles.arabicText}>{text}</div>
+          <div style={styles.translation}>{translitration}</div>
+          <div style={styles.translation}>{translation}</div>
+          <div style={styles.reference}>
+            [{surah}: {verse}]
+          </div>
         </div>
-        <div style={styles.reference}>[Surah Muhammad: 7]</div>
-        <div style={styles.translation}>
-          O you who believe, if you will help the religion prescribed by Allah,
-          He will help you, and will stabilize your footings.
-        </div>
-      </div>
+      )}
     </div>
   );
 };

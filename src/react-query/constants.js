@@ -1,3 +1,5 @@
 export const queryKeys = {
-  user: "user",
+  banner: "banner",
+  surah: "surah",
+  programs: "programs",
 };

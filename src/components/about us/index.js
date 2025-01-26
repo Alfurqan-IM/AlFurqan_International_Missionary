@@ -8,7 +8,7 @@ const AboutUsSection = () => {
       <div className={styles.aboutUsTop}>
         <div className={styles.sectionTitle}>ABOUT US</div>
         <div className={styles.description}>
-          Al-Fur’qan Institute Michigan was started by a group of highly
+          Al-Fur’qan Institute Missionary was started by a group of highly
           dedicated and passionate Muslims, with a focus on knowledge and
           scholarship. Our vision is to contribute to local communities by
           creating compassionate leaders and influential educators. At our core,

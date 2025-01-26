@@ -17,14 +17,18 @@
 }
 
 .heading {
-  font-size: 24px;
+  font-size: 20px;
   margin: 10px 0;
-  color: #2f5135;
+  font-weight: 600;
+  line-height: 53px;
+  color: rgba(8, 90, 54, 1);
   text-transform: uppercase;
 }
 
 .grid {
-  padding: 4% 10%;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 2% 5%;
 }
 
 @media (max-width: 768px) {

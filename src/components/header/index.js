@@ -8,7 +8,7 @@ const Header = () => {
       <div className={styles.logo}>
         <img
           src={aimLogo} // Replace with the path to your logo
-          alt="Al-Furqan Institute Michigan"
+          alt="Al-Furqan Institute Missionary"
           className={styles.logoImage}
         />
         <div className={styles.logoText}>

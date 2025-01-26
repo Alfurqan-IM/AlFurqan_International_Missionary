@@ -100,7 +100,8 @@
   font-weight: 600;
   line-height: 40px;
   color: #ffffff; /* Soft yellow for emphasis */
-  margin-top: 50px;
+  margin-top: 30px;
+  margin-bottom: 20px;
   border-radius: 8px;
   background-color: rgba(8, 90, 54, 1);
 
@@ -123,7 +124,7 @@
 .donateButton {
   display: flex;
   background-color: rgba(8, 90, 54, 1);
-  padding: 12px 50px;
+  padding: 12px 42px;
   font-weight: 600;
   font-size: 18px;
   cursor: pointer;
@@ -131,6 +132,7 @@
   color: rgba(255, 255, 255, 1);
   box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
   border: none;
+  font-family: "Inknut Antiqua";
 }
 
 .donateButton:hover {

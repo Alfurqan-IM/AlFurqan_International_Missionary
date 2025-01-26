@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import logo from "../../assets/aim logo.png";
 import {
   FacebookOutlined,
@@ -6,236 +6,138 @@ import {
   InstagramOutlined,
   YoutubeOutlined,
 } from "@ant-design/icons";
+import { errorAlert, successAlert } from "../../utils";
+import { useSendMessage } from "../../pages/public/Api";
+import { useIsMutating } from "@tanstack/react-query";
+import "./footer.css"; // Import the CSS file
 
 const Footer = () => {
-  const styles = {
-    footerContainer: {
-      backgroundColor: "rgba(8, 90, 54, 1)", // Dark green background
-      color: "#fff", // White text
-      padding: "30px 20px",
-      display: "flex",
-      flexDirection: "column",
-      justifyContent: "space-between",
-      width: "100%",
-    },
-    topSection: {
-      display: "flex",
-      padding: "2%",
-      gap: "20px", // Add gap between columns
-    },
-    leftColumn: {
-      display: "flex",
-      flexDirection: "column",
-      alignItems: "center",
-      flex: 1,
-    },
-    logo: {
-      borderRadius: "50%",
-      width: "80px",
-      height: "80px",
-      marginBottom: "15px",
-    },
-    icon: {
-      fontSize: "20px",
-      color: "#ffffff",
-      cursor: "pointer",
-      border: "none",
-      height: "40px",
-      width: "40px",
-      borderRadius: "50%",
-      background: "rgba(5, 156, 90, 1)",
-      justifyContent: "center",
-      alignItems: "center",
-      marginLeft: "20px",
-    },
-    footerButton: {
-      padding: "4px 12px",
-      backgroundColor: "rgba(5, 156, 90, 1)",
-      color: "#ffffff", // Green text
-      border: "1px solid #fff",
-      fontWeight: 600,
-      fontSize: "14px",
-      fontFamily: "Inknut Antiqua",
-      cursor: "pointer",
-      textDecoration: "none",
-      marginTop: "20px",
-    },
-    middleColumn: {
-      display: "flex",
-      flexDirection: "column",
-      alignItems: "flex-start",
-      gap: "10px",
-      flex: 1,
-    },
-    menuItem: {
-      color: "rgb(214, 217, 209)",
-      textDecoration: "none",
-      fontSize: "16px",
-      fontWeight: "600",
-      fontFamily: "Inknut Antiqua",
-      lineHeight: "42px",
-    },
-    rightColumn: {
-      display: "flex",
-      flexDirection: "column",
-      gap: "10px",
-      flex: 1,
-    },
-    input: {
-      padding: "18px 10px",
-      border: "1px solid #ddd",
-      fontSize: "14px",
-      width: "80%",
-      marginBottom: "20px",
-      outline: "rgba(5, 156, 90, 1)",
-    },
-    submitButton: {
-      padding: "8px 38px",
-      backgroundColor: "rgba(5, 156, 90, 1)",
-      color: "#ffffff",
-      border: "1px solid #fff",
-      fontSzie: "18px",
-      cursor: "pointer",
-      fontWeight: "600",
-      marginBottom: "20px",
-      fontFamily: "Inknut Antiqua",
-    },
-    bottomSection: {
-      textAlign: "center",
-      marginTop: "20px",
-      color: "#fff",
-      fontSize: "14px",
-      paddingTop: "10px",
-    },
-    imageContainer: {
-      width: "120px",
-      height: "120px",
-      borderRadius: "50%",
-      display: "flex",
-      justifyContent: "center",
-      alignItems: "center",
-      backgroundColor: "white",
-      marginBottom: "10px",
-    },
-    // Add media queries for responsiveness
-    responsive: {
-      topSection: {
-        flexDirection: "column",
-        alignItems: "flex-start",
-        gap: "20px",
-      },
-      column: {
-        width: "100%",
-        alignItems: "flex-start",
-      },
-      menuItem: {
-        fontSize: "12px",
-      },
-      input: {
-        width: "80%",
-      },
-    },
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
+
+  const isValidEmail = (email) => {
+    const regex = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*\.\w{2,3}$/;
+    return regex.test(email);
   };
 
-  // Check if the screen size is small
-  const isSmallScreen = window.innerWidth < 768;
-  const responsiveStyles = isSmallScreen ? styles.responsive : {};
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
+
+  const isLoading = useIsMutating();
+  const { mutate, isSuccess, isError, reset, error } = useSendMessage();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    mutate(formData);
+  };
+
+  if (isSuccess) {
+    reset();
+    successAlert("Your message was sent successfully");
+    setFormData({ name: "", email: "", message: "" });
+  }
+
+  if (isError) {
+    reset();
+    errorAlert(error);
+    setFormData({ name: "", email: "", message: "" });
+  }
 
   return (
-    <div style={styles.footerContainer}>
+    <footer className="footer-container">
       {/* Top Section */}
-      <div
-        style={{
-          ...styles.topSection,
-          ...responsiveStyles.topSection,
-        }}
-      >
+      <div className="footer-top-section">
         {/* Left Column */}
-        <div
-          style={{
-            ...styles.leftColumn,
-            ...responsiveStyles.column,
-          }}
-        >
-          <div style={styles.imageContainer}>
-            <img src={logo} alt="Logo" style={styles.logo} />
+        <div className="footer-left-column">
+          <div className="footer-logo-container">
+            <img src={logo} alt="Logo" className="footer-logo" />
           </div>
-          <div style={{ marginBottom: "40px", marginTop: "20px" }}>
-            <FacebookOutlined style={styles.icon} />
-            <TwitterOutlined style={styles.icon} />
-            <InstagramOutlined style={styles.icon} />
-            <YoutubeOutlined style={styles.icon} />
+          <div className="footer-icons">
+            <FacebookOutlined className="footer-icon" />
+            <TwitterOutlined className="footer-icon" />
+            <InstagramOutlined className="footer-icon" />
+            <YoutubeOutlined className="footer-icon" />
           </div>
           <div>
-            <a href="#donate" style={styles.footerButton}>
-              Donate Now
-            </a>
+            <button className="footer-button">Donate Now</button>
           </div>
         </div>
 
         {/* Middle Column */}
-        <div
-          style={{
-            ...styles.middleColumn,
-            ...responsiveStyles.column,
-          }}
-        >
-          <a href="#home" style={styles.menuItem}>
+        <div className="footer-middle-column">
+          <a href="/" className="footer-menu-item">
             Home
           </a>
-          <a href="#donations" style={styles.menuItem}>
+          <a href="#donations" className="footer-menu-item">
             Donations
           </a>
-          <a href="#careline" style={styles.menuItem}>
+          <a href="#careline" className="footer-menu-item">
             Muslim Care Line
           </a>
-          <a href="#contact" style={styles.menuItem}>
+          <a href="#contact" className="footer-menu-item">
             Get In Touch
           </a>
-          <a href="#blogs" style={styles.menuItem}>
+          <a href="#blogs" className="footer-menu-item">
             Blogs
           </a>
         </div>
 
         {/* Right Column */}
-        <div
-          style={{
-            ...styles.rightColumn,
-            ...responsiveStyles.column,
-          }}
-        >
+        <div className="footer-right-column">
           <div>
+            <h4 style={{ marginBottom: "10px" }}>GET IN TOUCH</h4>
             <input
               type="text"
               placeholder="Name"
-              style={{ ...styles.input, ...responsiveStyles.input }}
+              name="name"
+              value={formData.name}
+              onChange={handleInputChange}
+              className="footer-input"
             />
             <input
               type="email"
               placeholder="Email"
-              style={{ ...styles.input, ...responsiveStyles.input }}
+              name="email"
+              value={formData.email}
+              onChange={handleInputChange}
+              className="footer-input"
             />
             <textarea
               placeholder="Message"
-              style={{
-                ...styles.input,
-                height: "100px",
-                ...responsiveStyles.input,
-              }}
+              name="message"
+              value={formData.message}
+              onChange={handleInputChange}
+              className="footer-input footer-textarea"
             />
           </div>
-
-          <div>
-            <button style={styles.submitButton}>Submit</button>
-          </div>
+          <button
+            onClick={handleSubmit}
+            disabled={
+              !formData.name ||
+              !formData.email ||
+              !isValidEmail(formData.email) ||
+              !formData.message
+            }
+            className="footer-submit-button"
+          >
+            {isLoading ? "Sending message..." : "Submit"}
+          </button>
         </div>
       </div>
 
       {/* Bottom Section */}
-      <div style={styles.bottomSection}>
-        © 2024 Al-Furqan Institute Michigan
+      <div className="footer-bottom-section">
+        © 2024 Al-Furqan Institute Missionary
       </div>
-    </div>
+    </footer>
   );
 };
 
