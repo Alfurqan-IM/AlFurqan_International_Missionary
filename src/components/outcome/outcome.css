@@ -1,0 +1,99 @@
+/* OutcomeCard.css */
+.outcome-card {
+  position: relative;
+  background-size: cover;
+  width: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  color: white;
+  overflow: hidden;
+  background-color: rgba(243, 249, 246, 1);
+  margin: 20px auto;
+  overflow: hidden;
+  /* Background image with blur */
+  background: url("../../assets/backgroundAbout.jpg") center center / cover
+    no-repeat;
+  filter: blur(0.5px); /* Blurs the entire section including content */
+}
+
+.outcome-overlay {
+  border-radius: 8px;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(16, 116, 72, 0.67);
+}
+
+.outcome-overlay_padding {
+  padding: 4%;
+}
+
+.outcome-title {
+  font-size: 18px;
+  font-weight: 600;
+  font-family: "Inknut Antiqua";
+  text-align: center;
+  margin-bottom: 1.5rem;
+  text-transform: uppercase;
+}
+
+.outcome-items {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.outcome-item {
+  text-align: center;
+}
+
+.outcome-icon {
+  width: 80px;
+  height: 80px;
+  margin-bottom: 0.2rem;
+}
+
+.outcome-subtitle {
+  line-height: 38px;
+  font-size: 14px;
+  font-weight: 600;
+  font-family: "Inknut Antiqua";
+  margin-bottom: 10px;
+}
+
+.outcome-description {
+  font-size: 1rem;
+}
+
+@media (min-width: 768px) {
+  .outcome-card {
+    border-radius: 8px;
+    width: 90%;
+  }
+  .outcome-items {
+    flex-direction: row;
+    gap: 3rem;
+  }
+
+  .outcome-title {
+    font-size: 25px;
+    font-weight: 600;
+    font-family: "Inknut Antiqua";
+    text-align: center;
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+  }
+  .outcome-icon {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 0.8rem;
+  }
+  .outcome-subtitle {
+    line-height: 41px;
+    font-size: 16px;
+    font-weight: 600;
+    font-family: "Inknut Antiqua";
+  }
+}
