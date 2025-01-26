@@ -1,0 +1,138 @@
+/* General Styles */
+.footer-container {
+  background-color: rgba(8, 90, 54, 1); /* Dark green */
+  color: white;
+  padding: 30px 20px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  font-family: "Inknut Antiqua";
+}
+
+.footer-top-section {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+  padding: 3%;
+}
+
+.footer-left-column,
+.footer-middle-column,
+.footer-right-column {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.footer-logo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  margin-bottom: 10px;
+}
+
+.footer-logo {
+  border-radius: 50%;
+  width: 80px;
+  height: 80px;
+}
+
+.footer-icons {
+  display: flex;
+  gap: 20px;
+  margin: 20px 0;
+}
+
+.footer-icon {
+  font-size: 20px;
+  color: white;
+  background: rgba(5, 156, 90, 1);
+  border-radius: 50%;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.footer-button {
+  display: flex;
+  padding: 4px 24px;
+  background-color: rgba(5, 156, 90, 1);
+  color: white;
+  text-decoration: none;
+  border: 1px solid rgba(255, 255, 255, 1);
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 41px;
+  margin-top: 20px;
+  cursor: pointer;
+  font-family: "Inknut Antiqua";
+}
+
+.footer-menu-item {
+  color: rgb(214, 217, 209);
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.footer-input {
+  padding: 16px;
+  border: 1px solid #ddd;
+  font-size: 14px;
+  width: 90%;
+  margin-bottom: 10px;
+  outline: none;
+}
+
+.footer-textarea {
+  height: 100px;
+}
+
+.footer-submit-button {
+  padding: 3px 32px;
+  background-color: rgba(5, 156, 90, 1);
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-family: "Inknut Antiqua";
+  font-weight: 400;
+  font-size: 16px;
+}
+
+.footer-bottom-section {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 14px;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .footer-top-section {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .footer-menu-item {
+    font-size: 14px;
+  }
+
+  .footer-input {
+    width: 80%;
+  }
+  .footer-submit-button {
+    padding: 3px 24px;
+    background-color: rgba(5, 156, 90, 1);
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-family: "Inknut Antiqua";
+    font-weight: 400;
+    font-size: 12px;
+  }
+}

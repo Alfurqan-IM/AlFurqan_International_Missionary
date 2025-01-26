@@ -1,0 +1,48 @@
+.intro_section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(8, 90, 54, 1); /* Dark green background */
+  width: 100%;
+  padding: 3%;
+  font-family: "Quintessential";
+}
+
+.intro_textContainer {
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+  text-align: center;
+  color: #ffffff; /* White text for contrast */
+}
+
+.intro_arabicText {
+  font-size: 24px;
+  /* Arabic-styled font, if available */
+  font-weight: bold;
+  margin: 10px 0;
+  line-height: 27px;
+}
+
+.intro_englishText {
+  font-size: 18px;
+  line-height: 27px;
+}
+
+.intro_quoteText {
+  font-size: 18px;
+  line-height: 27px;
+}
+
+/* Responsive Styles */
+
+@media (max-width: 768px) {
+  .intro_section {
+    padding: 5%;
+    font-family: "Quintessential";
+  }
+  .intro_textContainer {
+    width: 80%;
+  }
+}
