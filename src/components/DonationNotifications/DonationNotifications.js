@@ -14,7 +14,7 @@ const DonationNotifications = () => {
     });
     //  http://localhost:5005
     // Listen for new donation events
-    https: socket.on("newDonation", (data) => {
+    socket.on("newDonation", (data) => {
       console.log("New donation received:", data);
       setDonation(data);
     });
