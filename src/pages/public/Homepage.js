@@ -13,6 +13,7 @@ import { useGetBanner, useGetPrograms, useGetSurah } from "./Api";
 import CustomCarousel from "../../components/carousel2";
 import quran from "../../assets/backgroundAbout.jpg";
 import Bquran from "../../assets/slide1.png";
+import DonationNotifications from "../../components/DonationNotifications/DonationNotifications";
 
 // import CustomCarousel from "../../components/carousel2";
 
@@ -68,6 +69,7 @@ const Homepage = () => {
         verse={surah && surah[1]?.verse}
       />
       <IslamicCommunitySection />
+      <DonationNotifications />
       <Footer />
     </div>
   );
