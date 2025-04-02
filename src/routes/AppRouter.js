@@ -11,6 +11,7 @@ import Login from "../pages/public/Login";
 import NotFound from "../pages/public/NotFound";
 import Programs from "../pages/public/Programs";
 import Loader from "../components/loader";
+import Team from "../pages/public/Team";
 
 const AppRouter = () => {
   return (
@@ -20,6 +21,7 @@ const AppRouter = () => {
           {/* Public Routes */}
           <Route element={<PublicRoutes />}>
             <Route path="/" element={<Homepage />} />
+            <Route path="/team" element={<Team />} />
             <Route path="/programs/:id" element={<Programs />} />
             <Route path="/unauthorized" element={<UnAuthorized />} />
             <Route path="/login" element={<Login />} />
