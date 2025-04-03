@@ -28,7 +28,7 @@ const PublicNav = () => {
       key: "about",
       label: "About Us",
       children: [
-        { key: "about1", label: "Our Mission" },
+        { key: "about1", label: <a href="/about-us">About Us</a> },
         { key: "Our Team", label: <a href="/team">Our Team</a> },
       ],
     },
