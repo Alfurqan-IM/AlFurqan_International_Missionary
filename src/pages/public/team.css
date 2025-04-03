@@ -1,121 +1,112 @@
 /* Banner.css */
 .banner-container {
-    position: relative;
-    width: 100%;
-    min-height: 360px;
-  }
-  
-  .banner-container img.banner-image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-  
-  .banner-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(20, 155, 96, 0.57);
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .banner-title {
-    display: flex;
-    color: white;
-    font-size: 1.2rem;
-    justify-content: center;
-    align-items: center;
-    width: fit-content;
-    font-weight: bold;
-    text-align: center;
-    padding-top: 20px;
-    border-bottom: 1px solid white;
-    
-  }
-  
-  .banner-description {
-   width: fit-content;
-   padding: 4px 20px;
-    margin-top: 20px;
-    text-align: center;
-    font-weight: 900;
-    font-size: 1.2rem;
-    padding-bottom: 10px;
-    justify-content: center;
-    color: rgba(8, 90, 54, 1) !important;
-    background-color: #f0fdf4;
-   
-  }
+  position: relative;
+  width: 100%;
+  min-height: 360px;
+}
 
-  
+.banner-container img.banner-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
 
-  .matronPatron{
-   
-  
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    padding: 4% 1.5%;
-    height: 200px;
-    gap: 24px;
-    flex-wrap: wrap;
-    background-color: #f0fdf4;;
-
-  }
-  .teamMembers{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    padding: 4%;
-    gap: 24px;
-    flex-wrap: wrap;
-
-  }
-  .leadershipContainer{
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    background-color: #f0fdf4;;
-  }
-  .leadershipHeader{
+.team_banner-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(20, 155, 96, 0.57);
   display: flex;
-    padding: 3px 16px;
-    background-color: #166534;
-    color: white;
-   text-align: center;
-    font-weight: bold;
-    width: fit-content;
-    margin-top: 20px;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.team_banner-title {
+  display: flex;
+  color: white;
+  font-size: 1.2rem;
+  justify-content: center;
+  align-items: center;
+  width: fit-content;
+  font-weight: bold;
+  text-align: center;
+  padding-top: 20px;
+  border-bottom: 1px solid white;
+}
+
+.team_banner-description {
+  width: fit-content;
+  padding: 4px 20px;
+  margin-top: 20px;
+  text-align: center;
+  font-weight: 900;
+  font-size: 1.2rem;
+  padding-bottom: 10px;
+  justify-content: center;
+  color: rgba(8, 90, 54, 1) !important;
+  background-color: #f0fdf4;
+}
+
+.matronPatron {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 4% 1.5%;
+  height: 200px;
+  gap: 24px;
+  flex-wrap: wrap;
+  background-color: #f0fdf4;
+}
+.teamMembers {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 4%;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+.leadershipContainer {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  background-color: #f0fdf4;
+}
+.leadershipHeader {
+  display: flex;
+  padding: 3px 16px;
+  background-color: #166534;
+  color: white;
+  text-align: center;
+  font-weight: bold;
+  width: fit-content;
+  margin-top: 20px;
+}
+
+@media (min-width: 768px) {
+  .banner-container {
+    height: 400px;
   }
-  
-  @media (min-width: 768px) {
-    .banner-container {
-      height: 400px;
-    }
-  
-    .banner-title {
-      font-size: 2rem;
-    }
-  
-    .banner-description {
-      font-size: 1rem;
-    }
+
+  .banner-title {
+    font-size: 2rem;
   }
-  
-  @media (min-width: 1024px) {
-    .banner-container {
-      height: 500px;
-    }
-  
-    .banner-title {
-      font-size: 2rem;
-    }
+
+  .banner-description {
+    font-size: 1rem;
   }
-  
+}
+
+@media (min-width: 1024px) {
+  .banner-container {
+    height: 500px;
+  }
+
+  .banner-title {
+    font-size: 2rem;
+  }
+}
