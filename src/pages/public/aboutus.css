@@ -1,0 +1,439 @@
+.about_us_container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.about_us_banner-container {
+  position: relative;
+  width: 100%;
+  min-height: 240px;
+}
+
+.about_us_banner-container img.banner-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.about_us_banner-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(17, 27, 22, 0.57);
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.about_us_banner-title {
+  display: flex;
+  color: white;
+  font-size: 1.2rem;
+  justify-content: center;
+  align-items: center;
+  width: fit-content;
+  font-weight: bold;
+  text-align: center;
+  padding-top: 20px;
+  font-weight: 600;
+  font-family: "Inknut Antiqua";
+}
+
+.about_story-section {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  padding: 3% 4%;
+
+  height: fit-content;
+}
+.about_story-section h3 {
+  font-family: "Inknut Antiqua";
+  transform: uppercase;
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+.about_story-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.about_write-up {
+  font-size: 1rem;
+  color: #374151;
+  line-height: 1.5;
+  margin-bottom: 20px;
+  font-family: "Inter";
+}
+
+.story-image,
+.vision-image {
+  width: 100%;
+  max-width: 400px;
+  max-height: 300px;
+
+  border-radius: 10px;
+}
+.unique-approach {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2% 4%;
+  margin-bottom: 10px;
+  justify-content: center;
+}
+.unique-approach h3 {
+  font-family: "Inknut Antiqua";
+  transform: uppercase;
+  padding: 4px 12px;
+  font-size: 1.2rem;
+
+  border-radius: 6px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  text-align: center;
+  color: rgba(251, 251, 251, 1);
+  background-color: rgba(8, 90, 54, 1);
+}
+
+.unique-approach h5 {
+  font-family: "Inknut Antiqua";
+  transform: uppercase;
+  padding: 4px 12px;
+  font-size: 1.2rem;
+  border-radius: 6px;
+  border: 2px solid rgba(8, 90, 54, 1);
+  font-weight: 700;
+  text-align: center;
+  color: rgba(8, 90, 54, 1);
+}
+
+.unique-approach p {
+  color: rgba(8, 90, 54, 1);
+  font-weight: 600;
+  margin-bottom: 1.8rem;
+  font-size: 1rem;
+}
+
+.approach-grid,
+.programme-grid {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-bottom: 1.8rem;
+}
+
+.approach-item,
+.impact-item,
+.programme-item {
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+  align-items: center;
+
+  padding: 15px;
+  border-radius: 8px;
+
+  flex: 1 0 300px;
+  text-align: center;
+  min-height: 300px;
+}
+
+.approach-item {
+  background: white;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.approach-item-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  margin-bottom: 10px;
+  background-color: rgba(8, 90, 54, 1);
+}
+
+.approach-item-imag {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+
+.approach-item-image img {
+  height: 50px;
+  width: 50px;
+  object-fit: cover;
+}
+
+.approach-item-imag img {
+  height: 60px;
+  width: 60px;
+  object-fit: cover;
+}
+
+.approach-item h4 {
+  font-weight: 700;
+}
+
+.approach-item ul {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  font-weight: 700;
+  font-size: 0.75rem;
+  font-family: "Inter";
+  font-weight: 400;
+  color: rgba(76, 91, 85, 1);
+}
+
+.approach-item ul li {
+  margin: 2px;
+  padding: 2px;
+}
+
+.impact-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2% 4%;
+  margin-bottom: 10px;
+  justify-content: center;
+}
+
+.impact-area h3 {
+  font-family: "Inknut Antiqua";
+  transform: uppercase;
+  padding: 4px 12px;
+  font-size: 1.2rem;
+  width: fit-content;
+  border-radius: 6px;
+  font-weight: 700;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  text-align: center;
+  color: rgba(251, 251, 251, 1);
+  background-color: rgba(8, 90, 54, 1);
+}
+
+.impact-area h5 {
+  font-family: "Inknut Antiqua";
+  transform: uppercase;
+  padding: 4px 12px;
+  font-size: 1.2rem;
+  border-radius: 6px;
+  border: 2px solid rgba(8, 90, 54, 1);
+  font-weight: 700;
+  text-align: center;
+  color: rgba(8, 90, 54, 1);
+}
+
+.impact-grid {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-bottom: 1.8rem;
+  background-color: rgba(246, 255, 251, 1);
+  width: 100%;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+.impact-area .impact-item {
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+  align-items: center;
+  padding: 15px;
+  border-radius: 8px;
+  flex: 1 0 300px;
+  text-align: center;
+  min-height: 300px;
+}
+
+.impact-item h4 {
+  font-weight: 700;
+}
+
+.impact-item ul {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  font-weight: 700;
+  font-size: 0.8rem;
+  font-family: "Inter";
+  font-weight: 400;
+  color: rgba(76, 91, 85, 1);
+}
+
+.impact-item ul li {
+  margin: 2px;
+  padding: 2px;
+}
+
+/* Container for the background image */
+.about_background-container {
+  font-family: "Inter";
+  min-height: 100vh; /* Ensure it covers at least the full viewport height */
+  background-size: cover; /* Cover the entire area */
+  background-position: center center; /* Center the image */
+  background-repeat: no-repeat;
+  display: flex; /* Use flexbox to center content */
+  align-items: center; /* Vertically center */
+  justify-content: center; /* Horizontally center */
+  padding: 40px; /* Add some padding around the content */
+  box-sizing: border-box;
+}
+
+/* Cream overlay */
+.about_overlay {
+  /* Adjust the RGBA color and opacity (last value) to match the desired cream effect */
+  /* rgba(255, 253, 240) is floralwhite, 0.9 is 90% opacity */
+  background-color: rgba(255, 253, 240, 0.8);
+  padding: 40px 20px; /* Generous padding inside the overlay */
+  border-radius: 8px; /* Optional: slightly rounded corners for the overlay */
+  width: 100%;
+  max-width: 1200px; /* Limit maximum width on large screens */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Optional subtle shadow */
+}
+
+/* Grid container for the cards */
+.about_card-grid {
+  display: flex; /* Enable flexbox */
+  flex-wrap: wrap; /* Allow items to wrap to the next line */
+  gap: 30px; /* Space between cards */
+  justify-content: center; /* Center cards horizontally */
+}
+
+/* Individual Card Styling */
+.about_card {
+  flex: 1 1 300px;
+  min-width: 280px;
+  /* Background is transparent as the overlay provides the color */
+  background-color: transparent;
+  padding: 20px; /* Padding inside each card */
+  box-sizing: border-box; /* Include padding in width calculation */
+}
+
+/* Card Title */
+.about_card h3 {
+  font-family: "Inter";
+  margin-top: 0; /* Remove default top margin */
+  margin-bottom: 15px;
+  font-size: 1.25em; /* Slightly larger title font size */
+  font-weight: 600; /* Bolder title */
+  color: #111; /* Darker color for titles */
+}
+
+/* Card List */
+.about_card ul {
+  list-style: none; /* Remove default bullets */
+  padding-left: 0; /* Remove default padding */
+  margin: 0;
+}
+
+/* Card List Items */
+.about_card li {
+  font-family: "Inter";
+  margin-bottom: 8px;
+  color: #444; /* Slightly lighter text color for list items */
+  position: relative; /* Needed for custom bullet positioning */
+  padding-left: 18px; /* Make space for the custom bullet */
+  font-size: 0.9rem;
+}
+
+/* Custom bullet (hyphen) using ::before pseudo-element */
+.about_card li::before {
+  content: "-"; /* The character to use as a bullet */
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-weight: bold;
+  color: #555;
+}
+
+.join-community {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.join-community-text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: rgba(255, 255, 255, 1);
+  background: rgba(8, 90, 54, 1);
+  padding: 2% 4%;
+  text-align: center;
+  font-size: 0.9rem;
+  margin-bottom: 20px;
+}
+
+.join-button {
+  background: rgba(8, 90, 54, 1);
+  width: fit-content;
+  color: rgba(255, 255, 255, 1);
+  border: none;
+  padding: 12px 24px;
+  font-size: 1.5rem;
+  margin: 30px 0;
+  font-weight: 700;
+  font-family: "iknut Antiqua";
+  border-radius: 5px;
+  align-self: center;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.join-button:hover {
+  background: #004d40;
+}
+
+/* Responsive adjustments (optional example) */
+@media (max-width: 768px) {
+}
+
+@media (max-width: 480px) {
+  .about_card {
+    /* Stack cards vertically on very small screens */
+    flex-basis: 100%;
+  }
+  .about_overlay {
+    padding: 20px 10px;
+  }
+}
+
+@media (min-width: 768px) {
+  .about_us_banner-container {
+    height: 300px;
+  }
+
+  .about_us_banner-title {
+    font-size: 2rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .about_us_banner-container {
+    height: 300px;
+  }
+
+  .about_us_banner-title {
+    font-size: 2rem;
+  }
+}
