@@ -1,0 +1,51 @@
+.matron_profile-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 16px;
+    /* background-color: #f0fdf4; */
+    width: 300px;
+    text-align: center;
+    position: relative;
+    top: -80%;
+  }
+  
+  .matron_profile-image {
+    width: 260px;
+    height: 260px;
+   
+    overflow: hidden;
+   
+  }
+  
+  .matron_profile-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .matron_profile-name {
+   margin-bottom: 2px;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #ea580c;
+  }
+  
+  .matron_profile-title {
+    font-size: 0.8rem;
+    font-style: italic;
+    margin-top: -8px;
+    color: #374151;
+    font-weight: 700;
+  }
+  
+  .matron_profile-position {
+   width: 80%;
+    padding: 4px 16px;
+    background-color: rgba(8, 90, 54, 1);
+    color: white;
+    font-size: 0.7rem;
+    font-weight: bold;
+   
+  }
+  

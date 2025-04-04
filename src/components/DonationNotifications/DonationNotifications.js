@@ -9,10 +9,10 @@ const DonationNotifications = () => {
 
   useEffect(() => {
     // Establish a single socket connection
-    const socket = io("alfurqaninstitute.onrender.com", {
+    const socket = io("http://localhost:5005", {
       transports: ["websocket", "polling"], // Ensure compatibility
     });
-    //  http://localhost:5005
+    //  http://localhost:5005 alfurqaninstitute.onrender.com
     // Listen for new donation events
     socket.on("newDonation", (data) => {
       console.log("New donation received:", data);
