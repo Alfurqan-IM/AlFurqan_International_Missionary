@@ -110,3 +110,32 @@ export function useSendMessage() {
   });
   return { mutate, isSuccess, reset, isError, error };
 }
+
+async function getEvent() {
+  const data = await axiosInstance({
+    url: "/events",
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+
+  return data;
+}
+
+export function useGetEvent() {
+  const fallback = [];
+  const {
+    data = fallback,
+    isLoading,
+    isError,
+    error,
+  } = useQuery({
+    queryKey: [queryKeys.events],
+    queryFn: () => getEvent(),
+    onError: (error) => {
+      toast.error(error, toastOptions);
+    },
+  });
+  return { data, isLoading, isError, error };
+}

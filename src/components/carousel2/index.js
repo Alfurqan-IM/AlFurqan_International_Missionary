@@ -12,7 +12,7 @@ const CustomCarousel = ({ items }) => {
 
   return (
     <div
-      className="carousel-container"
+      className="carousel-container2"
       style={{
         backgroundImage: hasImages ? "none" : `url(${backgroundPic})`, // Temporary background
         backgroundSize: "cover",

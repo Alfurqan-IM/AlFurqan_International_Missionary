@@ -13,6 +13,9 @@ import Programs from "../pages/public/Programs";
 import Loader from "../components/loader";
 import Team from "../pages/public/Team";
 import AboutUs from "../pages/public/AboutUs";
+import Event from "../pages/public/Event";
+import RegisterForm from "../pages/public/Register";
+import ForgetPassword from "../pages/public/Forgotpassword";
 
 const AppRouter = () => {
   return (
@@ -23,10 +26,13 @@ const AppRouter = () => {
           <Route element={<PublicRoutes />}>
             <Route path="/" element={<Homepage />} />
             <Route path="/team" element={<Team />} />
+            <Route path="/event" element={<Event />} />
             <Route path="/about-us" element={<AboutUs />} />
             <Route path="/programs/:id" element={<Programs />} />
             <Route path="/unauthorized" element={<UnAuthorized />} />
             <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<RegisterForm />} />
+            <Route path="/forgotpassword" element={<ForgetPassword />} />
           </Route>
 
           {/* Protected Routes */}
