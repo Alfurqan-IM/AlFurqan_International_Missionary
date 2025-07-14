@@ -21,7 +21,7 @@ const Homepage = () => {
   const bannerData = useGetBanner();
 
   const banner = bannerData?.data?.banner;
-  console.log(bannerData?.data?.banner);
+
   const { data, isLoading } = useGetSurah();
   const surah = data?.data?.surah;
   const { data: programsData, isLoading: isLoadingPrograms } = useGetPrograms();
