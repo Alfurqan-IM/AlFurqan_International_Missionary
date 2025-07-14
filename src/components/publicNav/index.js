@@ -37,8 +37,8 @@ const PublicNav = () => {
       key: "events",
       label: "Program/Events",
       children: [
-        { key: "event1", label: "Upcoming Events" },
-        { key: "event2", label: "Past Events" },
+        { key: "event1", label: <a href="/about-us">Programs</a> },
+        { key: "event2", label: <a href="/event">Events</a> },
       ],
     },
     {
@@ -51,7 +51,8 @@ const PublicNav = () => {
     },
     { key: "prayer", label: "Prayer Time" },
     { key: "zakat", label: "Zakat Calculator" },
-    { key: "login-item", label: "Login" },
+    { key: "login", label: <a href="/login">Login</a> },
+    ,
   ];
 
   return (
