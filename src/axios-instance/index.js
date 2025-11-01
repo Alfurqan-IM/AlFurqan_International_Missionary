@@ -4,6 +4,7 @@ import { getLoginToken } from "../storage";
 
 const config = {
   baseURL,
+  withCredentials: true, // 👈 crucial for cookies
 };
 axios.defaults.headers = {
   "Content-Type": "application/json",

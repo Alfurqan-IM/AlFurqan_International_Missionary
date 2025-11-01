@@ -30,8 +30,9 @@ const Login = () => {
     reset: resetMutation,
     isLoading: isSubmitting,
   } = useUserlogin({
-    onSuccess: () => {
-      successAlert("Login successful!");
+    onSuccess: (data) => {
+      console.log(data);
+      successAlert(data.msg);
       navigate("/userprofile");
       // The form reset will be handled in the handleSubmit function
     },

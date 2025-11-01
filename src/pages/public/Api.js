@@ -241,6 +241,7 @@ async function LoginUser(formData) {
     headers: {
       "Content-Type": "application/json",
     },
+    withCredentials: true
   });
 
   return data?.data;
@@ -274,6 +275,7 @@ async function fetchUserProfile() {
       headers: {
         "Content-Type": "application/json",
       },
+      withCredentials: true
     });
 
     console.log("User Profile Data:", response?.data);
