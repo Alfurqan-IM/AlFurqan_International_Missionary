@@ -4,6 +4,10 @@ import * as Yup from "yup";
 import "./registerForm.css";
 import Header from "../../components/header";
 import PublicNav from "../../components/publicNav";
+import { useForgotPassword } from "./Api";
+import { errorAlert, successAlert } from "../../utils";
+import { useIsMutating } from "@tanstack/react-query";
+import { useNavigate } from "react-router-dom";
 
 const initialValues = {
   email: "",
@@ -14,9 +18,21 @@ const validationSchema = Yup.object({
 });
 
 const ForgetPassword = () => {
-  const handleSubmit = (values, { resetForm }) => {
-    alert(JSON.stringify(values, null, 2));
-    resetForm();
+  const isLoading = useIsMutating();
+  const navigate = useNavigate();
+  const { mutate, reset } = useForgotPassword({
+    onSuccess: () => {
+      successAlert("Password reset link sent to your email");
+      navigate("/email-message");
+    },
+    onError: (error) => {
+      errorAlert(error || "Failed to send message");
+      reset();
+    },
+  });
+  const handleSubmit = (values) => {
+    mutate(values);
+    reset();
   };
 
   return (
@@ -40,7 +56,7 @@ const ForgetPassword = () => {
             </div>
 
             <button type="submit" className="submit-btn">
-              submit
+              {isLoading ? "Sending..." : "Send Reset Link"}
             </button>
 
             <div className="login-link">

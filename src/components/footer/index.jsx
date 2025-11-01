@@ -6,7 +6,7 @@ import {
   InstagramOutlined,
   YoutubeOutlined,
 } from "@ant-design/icons";
-import { errorAlert, successAlert } from "../../utils";
+import { errorAlert, successAlert } from "../../utils/index";
 import { useSendMessage } from "../../pages/public/Api";
 import { useIsMutating } from "@tanstack/react-query";
 import "./footer.css"; // Import the CSS file
@@ -32,24 +32,21 @@ const Footer = () => {
   };
 
   const isLoading = useIsMutating();
-  const { mutate, isSuccess, isError, reset, error } = useSendMessage();
+
+  const { mutate } = useSendMessage({
+    onSuccess: () => {
+      successAlert("Your message was sent successfully");
+      setFormData({ name: "", email: "", message: "" });
+    },
+    onError: (error) => {
+      errorAlert(error.message || "Failed to send message");
+    },
+  });
 
   const handleSubmit = (e) => {
     e.preventDefault();
     mutate(formData);
   };
-
-  if (isSuccess) {
-    reset();
-    successAlert("Your message was sent successfully");
-    setFormData({ name: "", email: "", message: "" });
-  }
-
-  if (isError) {
-    reset();
-    errorAlert(error);
-    setFormData({ name: "", email: "", message: "" });
-  }
 
   return (
     <footer className="footer-container">
@@ -76,13 +73,13 @@ const Footer = () => {
           <a href="/" className="footer-menu-item">
             Home
           </a>
-          <a href="#donations" className="footer-menu-item">
+          <a href="/campaigns" className="footer-menu-item">
             Donations
           </a>
           <a href="#careline" className="footer-menu-item">
             Muslim Care Line
           </a>
-          <a href="#contact" className="footer-menu-item">
+          <a href="/team" className="footer-menu-item">
             Get In Touch
           </a>
           <a href="#blogs" className="footer-menu-item">

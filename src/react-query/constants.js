@@ -3,4 +3,6 @@ export const queryKeys = {
   surah: "surah",
   programs: "programs",
   events: "events",
+  campaigns: "campaigns",
+  campaignsDonor: "campaignsDonor",
 };

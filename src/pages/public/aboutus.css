@@ -2,6 +2,7 @@
   display: flex;
   flex-direction: column;
   height: 100%;
+  width: 100%;
 }
 
 .about_us_banner-container {
@@ -50,9 +51,169 @@
   align-items: center;
   gap: 40px;
   padding: 3% 4%;
-
   height: fit-content;
 }
+
+.campaign-section {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  padding: 3% 10%;
+  height: fit-content;
+  border: 2px solid red;
+}
+
+.campaign-list {
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+  padding: 60px 5%;
+  align-items: center;
+}
+
+.campaign-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  max-width: 1200px;
+  width: 100%;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.campaign-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.12);
+}
+
+/* Alternate direction for even cards */
+.campaign-card.reverse {
+  flex-direction: row-reverse;
+}
+
+/* Image Styling */
+.campaign-image-container {
+  width: 45%;
+  height: 100%;
+}
+
+.campaign-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Campaign Info Section */
+.campaign-info {
+  width: 55%;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.campaign-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1b1b1b;
+  margin-bottom: 10px;
+}
+
+.campaign-description {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #444;
+  margin-bottom: 20px;
+}
+
+.status {
+  margin-bottom: 6px;
+  font-weight: 600;
+}
+
+.status-active {
+  color: green;
+}
+
+.raised {
+  color: #0b5324;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.dates {
+  color: #777;
+  font-size: 0.95rem;
+  margin-bottom: 15px;
+}
+
+/* Donors + Remaining Days */
+.campaign-stats {
+  display: flex;
+  justify-content: space-between;
+  font-weight: 400;
+
+  margin-top: 50px;
+}
+
+/* Progress Bar */
+.progress-bar {
+  background: #eaeaea;
+  height: 8px;
+  border-radius: 10px;
+  overflow: hidden;
+  margin: 10px 0 18px 0;
+}
+
+.progress {
+  background: #0b5324;
+  height: 100%;
+  transition: width 0.4s ease;
+}
+
+/* Donate Button */
+.donate-btn {
+  background: #0b5324;
+  color: #fff;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 6px;
+  font-weight: 600;
+  width: fit-content;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.donate-btn:hover {
+  background: #093d1b;
+}
+
+/* Responsive Layout */
+@media (max-width: 900px) {
+  .campaign-card,
+  .campaign-card.reverse {
+    flex-direction: column;
+  }
+
+  .campaign-image-container,
+  .campaign-info {
+    width: 100%;
+  }
+
+  .campaign-info {
+    padding: 25px;
+  }
+
+  .campaign-list {
+    padding: 40px 4%;
+  }
+}
+
 .about_story-section h3 {
   font-family: "Inknut Antiqua";
   transform: uppercase;
@@ -288,61 +449,59 @@
 /* Container for the background image */
 .about_background-container {
   font-family: "Inter";
-  min-height: 100vh; /* Ensure it covers at least the full viewport height */
-  background-size: cover; /* Cover the entire area */
-  background-position: center center; /* Center the image */
+  min-height: 100vh;
+  background-size: cover;
+  background-position: center center;
   background-repeat: no-repeat;
-  display: flex; /* Use flexbox to center content */
-  align-items: center; /* Vertically center */
-  justify-content: center; /* Horizontally center */
-  padding: 40px; /* Add some padding around the content */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
   box-sizing: border-box;
 }
 
 /* Cream overlay */
 .about_overlay {
-  /* Adjust the RGBA color and opacity (last value) to match the desired cream effect */
-  /* rgba(255, 253, 240) is floralwhite, 0.9 is 90% opacity */
   background-color: rgba(255, 253, 240, 0.8);
-  padding: 40px 20px; /* Generous padding inside the overlay */
-  border-radius: 8px; /* Optional: slightly rounded corners for the overlay */
+  padding: 40px 20px;
+  border-radius: 8px;
   width: 100%;
-  max-width: 1200px; /* Limit maximum width on large screens */
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Optional subtle shadow */
+  max-width: 1200px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
 /* Grid container for the cards */
 .about_card-grid {
-  display: flex; /* Enable flexbox */
-  flex-wrap: wrap; /* Allow items to wrap to the next line */
-  gap: 30px; /* Space between cards */
-  justify-content: center; /* Center cards horizontally */
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: center;
 }
 
 /* Individual Card Styling */
 .about_card {
   flex: 1 1 300px;
   min-width: 280px;
-  /* Background is transparent as the overlay provides the color */
+
   background-color: transparent;
-  padding: 20px; /* Padding inside each card */
-  box-sizing: border-box; /* Include padding in width calculation */
+  padding: 20px;
+  box-sizing: border-box;
 }
 
 /* Card Title */
 .about_card h3 {
   font-family: "Inter";
-  margin-top: 0; /* Remove default top margin */
+  margin-top: 0;
   margin-bottom: 15px;
-  font-size: 1.25em; /* Slightly larger title font size */
-  font-weight: 600; /* Bolder title */
-  color: #111; /* Darker color for titles */
+  font-size: 1.25em;
+  font-weight: 600;
+  color: #111;
 }
 
 /* Card List */
 .about_card ul {
-  list-style: none; /* Remove default bullets */
-  padding-left: 0; /* Remove default padding */
+  list-style: none;
+  padding-left: 0;
   margin: 0;
 }
 
@@ -350,15 +509,15 @@
 .about_card li {
   font-family: "Inter";
   margin-bottom: 8px;
-  color: #444; /* Slightly lighter text color for list items */
-  position: relative; /* Needed for custom bullet positioning */
-  padding-left: 18px; /* Make space for the custom bullet */
+  color: #444;
+  position: relative;
+  padding-left: 18px;
   font-size: 0.9rem;
 }
 
 /* Custom bullet (hyphen) using ::before pseudo-element */
 .about_card li::before {
-  content: "-"; /* The character to use as a bullet */
+  content: "-";
   position: absolute;
   left: 0;
   top: 0;
@@ -410,7 +569,6 @@
 
 @media (max-width: 480px) {
   .about_card {
-    /* Stack cards vertically on very small screens */
     flex-basis: 100%;
   }
   .about_overlay {

@@ -32,12 +32,12 @@ const PublicNav = () => {
         { key: "Our Team", label: <a href="/team">Our Team</a> },
       ],
     },
-    { key: "campaign", label: "Project Campaign" },
+    { key: "campaign", label: <a href="/campaigns">Project Campaigns</a> },
     {
       key: "events",
       label: "Program/Events",
       children: [
-        { key: "event1", label: <a href="/about-us">Programs</a> },
+        { key: "event1", label: <a href="/programs">Programs</a> },
         { key: "event2", label: <a href="/event">Events</a> },
       ],
     },
@@ -45,14 +45,13 @@ const PublicNav = () => {
       key: "members",
       label: "Members",
       children: [
-        { key: "member1", label: "Membership Plans" },
-        { key: "member2", label: "Join Us" },
+        { key: "member1", label: <a href="/login">Membership Plan</a> },
+        { key: "member2", label: <a href="/register">Join Us</a> },
       ],
     },
-    { key: "prayer", label: "Prayer Time" },
+    { key: "prayer", label: <a href="/prayer-time">Prayer Time</a> },
     { key: "zakat", label: "Zakat Calculator" },
     { key: "login", label: <a href="/login">Login</a> },
-    ,
   ];
 
   return (
