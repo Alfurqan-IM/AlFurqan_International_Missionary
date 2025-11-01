@@ -1,4 +1,4 @@
-import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { useMutation, useQuery } from "@tanstack/react-query";
 import { axiosInstance } from "../../axios-instance/index";
 import { queryKeys } from "../../react-query/constants";
 import { toast } from "react-toastify";
@@ -99,16 +99,21 @@ async function sendMessage(formData) {
   return data?.data;
 }
 
-export function useSendMessage() {
-  const queryClient = useQueryClient();
-  const { mutate, isSuccess, reset, isError, error } = useMutation({
+export function useSendMessage(options = {}) {
+  const { mutate, ...mutation } = useMutation({
     mutationFn: (formData) => sendMessage(formData),
-
-    onSuccess: (data) => {
-      queryClient.invalidateQueries([queryKeys.user]);
+    onSuccess: (data, variables, context) => {
+      options.onSuccess?.(data, variables, context);
+    },
+    onError: (error, variables, context) => {
+      options.onError?.(error, variables, context);
+    },
+    onSettled: (data, error, variables, context) => {
+      options.onSettled?.(data, error, variables, context);
     },
   });
-  return { mutate, isSuccess, reset, isError, error };
+
+  return { mutate, ...mutation };
 }
 
 async function getEvent() {
@@ -138,4 +143,234 @@ export function useGetEvent() {
     },
   });
   return { data, isLoading, isError, error };
+}
+
+async function getCampaigns() {
+  const data = await axiosInstance({
+    url: "/campaigns",
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+
+  return data;
+}
+
+export function useGetCampaigns() {
+  const fallback = [];
+  const {
+    data = fallback,
+    isLoading,
+    isError,
+    error,
+  } = useQuery({
+    queryKey: [queryKeys.campaigns],
+    queryFn: () => getCampaigns(),
+    onError: (error) => {
+      toast.error(error, toastOptions);
+    },
+  });
+  return { data, isLoading, isError, error };
+}
+
+async function getCampaignsDonor() {
+  const data = await axiosInstance({
+    url: "/campaigns/donorCampaigns",
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+
+  return data;
+}
+
+export function useGetCampaignsDonor() {
+  const fallback = [];
+  const {
+    data = fallback,
+    isLoading,
+    isError,
+    error,
+  } = useQuery({
+    queryKey: [queryKeys.campaignsDonor],
+    queryFn: () => getCampaignsDonor(),
+    onError: (error) => {
+      toast.error(error, toastOptions);
+    },
+  });
+  return { data, isLoading, isError, error };
+}
+
+async function registerUser(formData) {
+  const data = await axiosInstance({
+    url: "/authentication/register",
+    method: "POST",
+    data: formData,
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+
+  return data?.data;
+}
+
+export function useRegisterUser(options = {}) {
+  const { mutate, ...mutation } = useMutation({
+    mutationFn: (formData) => registerUser(formData),
+    onSuccess: (data, variables, context) => {
+      options.onSuccess?.(data, variables, context);
+    },
+    onError: (error, variables, context) => {
+      options.onError?.(error, variables, context);
+    },
+    onSettled: (data, error, variables, context) => {
+      options.onSettled?.(data, error, variables, context);
+    },
+  });
+
+  return { mutate, ...mutation };
+}
+
+async function LoginUser(formData) {
+  const data = await axiosInstance({
+    url: "/authentication/login",
+    method: "POST",
+    data: formData,
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+
+  return data?.data;
+}
+
+export function useUserlogin(options = {}) {
+  const { mutate, ...mutation } = useMutation({
+    mutationFn: (formData) => LoginUser(formData),
+    onSuccess: (data, variables, context) => {
+      options.onSuccess?.(data, variables, context);
+      // i need user data so i can save it to context
+      // then i will call useUserProfile to get user profile
+      fetchUserProfile();
+    },
+    onError: (error, variables, context) => {
+      options.onError?.(error, variables, context);
+    },
+    onSettled: (data, error, variables, context) => {
+      options.onSettled?.(data, error, variables, context);
+    },
+  });
+
+  return { mutate, ...mutation };
+}
+
+async function fetchUserProfile() {
+  try {
+    const response = await axiosInstance({
+      url: "/authentication/showme",
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    console.log("User Profile Data:", response?.data);
+
+    return response?.data;
+  } catch (error) {
+    console.error("Error fetching user profile:", error);
+    throw error;
+  }
+}
+
+async function resetPassword(formData) {
+  const data = await axiosInstance({
+    url: "/authentication/resetpassword",
+    method: "POST",
+    data: formData,
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+
+  return data?.data;
+}
+
+export function useResetPassword(options = {}) {
+  const { mutate, ...mutation } = useMutation({
+    mutationFn: (formData) => resetPassword(formData),
+    onSuccess: (data, variables, context) => {
+      options.onSuccess?.(data, variables, context);
+    },
+    onError: (error, variables, context) => {
+      options.onError?.(error, variables, context);
+    },
+    onSettled: (data, error, variables, context) => {
+      options.onSettled?.(data, error, variables, context);
+    },
+  });
+
+  return { mutate, ...mutation };
+}
+
+async function verifyEmail(formData) {
+  const data = await axiosInstance({
+    url: "/authentication/verify-email",
+    method: "POST",
+    data: formData,
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+
+  return data?.data;
+}
+
+export function useVerifyEmail(options = {}) {
+  const { mutate, ...mutation } = useMutation({
+    mutationFn: (formData) => verifyEmail(formData),
+    onSuccess: (data, variables, context) => {
+      options.onSuccess?.(data, variables, context);
+    },
+    onError: (error, variables, context) => {
+      options.onError?.(error, variables, context);
+    },
+    onSettled: (data, error, variables, context) => {
+      options.onSettled?.(data, error, variables, context);
+    },
+  });
+
+  return { mutate, ...mutation };
+}
+
+async function forgotPassword(formData) {
+  const data = await axiosInstance({
+    url: "/authentication/forgotpassword",
+    method: "POST",
+    data: formData,
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+
+  return data?.data;
+}
+
+export function useForgotPassword(options = {}) {
+  const { mutate, ...mutation } = useMutation({
+    mutationFn: (formData) => forgotPassword(formData),
+    onSuccess: (data, variables, context) => {
+      options.onSuccess?.(data, variables, context);
+    },
+    onError: (error, variables, context) => {
+      options.onError?.(error, variables, context);
+    },
+    onSettled: (data, error, variables, context) => {
+      options.onSettled?.(data, error, variables, context);
+    },
+  });
+
+  return { mutate, ...mutation };
 }

@@ -7,28 +7,22 @@ import PublicNav from "../../components/publicNav";
 import { errorAlert, successAlert } from "../../utils";
 import { useIsMutating } from "@tanstack/react-query";
 import { useNavigate } from "react-router-dom";
-import { useResetPassword } from "./Api";
+import { useVerifyEmail } from "./Api";
 
 const initialValues = {
-  password: "",
-  confirmPassword: "",
+  email: "",
 };
 
 const validationSchema = Yup.object({
-  password: Yup.string()
-    .min(8, "Minimum 8 characters")
-    .required("Password is required"),
-  confirmPassword: Yup.string()
-    .oneOf([Yup.ref("password"), null], "Passwords must match")
-    .required("Confirm Password is required"),
+  email: Yup.string().email("Invalid email").required("Email is required"),
 });
 
-const ResetPassword = () => {
+const VerifyEmail = () => {
   const isLoading = useIsMutating();
   const navigate = useNavigate();
-  const { mutate, reset } = useResetPassword({
+  const { mutate, reset } = useVerifyEmail({
     onSuccess: () => {
-      successAlert("Password has been reset successfully, you login now");
+      successAlert("Email Verification successfully, you can login now");
       navigate("/login");
     },
     onError: (error) => {
@@ -37,8 +31,10 @@ const ResetPassword = () => {
   });
   const handleSubmit = (values) => {
     const formdata = {
-      password: values.password,
-      token: new URLSearchParams(window.location.search).get("token"),
+      email: values.email,
+      verificationString: new URLSearchParams(window.location.search).get(
+        "token"
+      ),
     };
     mutate(formdata);
     reset();
@@ -50,7 +46,7 @@ const ResetPassword = () => {
       <PublicNav />
       <div className="form-wrapper">
         <h2>
-          Recover your Account <span className="highlight">&nbsp;!</span>
+          Verify your Account <span className="highlight">&nbsp;!</span>
         </h2>
         <Formik
           initialValues={initialValues}
@@ -59,19 +55,9 @@ const ResetPassword = () => {
         >
           <Form className="form">
             <div className="form-group full-width">
-              <label>Password *</label>
-              <Field name="password" type="password" />
-              <ErrorMessage name="password" component="div" className="error" />
-            </div>
-
-            <div className="form-group full-width">
-              <label>Confirm Password *</label>
-              <Field name="confirmPassword" type="password" />
-              <ErrorMessage
-                name="confirmPassword"
-                component="div"
-                className="error"
-              />
+              <label>Email *</label>
+              <Field name="email" type="email" />
+              <ErrorMessage name="email" component="div" className="error" />
             </div>
 
             <button type="submit" className="submit-btn">
@@ -84,4 +70,4 @@ const ResetPassword = () => {
   );
 };
 
-export default ResetPassword;
+export default VerifyEmail;

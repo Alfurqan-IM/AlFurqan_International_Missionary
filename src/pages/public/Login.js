@@ -4,6 +4,10 @@ import * as Yup from "yup";
 import "./registerForm.css";
 import Header from "../../components/header";
 import PublicNav from "../../components/publicNav";
+import { useUserlogin } from "./Api";
+import { errorAlert, successAlert } from "../../utils";
+import { useNavigate } from "react-router-dom";
+import { useIsMutating } from "@tanstack/react-query";
 
 const initialValues = {
   email: "",
@@ -18,9 +22,27 @@ const validationSchema = Yup.object({
 });
 
 const Login = () => {
+  const navigate = useNavigate();
+  const loading = useIsMutating();
+  const {
+    mutate,
+
+    reset: resetMutation,
+    isLoading: isSubmitting,
+  } = useUserlogin({
+    onSuccess: () => {
+      successAlert("Login successful!");
+      navigate("/dashboard");
+      // The form reset will be handled in the handleSubmit function
+    },
+    onError: (error) => {
+      errorAlert(error || "Failed to send message");
+      resetMutation(); // Reset mutation state to allow resubmission
+    },
+  });
+
   const handleSubmit = (values, { resetForm }) => {
-    alert(JSON.stringify(values, null, 2));
-    resetForm();
+    mutate(values);
   };
 
   return (
@@ -50,7 +72,7 @@ const Login = () => {
             </div>
 
             <button type="submit" className="submit-btn">
-              Login
+              {isSubmitting || loading ? "Logging in..." : "Login"}
             </button>
 
             <div className="login-link">

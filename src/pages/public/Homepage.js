@@ -1,5 +1,3 @@
-import React from "react";
-import Carousel from "../../components/carousel";
 import PublicNav from "../../components/publicNav";
 import Header from "../../components/header";
 import "./homepage.css";
@@ -11,11 +9,7 @@ import IslamicCommunitySection from "../../components/AimCommunity";
 import Footer from "../../components/footer";
 import { useGetBanner, useGetPrograms, useGetSurah } from "./Api";
 import CustomCarousel from "../../components/carousel2";
-import quran from "../../assets/backgroundAbout.jpg";
-import Bquran from "../../assets/slide1.png";
 import DonationNotifications from "../../components/DonationNotifications/DonationNotifications";
-
-// import CustomCarousel from "../../components/carousel2";
 
 const Homepage = () => {
   const bannerData = useGetBanner();
@@ -26,17 +20,6 @@ const Homepage = () => {
   const surah = data?.data?.surah;
   const { data: programsData, isLoading: isLoadingPrograms } = useGetPrograms();
   const events = programsData?.data?.programmes;
-
-  const item = [
-    {
-      image: quran,
-      title: "title 1",
-    },
-    {
-      image: Bquran,
-      title: "title 3",
-    },
-  ];
 
   return (
     <div className={"homepage_container"}>

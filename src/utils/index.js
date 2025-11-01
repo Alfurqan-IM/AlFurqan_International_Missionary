@@ -47,13 +47,15 @@ export const toastOptions = {
 };
 
 export const successAlert = (msg) => {
-  toast.success(msg || "Successfully created", toastOptions);
+  toast.success(msg || "Successful !", toastOptions);
 };
 
 export const errorAlert = (error) => {
   const err =
     error?.response?.data?.detail || error?.response?.data
-      ? error?.response?.data?.detail || error?.response?.data?.error
+      ? error?.response?.data?.detail ||
+        error?.response?.data?.error ||
+        error.response?.data?.msg
       : SERVER_ERROR;
   toast.error(err, toastOptions);
 };
