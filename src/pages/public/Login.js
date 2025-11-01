@@ -32,7 +32,7 @@ const Login = () => {
   } = useUserlogin({
     onSuccess: () => {
       successAlert("Login successful!");
-      navigate("/dashboard");
+      navigate("/userprofile");
       // The form reset will be handled in the handleSubmit function
     },
     onError: (error) => {
