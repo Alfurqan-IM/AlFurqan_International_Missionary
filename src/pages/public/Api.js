@@ -3,6 +3,7 @@ import { axiosInstance } from "../../axios-instance/index";
 import { queryKeys } from "../../react-query/constants";
 import { toast } from "react-toastify";
 import { toastOptions } from "../../utils";
+import { setLoginToken } from "../../storage";
 
 async function getBanner() {
   const data = await axiosInstance({
@@ -241,7 +242,7 @@ async function LoginUser(formData) {
     headers: {
       "Content-Type": "application/json",
     },
-    withCredentials: true
+    withCredentials: true,
   });
 
   return data?.data;
@@ -254,6 +255,8 @@ export function useUserlogin(options = {}) {
       options.onSuccess?.(data, variables, context);
       // i need user data so i can save it to context
       // then i will call useUserProfile to get user profile
+      //Save the access token BEFORE calling showMe
+      setLoginToken(data.accessToken);
       fetchUserProfile();
     },
     onError: (error, variables, context) => {
@@ -275,7 +278,7 @@ async function fetchUserProfile() {
       headers: {
         "Content-Type": "application/json",
       },
-      withCredentials: true
+      withCredentials: true,
     });
 
     console.log("User Profile Data:", response?.data);
