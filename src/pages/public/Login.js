@@ -26,12 +26,11 @@ const Login = () => {
   const loading = useIsMutating();
   const {
     mutate,
-
     reset: resetMutation,
     isLoading: isSubmitting,
   } = useUserlogin({
     onSuccess: (data) => {
-      console.log(data);
+     // console.log(data);
       successAlert(data.msg);
       navigate("/userprofile");
       // The form reset will be handled in the handleSubmit function
