@@ -1,6 +1,6 @@
 export function getStoredUser() {
-  const storedUser = localStorage.getItem("user");
-  return storedUser ? JSON.parse(storedUser) : null;
+  const user = localStorage.getItem("user");
+  return user ? JSON.parse(user) : null;
 }
 
 export function setStoredUser(user) {
@@ -11,7 +11,6 @@ export function setStoredUser(user) {
 export function setLoginToken(token) {
   localStorage.setItem("token", JSON.stringify(token));
 }
-
 // STUB: remove login token to local storage
 export function removeToken() {
   localStorage.removeItem("token");
@@ -20,7 +19,6 @@ export function removeToken() {
 
 // STUB: get login token from local storage
 export function getLoginToken() {
-  const storedToken = localStorage.getItem("token");
-
-  return storedToken ? JSON.parse(storedToken) : null;
+  const token = localStorage.getItem("token");
+  return token ? JSON.parse(token) : null;
 }

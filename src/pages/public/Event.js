@@ -9,7 +9,7 @@ import CustomCarousel2 from "../../components/carousel2/eventCarousel";
 const Event = () => {
   const eventData = useGetEvent();
 
-  const events = eventData?.data?.data?.events;
+  const events = eventData?.data?.data?.event;
 
   return (
     <div className={"homepage_container"}>

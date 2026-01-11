@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Layout, Menu, Drawer } from "antd";
 import {
   MenuOutlined,
@@ -8,11 +8,14 @@ import {
   YoutubeOutlined,
 } from "@ant-design/icons";
 import styles from "./index.module.css"; // Import the CSS module
+import { AuthContext } from "../../contexts";
+import { useNavigate } from "react-router-dom";
 
 const { Header } = Layout;
 
 const PublicNav = () => {
   const [isDrawerVisible, setIsDrawerVisible] = useState(false);
+  const { isAuthenticated, logout } = useContext(AuthContext);
 
   const showDrawer = () => {
     setIsDrawerVisible(true);
@@ -20,6 +23,11 @@ const PublicNav = () => {
 
   const closeDrawer = () => {
     setIsDrawerVisible(false);
+  };
+  const navigate = useNavigate();
+
+  const donateClick = () => {
+    navigate("/donate");
   };
 
   const menuItems = [
@@ -41,7 +49,7 @@ const PublicNav = () => {
         { key: "event2", label: <a href="/event">Events</a> },
       ],
     },
-    {
+    !isAuthenticated && {
       key: "members",
       label: "Members",
       children: [
@@ -49,9 +57,22 @@ const PublicNav = () => {
         { key: "member2", label: <a href="/register">Join Us</a> },
       ],
     },
+    isAuthenticated && {
+      key: "profile",
+      label: <a href="/userprofile">Profile</a>,
+    },
     { key: "prayer", label: <a href="/prayer-time">Prayer Time</a> },
     { key: "zakat", label: "Zakat Calculator" },
-    { key: "login", label: <a href="/login">Login</a> },
+    isAuthenticated
+      ? {
+          key: "login",
+          label: (
+            <button className={styles.logoutButton} onClick={logout}>
+              Logout
+            </button>
+          ),
+        }
+      : { key: "login", label: <a href="/login">Login</a> },
   ];
 
   return (
@@ -62,7 +83,11 @@ const PublicNav = () => {
         </div>
 
         <div className={styles.actions}>
-          <button className={styles.donateButton} type="primary">
+          <button
+            className={styles.donateButton}
+            onClick={donateClick}
+            type="primary"
+          >
             Donate
           </button>
           <FacebookOutlined className={styles.icon} />

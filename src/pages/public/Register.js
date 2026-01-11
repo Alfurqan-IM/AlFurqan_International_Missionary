@@ -196,8 +196,8 @@ const RegisterForm = () => {
                 <label>Gender *</label>
                 <Field name="gender" as="select">
                   <option value="">Select Gender</option>
-                  <option value="Male">Male</option>
-                  <option value="Female">Female</option>
+                  <option value="male">Male</option>
+                  <option value="female">Female</option>
                 </Field>
                 <ErrorMessage name="gender" component="div" className="error" />
               </div>

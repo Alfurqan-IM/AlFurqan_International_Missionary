@@ -13,11 +13,19 @@ import { useParams } from "react-router-dom";
 const Programs = () => {
   const { id } = useParams();
   const { data, isLoading } = useGetSurah();
-  const surah = data?.data?.surah;
+  const surah = data?.data?.surahs;
   const { data: programsData, isLoading: isLoadingPrograms } = useGetPrograms();
   const events = programsData?.data?.programmes;
   const program = events?.filter((x) => x.programme_id == id);
 
+  const formatDate = (dateString) => {
+    if (!dateString) return "";
+    return new Date(dateString).toLocaleDateString("en-GB", {
+      day: "2-digit",
+      month: "short",
+      year: "numeric",
+    });
+  };
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -71,8 +79,8 @@ const Programs = () => {
         }
         title={program && program[0]?.heading}
         description={program && program[0]?.about}
-        startDate={program && program[0]?.start_date}
-        endDate={program && program[0]?.end_date}
+        startDate={formatDate(program && program[0]?.start_date)}
+        endDate={formatDate(program && program[0]?.end_date)}
         date={program && program[0]?.year}
         time={program && program[0]?.time}
       />

@@ -1,71 +1,60 @@
 import { createContext, useEffect, useState } from "react";
-import { queryKeys } from "../react-query/constants";
-import { getLoginToken, getStoredUser, setStoredUser } from "../storage";
-import { getDecodedJWT, isAuthenticated } from "../utils";
 import { useQueryClient } from "@tanstack/react-query";
+import { getLoginToken, getStoredUser, setLoginToken } from "../storage";
+import { getDecodedJWT, isAuthenticated as checkAuth } from "../utils";
 
 export const AuthContext = createContext({
-  user: "",
-  email: "",
-  token: "",
-  role: "",
-  isAdmin: false,
+  user: null,
+  token: null,
   isAuthenticated: false,
-  authenticate: (token) => {},
+  isAdmin: false,
+  authenticate: () => {},
   logout: () => {},
+  isReady: false,
 });
 
 function AuthContextProvider({ children }) {
-  const [authToken, setAuthToken] = useState(undefined);
-  const [user, setUser] = useState(undefined);
+  const [authToken, setAuthToken] = useState(() => getLoginToken());
+  const [user, setUser] = useState(() => getStoredUser());
+  const [isReady, setIsReady] = useState(false);
+
   const queryClient = useQueryClient();
 
   useEffect(() => {
-    if (!isAuthenticated()) {
-      logout();
+    if (authToken && !user) {
+      const decoded = getDecodedJWT();
+      if (decoded) {
+        setUser(decoded);
+        localStorage.setItem("user", JSON.stringify(decoded));
+      }
     }
-    //eslint-disable-next-line
-  }, []);
+    setIsReady(true);
+  }, [authToken, user]);
 
-  useEffect(() => {
-    const data = getLoginToken();
-    if (data) {
-      setAuthToken(data);
-    }
-  }, []);
+  function authenticate(token) {
+    setLoginToken(token);
+    setAuthToken(token);
 
-  useEffect(() => {
-    const data = getStoredUser();
-    if (data) {
-      setUser(data);
-    }
-  }, []);
+    const decoded = getDecodedJWT();
+    setUser(decoded);
+    localStorage.setItem("user", JSON.stringify(decoded));
+  }
 
   function logout() {
-    setUser(undefined);
-    setAuthToken(undefined);
+    setAuthToken(null);
+    setUser(null);
     localStorage.clear();
-    queryClient.invalidateQueries([queryKeys.user]);
+    queryClient.clear();
   }
-
-  function authenticate(data) {
-    setAuthToken(data);
-    const decoded = getDecodedJWT(data);
-    setUser(decoded);
-    setStoredUser(decoded);
-  }
-
-  const checkIfAdmin = () => {
-    return user?.role === "admin"; // Adjust based on your user object
-  };
 
   const value = {
-    user: user,
+    user,
     token: authToken,
-    isAuthenticated: !!authToken,
-    authenticate: authenticate,
-    logout: logout,
-    isAdmin: checkIfAdmin,
+    isAuthenticated: checkAuth(),
+    isAdmin: user?.role === "admin",
+    authenticate,
+    logout,
+    isReady,
   };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

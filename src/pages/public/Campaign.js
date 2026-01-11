@@ -46,10 +46,12 @@ const Campaign = () => {
   const isLoading = campaigns.isLoading || campaignsDonor.isLoading;
 
   const mergedCampaigns = React.useMemo(() => {
-    const campaignData = campaigns.data?.data?.campaigns || [];
+    const campaignData = campaigns.data?.data?.campaign || [];
     const donorData = campaignsDonor.data?.data?.campaigns || [];
     return mergeCampaignData(campaignData, donorData);
   }, [campaigns.data, campaignsDonor.data]);
+
+  // console.log("Merged Campaigns:", mergedCampaigns);
 
   return (
     <div className="about_us_container">

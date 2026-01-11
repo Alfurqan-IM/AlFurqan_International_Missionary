@@ -6,8 +6,7 @@ import Header from "../../components/header";
 import PublicNav from "../../components/publicNav";
 import { useUserlogin } from "./Api";
 import { errorAlert, successAlert } from "../../utils";
-import { useNavigate } from "react-router-dom";
-import { useIsMutating } from "@tanstack/react-query";
+import { baseURL } from "../../axios-instance/constant";
 
 const initialValues = {
   email: "",
@@ -22,73 +21,84 @@ const validationSchema = Yup.object({
 });
 
 const Login = () => {
-  const navigate = useNavigate();
-  const loading = useIsMutating();
-  const {
-    mutate,
-
-    reset: resetMutation,
-    isLoading: isSubmitting,
-  } = useUserlogin({
+  const { mutate, isLoading } = useUserlogin({
     onSuccess: (data) => {
-      console.log(data);
-      successAlert(data.msg);
-      navigate("/userprofile");
-      // The form reset will be handled in the handleSubmit function
+      successAlert(data?.msg || "Login successful");
     },
     onError: (error) => {
-      errorAlert(error || "Failed to send message");
-      resetMutation(); // Reset mutation state to allow resubmission
+      errorAlert(error);
     },
   });
 
-  const handleSubmit = (values, { resetForm }) => {
-    mutate(values);
+  const handleSubmit = (values, { setSubmitting }) => {
+    mutate(values, {
+      onSettled: () => setSubmitting(false),
+    });
+  };
+
+  const handleGoogleLogin = () => {
+    window.location.href = `${baseURL}/authentication/google`;
   };
 
   return (
-    <div className={"homepage_container"}>
+    <div className="homepage_container">
       <Header />
       <PublicNav />
+
       <div className="form-wrapper">
         <h2>
-          Login to your Account <span className="highlight">&nbsp;!</span>
+          Login to your Account <span className="highlight">!</span>
         </h2>
+
         <Formik
           initialValues={initialValues}
           validationSchema={validationSchema}
           onSubmit={handleSubmit}
         >
-          <Form className="form">
-            <div className="form-group full-width">
-              <label>Email Address *</label>
-              <Field name="email" type="email" />
-              <ErrorMessage name="email" component="div" className="error" />
-            </div>
+          {({ isSubmitting }) => (
+            <Form className="form">
+              <div className="form-group full-width">
+                <label>Email Address *</label>
+                <Field name="email" type="email" />
+                <ErrorMessage name="email" component="div" className="error" />
+              </div>
 
-            <div className="form-group full-width">
-              <label>Password *</label>
-              <Field name="password" type="password" />
-              <ErrorMessage name="password" component="div" className="error" />
-            </div>
+              <div className="form-group full-width">
+                <label>Password *</label>
+                <Field name="password" type="password" />
+                <ErrorMessage
+                  name="password"
+                  component="div"
+                  className="error"
+                />
+              </div>
 
-            <button type="submit" className="submit-btn">
-              {isSubmitting || loading ? "Logging in..." : "Login"}
-            </button>
+              <button
+                type="submit"
+                className="submit-btn"
+                disabled={isSubmitting || isLoading}
+              >
+                {isSubmitting || isLoading ? "Logging in..." : "Login"}
+              </button>
 
-            <div className="login-link">
-              Not yet Register? &nbsp; <a href="/register">Register</a>, Forgot
-              passwoprd? &nbsp; <a href="/forgotpassword">Reset</a>
-            </div>
+              <div className="login-link">
+                Not yet Registered? <a href="/register">Register</a> | Forgot
+                password? <a href="/forgotpassword">Reset</a>
+              </div>
 
-            <button type="button" className="google-btn">
-              <img
-                src="https://img.icons8.com/color/16/000000/google-logo.png"
-                alt="Google"
-              />
-              Continue with Google
-            </button>
-          </Form>
+              <button
+                type="button"
+                className="google-btn"
+                onClick={handleGoogleLogin}
+              >
+                <img
+                  src="https://img.icons8.com/color/16/000000/google-logo.png"
+                  alt="Google"
+                />
+                Continue with Google
+              </button>
+            </Form>
+          )}
         </Formik>
       </div>
     </div>

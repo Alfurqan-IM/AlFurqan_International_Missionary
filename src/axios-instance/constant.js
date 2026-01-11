@@ -1,1 +1,1 @@
-export const baseURL = "https://alfurqaninstitute.onrender.com/api/v1";
+export const baseURL = "https://alfurqanmissionary.onrender.com/api/v2";
