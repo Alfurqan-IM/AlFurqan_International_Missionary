@@ -6,4 +6,5 @@ export const queryKeys = {
   campaigns: "campaigns",
   campaignsDonor: "campaignsDonor",
   user: "user",
+  programmesTitle: "programmesTitle",
 };

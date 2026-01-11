@@ -88,6 +88,34 @@ export function useGetPrograms() {
   });
   return { data, isLoading, isError, error };
 }
+async function getProgramsTitle() {
+  const data = await axiosInstance({
+    url: "/programmes/title",
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+
+  return data;
+}
+
+export function useGetProgramsTitle() {
+  const fallback = [];
+  const {
+    data = fallback,
+    isLoading,
+    isError,
+    error,
+  } = useQuery({
+    queryKey: [queryKeys.programmesTitle],
+    queryFn: () => getProgramsTitle(),
+    onError: (error) => {
+      toast.error(error, toastOptions);
+    },
+  });
+  return { data, isLoading, isError, error };
+}
 
 async function sendMessage(formData) {
   const data = await axiosInstance({

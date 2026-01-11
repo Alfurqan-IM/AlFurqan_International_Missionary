@@ -1,10 +1,10 @@
 import { useState } from "react";
-import { useGetPrograms } from "../../pages/public/Api";
+import { useGetProgramsTitle } from "../../pages/public/Api";
 import styles from "./RegisterProgramme.module.css";
 import { useRegisterProgram } from "../../pages/protected/Api";
 
 export default function RegisterProgramme() {
-  const { data, isLoading } = useGetPrograms();
+  const { data, isLoading } = useGetProgramsTitle();
   const { mutate: registerProgram, isLoading: isSubmitting } =
     useRegisterProgram({
       onSuccess: () => {
@@ -19,7 +19,6 @@ export default function RegisterProgramme() {
     });
 
   const programmes = data?.data?.programmes || [];
-
   const [programme, setProgramme] = useState("");
   const [discoveryMethod, setDiscoveryMethod] = useState("");
   const [category, setCategory] = useState("");
@@ -65,8 +64,8 @@ export default function RegisterProgramme() {
             {isLoading ? "Loading programmes..." : "I am registering for"}
           </option>
 
-          {programmes.map((item) => (
-            <option key={item.programme_id} value={item.title}>
+          {programmes.map((item, i) => (
+            <option key={i} value={item.title}>
               {item.title}
             </option>
           ))}
