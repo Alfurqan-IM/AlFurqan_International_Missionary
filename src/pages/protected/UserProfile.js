@@ -22,15 +22,13 @@ const UserProfile = () => {
         {/* Top Section */}
         <div className={styles.userContainer}>
           <BasicProfile />
-          <RegisterProgramme />
         </div>
-
+        <RegisterProgramme />
         {/* Password Section */}
         <UpdatePassword />
-
+        <FeedbackForm />
         {/* Bottom Section */}
         <div className={styles.userContainer}>
-          <FeedbackForm />
           <NewsletterCard />
         </div>
       </div>

@@ -2,6 +2,7 @@ import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { axiosInstance } from "../../axios-instance";
 import { toast } from "react-toastify";
 import { toastOptions } from "../../utils";
+import { queryKeys } from "../../react-query/constants";
 
 export function useGetUser(userId) {
   return useQuery({
@@ -77,10 +78,34 @@ export function useUploadProfileImage() {
     onSuccess: () => {
       toast.success("Image uploaded successfully", toastOptions);
     },
-    onError: () => {
+    onError: (error) => {
+      console.log("uploaerror", error);
       toast.error("Image upload failed", toastOptions);
     },
   });
+}
+
+async function getMyRegistrations() {
+  const data = await axiosInstance({
+    url: "/registerations/me",
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+
+  return data;
+}
+export function useMyRegistrations() {
+  const fallback = [];
+  const { data = fallback } = useQuery({
+    queryKey: [queryKeys.myRegistrations],
+    queryFn: () => getMyRegistrations(),
+    onError: (error) => {
+      toast.error(error, toastOptions);
+    },
+  });
+  return data;
 }
 
 async function registerProgram(formData) {
@@ -101,9 +126,13 @@ export function useRegisterProgram(options = {}) {
     mutationFn: (formData) => registerProgram(formData),
     onSuccess: (data, variables, context) => {
       options.onSuccess?.(data, variables, context);
+      toast.success("Registration successful", toastOptions);
+      getMyRegistrations();
+      options.onSuccess?.();
     },
     onError: (error, variables, context) => {
       options.onError?.(error, variables, context);
+      toast.error(error.message || "Registration Failed", toastOptions);
     },
     onSettled: (data, error, variables, context) => {
       options.onSettled?.(data, error, variables, context);
@@ -111,6 +140,60 @@ export function useRegisterProgram(options = {}) {
   });
 
   return { mutate, ...mutation };
+}
+
+async function updateRegistration({ id, payload }) {
+  const res = await axiosInstance({
+    url: `/registerations/${id}`,
+    method: "PATCH",
+    data: payload,
+    headers: { "Content-Type": "application/json" },
+  });
+  return res.data;
+}
+
+export function useUpdateRegistration(options = {}) {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: updateRegistration,
+
+    onSuccess: () => {
+      queryClient.invalidateQueries(["my-registrations"]);
+      options.onSuccess?.();
+      toast.success("Programme updated successfully", toastOptions);
+    },
+    onError: (error, variables, context) => {
+      options.onError?.(error, variables, context);
+
+      toast.error(
+        error.response?.data?.message[0] || "Programme Update Failed",
+        toastOptions
+      );
+    },
+  });
+}
+
+async function deleteRegistration(id) {
+  return axiosInstance.delete(`/registerations/${id}`);
+}
+
+export function useDeleteRegistration() {
+  const qc = useQueryClient();
+
+  return useMutation({
+    mutationFn: deleteRegistration,
+    onSuccess: () => {
+      qc.invalidateQueries(["my-registrations"]);
+      toast.success("Programme deleted successfully", toastOptions);
+    },
+    onError: (error, variables, context) => {
+      toast.error(
+        error.response?.data?.message[0] || "Programme Delete Failed",
+        toastOptions
+      );
+    },
+  });
 }
 
 async function updatePassword(formData) {
@@ -157,10 +240,13 @@ async function createFeedbacks(formData) {
 }
 
 export function useCreateFeedback(options = {}) {
+  const qc = useQueryClient();
   const { mutate, ...mutation } = useMutation({
     mutationFn: (formData) => createFeedbacks(formData),
-    onSuccess: (data, variables, context) => {
-      options.onSuccess?.(data, variables, context);
+    onSuccess: () => {
+      qc.invalidateQueries(["my-feedbacks"]);
+      options.onSuccess?.();
+      toast.success("Feedback sent successfully", toastOptions);
     },
     onError: (error, variables, context) => {
       options.onError?.(error, variables, context);
@@ -171,6 +257,52 @@ export function useCreateFeedback(options = {}) {
   });
 
   return { mutate, ...mutation };
+}
+
+async function getMyFeedbacks() {
+  const res = await axiosInstance.get("/feedbacks/my");
+  return res.data;
+}
+
+export function useMyFeedbacks() {
+  return useQuery({
+    queryKey: ["my-feedbacks"],
+    queryFn: getMyFeedbacks,
+  });
+}
+
+async function updateFeedback({ id, payload }) {
+  const res = await axiosInstance.patch(`/feedbacks/${id}`, payload);
+  return res.data;
+}
+
+export function useUpdateFeedback(options = {}) {
+  const qc = useQueryClient();
+
+  return useMutation({
+    mutationFn: updateFeedback,
+    onSuccess: () => {
+      qc.invalidateQueries(["my-feedbacks"]);
+      options.onSuccess?.();
+      toast.success("Feedback updated successfully", toastOptions);
+    },
+  });
+}
+
+async function deleteFeedback(id) {
+  return axiosInstance.delete(`/feedbacks/${id}`);
+}
+
+export function useDeleteFeedback() {
+  const qc = useQueryClient();
+
+  return useMutation({
+    mutationFn: deleteFeedback,
+    onSuccess: () => {
+      qc.invalidateQueries(["my-feedbacks"]);
+      toast.success("Feedback deleted successfully", toastOptions);
+    },
+  });
 }
 
 async function subscribe({ userId, subscription }) {

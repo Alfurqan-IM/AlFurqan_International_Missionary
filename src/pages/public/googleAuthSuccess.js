@@ -17,7 +17,7 @@ const GoogleAuthSuccess = () => {
 
     authenticate(token);
     navigate("/userprofile", { replace: true });
-  }, []);
+  }, [authenticate, navigate]);
 
   return null;
 };

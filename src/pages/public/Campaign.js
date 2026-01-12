@@ -51,8 +51,6 @@ const Campaign = () => {
     return mergeCampaignData(campaignData, donorData);
   }, [campaigns.data, campaignsDonor.data]);
 
-  // console.log("Merged Campaigns:", mergedCampaigns);
-
   return (
     <div className="about_us_container">
       <Header />

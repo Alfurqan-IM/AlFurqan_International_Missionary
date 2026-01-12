@@ -1,119 +1,95 @@
+import { Table, Tag, Popconfirm } from "antd";
+import { PlusOutlined, EditOutlined, DeleteOutlined } from "@ant-design/icons";
 import { useState } from "react";
-import { useGetPrograms } from "../../pages/public/Api";
+
+import {
+  useDeleteRegistration,
+  useMyRegistrations,
+} from "../../pages/protected/Api";
+import RegisterProgrammeModal from "./registerationModal";
+
 import styles from "./RegisterProgramme.module.css";
-import { useRegisterProgram } from "../../pages/protected/Api";
+export default function MyProgrammes() {
+  const { data, isLoading } = useMyRegistrations();
+  const { mutate: deleteReg } = useDeleteRegistration();
 
-export default function RegisterProgramme() {
-  const { data, isLoading } = useGetPrograms();
-  const { mutate: registerProgram, isLoading: isSubmitting } =
-    useRegisterProgram({
-      onSuccess: () => {
-        alert("Registration successful");
-        setProgramme("");
-        setDiscoveryMethod("");
-        setCategory("");
-      },
-      onError: () => {
-        alert("Registration failed");
-      },
-    });
+  const [open, setOpen] = useState(false);
+  const [editData, setEditData] = useState(null);
 
-  const programmes = data?.data?.programmes || [];
+  const registrations = data?.registrations || [];
 
-  const [programme, setProgramme] = useState("");
-  const [discoveryMethod, setDiscoveryMethod] = useState("");
-  const [category, setCategory] = useState("");
-
-  const referralSources = [
-    "Masjid",
-    "Social_Media",
-    "Email_Campaign",
-    "Referral",
-    "Website",
-    "Event_Workshop",
-    "Advertisement",
-    "Friends",
-    "Other",
+  const columns = [
+    {
+      title: "Programme",
+      dataIndex: "programme",
+    },
+    {
+      title: "Category",
+      dataIndex: "category",
+      render: (val) => <Tag color="orange">{val}</Tag>,
+    },
+    {
+      title: "Discovery Method",
+      dataIndex: "discovery_method",
+      render: (val) => <Tag color="red">{val}</Tag>,
+    },
+    {
+      title: "Update",
+      render: (_, record) => (
+        <EditOutlined
+          style={{ color: "#f4a100" }}
+          onClick={() => {
+            setEditData(record);
+            setOpen(true);
+          }}
+        />
+      ),
+    },
+    {
+      title: "Remove",
+      render: (_, record) => (
+        <Popconfirm
+          title="Remove this registration?"
+          onConfirm={() => deleteReg(record.reg_id)}
+        >
+          <DeleteOutlined style={{ color: "red" }} />
+        </Popconfirm>
+      ),
+    },
   ];
 
-  const categories = ["Adult", "Youth", "Children"];
-
-  const handleSubmit = () => {
-    const payload = {
-      programme,
-      discovery_method: discoveryMethod,
-      category,
-    };
-
-    registerProgram(payload);
-  };
-
   return (
-    <div className={styles.program_container}>
-      <div className={styles.program_container_title}>
-        <h3>Register for Programme</h3>
+    <>
+      <div className={styles.tableHeader}>
+        <span className={styles.tableTitle}>My Programmes</span>
+
+        <span
+          onClick={() => {
+            setEditData(null);
+            setOpen(true);
+          }}
+          className={styles.addIcon}
+        >
+          Register New Programme&nbsp;
+          <PlusOutlined />
+        </span>
       </div>
-      <div className={styles.card}>
-        {/* PROGRAMME */}
-        <select
-          className={styles.input}
-          value={programme}
-          onChange={(e) => setProgramme(e.target.value)}
-          disabled={isLoading}
-        >
-          <option value="" disabled>
-            {isLoading ? "Loading programmes..." : "I am registering for"}
-          </option>
 
-          {programmes.map((item) => (
-            <option key={item.programme_id} value={item.title}>
-              {item.title}
-            </option>
-          ))}
-        </select>
+      <Table
+        columns={columns}
+        dataSource={registrations}
+        loading={isLoading}
+        rowKey="id"
+      />
 
-        {/* DISCOVERY METHOD */}
-        <select
-          className={styles.input}
-          value={discoveryMethod}
-          onChange={(e) => setDiscoveryMethod(e.target.value)}
-        >
-          <option value="" disabled>
-            How did you hear about our programme?
-          </option>
-
-          {referralSources.map((item) => (
-            <option key={item} value={item}>
-              {item}
-            </option>
-          ))}
-        </select>
-
-        {/* CATEGORY */}
-        <select
-          className={styles.input}
-          value={category}
-          onChange={(e) => setCategory(e.target.value)}
-        >
-          <option value="" disabled>
-            Select category
-          </option>
-
-          {categories.map((item) => (
-            <option key={item} value={item}>
-              {item}
-            </option>
-          ))}
-        </select>
-
-        <button
-          className={styles.btn}
-          disabled={!programme || !discoveryMethod || !category || isSubmitting}
-          onClick={handleSubmit}
-        >
-          {isSubmitting ? "Submitting..." : "Submit"}
-        </button>
-      </div>
-    </div>
+      <RegisterProgrammeModal
+        open={open}
+        onClose={() => {
+          setOpen(false);
+          setEditData(null);
+        }}
+        editData={editData}
+      />
+    </>
   );
 }

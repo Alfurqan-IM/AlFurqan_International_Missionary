@@ -1,10 +1,12 @@
 .program_container {
   display: flex;
   flex-direction: column;
+  margin-bottom: 20px;
   justify-content: center;
   align-items: center;
   padding: 20px;
   height: fit-content;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .card {
@@ -51,4 +53,98 @@
   padding: 10px;
   border: none;
   margin-top: 30px;
+}
+
+/* PAGE CONTAINER */
+.programPage {
+  background: #ffffff;
+  padding: 16px;
+  border-radius: 8px;
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+/* TABLE HEADER BAR */
+.tableHeader {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+
+  padding: 4px 20px;
+
+  background-color: rgba(16, 116, 72, 1);
+}
+
+.tableTitle {
+  font-size: 14px;
+  font-weight: 600;
+  color: #fff;
+}
+
+/* PLUS ICON */
+.addIcon {
+  font-size: 12px;
+  cursor: pointer;
+  color: #ffffff;
+}
+
+.addIcon:hover {
+  color: #8a9b94;
+}
+
+/* FORM INPUTS */
+.input {
+  width: 100%;
+  margin-top: 14px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  font-size: 14px;
+}
+
+/* SUBMIT BUTTON */
+.btn {
+  width: 100%;
+  background: rgba(8, 90, 54, 1);
+  color: #fff;
+  padding: 12px;
+  border: none;
+  margin-top: 24px;
+  cursor: pointer;
+}
+
+.btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* ANT TABLE OVERRIDES */
+:global(.ant-table-thead > tr > th) {
+  background: #fafafa;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+:global(.ant-table-tbody > tr > td) {
+  font-size: 13px;
+}
+
+/* TAG COLORS */
+:global(.ant-tag-orange) {
+  background: #ffb020;
+  color: #fff;
+  border: none;
+}
+
+:global(.ant-tag-red) {
+  background: #e74c3c;
+  color: #fff;
+  border: none;
+}
+
+:global(.ant-tag-green) {
+  background: #2ecc71;
+  color: #fff;
+  border: none;
 }

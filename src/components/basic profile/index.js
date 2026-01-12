@@ -21,7 +21,6 @@ export default function BasicProfile() {
 
   useEffect(() => {
     if (data) {
-      //setUser(data?.user);
       setForm(data?.user);
     }
   }, [data, setUser]);
@@ -59,7 +58,6 @@ export default function BasicProfile() {
       { userId, image: file },
       {
         onSuccess: (updated) => {
-          setUser(updated);
           setPreview(null);
         },
       }

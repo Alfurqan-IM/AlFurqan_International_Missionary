@@ -16,7 +16,7 @@ const Programs = () => {
   const surah = data?.data?.surahs;
   const { data: programsData, isLoading: isLoadingPrograms } = useGetPrograms();
   const events = programsData?.data?.programmes;
-  const program = events?.filter((x) => x.programme_id == id);
+  const program = events?.filter((x) => x.programme_id === Number(id));
 
   const formatDate = (dateString) => {
     if (!dateString) return "";

@@ -1,87 +1,108 @@
+import { Table, Popconfirm } from "antd";
+import {
+  PlusOutlined,
+  EyeOutlined,
+  EditOutlined,
+  DeleteOutlined,
+} from "@ant-design/icons";
 import { useState } from "react";
+
+import { useMyFeedbacks, useDeleteFeedback } from "../../pages/protected/Api";
+import FeedbackModal from "./FeedbackModal";
 import styles from "./FeedbackForm.module.css";
-import { useCreateFeedback } from "../../pages/protected/Api";
 
-export default function FeedbackForm() {
-  const [subject, setSubject] = useState("");
-  const [notes, setNotes] = useState("");
-  const [error, setError] = useState("");
+export default function MyFeedbacks() {
+  const { data, isLoading } = useMyFeedbacks();
+  const { mutate: deleteFeedback } = useDeleteFeedback();
 
-  const { mutate: createFeedback, isLoading } = useCreateFeedback({
-    onSuccess: () => {
-      setSubject("");
-      setNotes("");
-      setError("");
-      alert("Feedback submitted successfully");
+  const [open, setOpen] = useState(false);
+  const [mode, setMode] = useState("create"); // create | view | edit
+  const [selected, setSelected] = useState(null);
+
+  const feedbacks = data?.feedback || [];
+
+  const columns = [
+    {
+      title: "Subject",
+      dataIndex: "subject",
     },
-    onError: () => {
-      setError("Failed to submit feedback. Please try again.");
+    {
+      title: "View",
+      render: (_, record) => (
+        <EyeOutlined
+          style={{ color: "#1677ff" }}
+          onClick={() => {
+            setSelected(record);
+            setMode("view");
+            setOpen(true);
+          }}
+        />
+      ),
     },
-  });
+    {
+      title: "Edit",
+      render: (_, record) => (
+        <EditOutlined
+          style={{ color: "#f4a100" }}
+          onClick={() => {
+            setSelected(record);
 
-  const handleSubmit = () => {
-    if (!subject.trim() || !notes.trim()) {
-      setError("Subject and message are required.");
-      return;
-    }
-
-    setError("");
-    createFeedback({ subject, notes });
-  };
+            setMode("edit");
+            setOpen(true);
+          }}
+        />
+      ),
+    },
+    {
+      title: "Delete",
+      render: (_, record) => (
+        <Popconfirm
+          title="Delete this feedback?"
+          onConfirm={() => {
+            console.log(record);
+            deleteFeedback(record.feedback_id);
+          }}
+        >
+          <DeleteOutlined style={{ color: "red" }} />
+        </Popconfirm>
+      ),
+    },
+  ];
 
   return (
-    <div className={styles.feedback_container}>
-      <div className={styles.card_header}>
-        <h3>📝 Create Feedback</h3>
+    <>
+      <div className={styles.tableHeader}>
+        <span className={styles.tableTitle}>My Feedbacks</span>
+
+        <span
+          onClick={() => {
+            setSelected(null);
+            setMode("create");
+            setOpen(true);
+          }}
+          className={styles.addIcon}
+        >
+          New Feedback&nbsp;
+          <PlusOutlined />
+        </span>
       </div>
 
-      <div className={styles.card}>
-        <div className={styles.form_group}>
-          <label>Subject</label>
-          <input
-            type="text"
-            placeholder="Enter Subject"
-            value={subject}
-            onChange={(e) => setSubject(e.target.value)}
-            disabled={isLoading}
-          />
-        </div>
+      <Table
+        columns={columns}
+        dataSource={feedbacks}
+        loading={isLoading}
+        rowKey="id"
+      />
 
-        <div className={styles.form_group}>
-          <label>Notes</label>
-          <textarea
-            rows="6"
-            placeholder="Enter Message"
-            value={notes}
-            onChange={(e) => setNotes(e.target.value)}
-            disabled={isLoading}
-          />
-        </div>
-
-        {error && <p className={styles.error}>{error}</p>}
-
-        <div className={styles.actions}>
-          <button
-            className={styles.primary}
-            onClick={handleSubmit}
-            disabled={isLoading}
-          >
-            {isLoading ? "Submitting..." : "Submit"}
-          </button>
-
-          <button
-            className={styles.secondary}
-            onClick={() => {
-              setSubject("");
-              setNotes("");
-              setError("");
-            }}
-            disabled={isLoading}
-          >
-            Clear Feedback
-          </button>
-        </div>
-      </div>
-    </div>
+      <FeedbackModal
+        open={open}
+        mode={mode}
+        data={selected}
+        onClose={() => {
+          setOpen(false);
+          setSelected(null);
+        }}
+      />
+    </>
   );
 }
