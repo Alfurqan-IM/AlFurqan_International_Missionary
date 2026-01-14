@@ -4,6 +4,35 @@ import { toast } from "react-toastify";
 import { toastOptions } from "../../utils";
 import { queryKeys } from "../../react-query/constants";
 
+async function getProgramsTitle() {
+  const data = await axiosInstance({
+    url: "/programmes/title",
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+
+  return data;
+}
+
+export function useGetProgramsTitle() {
+  const fallback = [];
+  const {
+    data = fallback,
+    isLoading,
+    isError,
+    error,
+  } = useQuery({
+    queryKey: ['programstitle'],
+    queryFn: () => getProgramsTitle(),
+    onError: (error) => {
+      toast.error(error, toastOptions);
+    },
+  });
+  return { data, isLoading, isError, error };
+}
+
 export function useGetUser(userId) {
   return useQuery({
     queryKey: ["user"],

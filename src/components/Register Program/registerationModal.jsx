@@ -1,15 +1,17 @@
 import { Modal } from "antd";
 import { useState, useEffect } from "react";
-import { useGetPrograms } from "../../pages/public/Api";
+//import { useGetPrograms } from "../../pages/public/Api";
 
 import styles from "./RegisterProgramme.module.css";
 import {
+  useGetProgramsTitle,
   useRegisterProgram,
   useUpdateRegistration,
 } from "../../pages/protected/Api";
 
 export default function RegisterProgrammeModal({ open, onClose, editData }) {
-  const { data } = useGetPrograms();
+  //const { data } = useGetPrograms();
+  const { data } = useGetProgramsTitle();
   const programmes = data?.data?.programmes || [];
 
   const isEdit = !!editData;
@@ -74,11 +76,16 @@ export default function RegisterProgrammeModal({ open, onClose, editData }) {
         onChange={(e) => setProgramme(e.target.value)}
       >
         <option value="">Select programme</option>
-        {programmes.map((p) => (
-          <option key={p.programme_id} value={p.title}>
+        {programmes.map((p, i) => (
+          <option key={i} value={p.title}>
             {p.title}
           </option>
         ))}
+        {/* {programmes.map((p) => (
+          <option key={p.programme_id} value={p.title}>
+            {p.title}
+          </option>
+        ))} */}
       </select>
 
       <select
