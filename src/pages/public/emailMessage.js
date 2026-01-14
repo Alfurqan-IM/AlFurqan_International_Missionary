@@ -9,7 +9,10 @@ const EmailMessage = () => {
       <Header />
       <PublicNav />
       <div style={{ marginTop: "50px" }} className="form-wrapper">
-        <h2>Please check your email for further action, Thanks </h2>
+        <h2>
+          Please check your email for further instructions. Kindly note that
+          email delivery may take a few moments. Thank you for your patience.
+        </h2>
       </div>
     </div>
   );

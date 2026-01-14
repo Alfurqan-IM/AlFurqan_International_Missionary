@@ -136,3 +136,8 @@
     font-size: 12px;
   }
 }
+
+.dtn {
+  text-decoration: "none";
+  color: transparent;
+}

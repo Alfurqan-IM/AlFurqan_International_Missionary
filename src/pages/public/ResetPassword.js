@@ -11,16 +11,16 @@ import { useResetPassword } from "./Api";
 
 const initialValues = {
   password: "",
-  confirmPassword: "",
+//  confirmPassword: "",
 };
 
 const validationSchema = Yup.object({
   password: Yup.string()
     .min(8, "Minimum 8 characters")
     .required("Password is required"),
-  confirmPassword: Yup.string()
-    .oneOf([Yup.ref("password"), null], "Passwords must match")
-    .required("Confirm Password is required"),
+  // confirmPassword: Yup.string()
+  //   .oneOf([Yup.ref("password"), null], "Passwords must match")
+  //   .required("Confirm Password is required"),
 });
 
 const ResetPassword = () => {
@@ -39,6 +39,7 @@ const ResetPassword = () => {
     const formdata = {
       password: values.password,
       token: new URLSearchParams(window.location.search).get("token"),
+      email: new URLSearchParams(window.location.search).get("email"),
     };
     mutate(formdata);
     reset();
@@ -64,7 +65,7 @@ const ResetPassword = () => {
               <ErrorMessage name="password" component="div" className="error" />
             </div>
 
-            <div className="form-group full-width">
+            {/* <div className="form-group full-width">
               <label>Confirm Password *</label>
               <Field name="confirmPassword" type="password" />
               <ErrorMessage
@@ -72,7 +73,7 @@ const ResetPassword = () => {
                 component="div"
                 className="error"
               />
-            </div>
+            </div> */}
 
             <button type="submit" className="submit-btn">
               {isLoading ? "Resetting..." : "Reset Password"}

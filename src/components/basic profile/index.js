@@ -10,7 +10,6 @@ import { ProfileFilled } from "@ant-design/icons";
 
 export default function BasicProfile() {
   const { user, setUser } = useContext(AuthContext);
-
   const userId = user?.tokenUser.user_id;
 
   const { data } = useGetUser(userId);

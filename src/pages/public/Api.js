@@ -272,7 +272,7 @@ export function useUserlogin(options = {}) {
 async function resetPassword(formData) {
   const data = await axiosInstance({
     url: "/authentication/resetpassword",
-    method: "POST",
+    method: "PATCH",
     data: formData,
     headers: {
       "Content-Type": "application/json",

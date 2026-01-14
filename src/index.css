@@ -230,3 +230,100 @@ p {
     width: 90%;
   }
 }
+
+
+.legal-container {
+  max-width: 900px;
+  margin: 80px auto;
+  padding: 40px 32px;
+  background-color: #ffffff;
+  color: #1f2937; /* slate-800 */
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.7;
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+}
+
+/* Headings */
+.legal-container h1 {
+  font-size: 2.2rem;
+  margin-bottom: 10px;
+  font-weight: 700;
+  color: #111827;
+}
+
+.legal-container h2 {
+  font-size: 1.4rem;
+  margin-top: 40px;
+  margin-bottom: 12px;
+  font-weight: 600;
+  color: #111827;
+}
+
+.legal-container h3 {
+  font-size: 1.1rem;
+  margin-top: 24px;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+/* Paragraphs */
+.legal-container p {
+  font-size: 1rem;
+  margin-bottom: 16px;
+}
+
+/* Lists */
+.legal-container ul {
+  margin: 12px 0 20px 20px;
+  padding-left: 16px;
+}
+
+.legal-container li {
+  margin-bottom: 8px;
+  font-size: 0.95rem;
+}
+
+/* Emphasis */
+.legal-container strong {
+  font-weight: 600;
+}
+
+.legal-container em {
+  color: #6b7280;
+}
+
+/* Links */
+.legal-container a {
+  color: #2563eb;
+  text-decoration: none;
+}
+
+.legal-container a:hover {
+  text-decoration: underline;
+}
+
+/* Divider (optional) */
+.legal-divider {
+  margin: 40px 0;
+  height: 1px;
+  background-color: #e5e7eb;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .legal-container {
+    margin: 40px 16px;
+    padding: 24px 20px;
+  }
+
+  .legal-container h1 {
+    font-size: 1.8rem;
+  }
+
+  .legal-container h2 {
+    font-size: 1.25rem;
+  }
+}

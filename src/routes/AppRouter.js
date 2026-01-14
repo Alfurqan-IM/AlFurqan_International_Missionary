@@ -23,6 +23,8 @@ import ResetPassword from "../pages/public/ResetPassword";
 import VerifyEmail from "../pages/public/VerifyEmail";
 import IslamicPage from "../pages/public/Prayertime";
 import GoogleAuthSuccess from "../pages/public/googleAuthSuccess";
+import Terms from "../pages/public/terms";
+import Privacy from "../pages/public/privacy";
 
 const AppRouter = () => {
   return (
@@ -49,6 +51,8 @@ const AppRouter = () => {
           <Route path="/programs" element={<AllPrograms />} />
           <Route path="/unauthorized" element={<UnAuthorized />} />
           <Route path="/prayer-time" element={<IslamicPage />} />
+          <Route path="/privacy" element={<Privacy />} />
+          <Route path="/terms" element={<Terms />} />
 
           {/* Protected Routes */}
           <Route element={<ProtectedRoutes />}>

@@ -45,11 +45,11 @@ export const successAlert = (msg) => {
 
 export const errorAlert = (error) => {
   const err =
-    error?.response?.data?.detail || error?.response?.data
-      ? error?.response?.data?.detail ||
-        error?.response?.data?.error ||
-        error.response?.data?.msg
-      : SERVER_ERROR;
+    error?.response?.data?.message || 
+    error?.response?.data?.error || 
+    error?.response?.data?.detail || 
+    error?.message || 
+    SERVER_ERROR; 
   toast.error(err, toastOptions);
 };
 export const infoAlert = (msg) => {

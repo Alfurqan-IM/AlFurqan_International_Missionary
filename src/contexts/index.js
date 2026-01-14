@@ -2,7 +2,7 @@ import { createContext, useEffect, useState } from "react";
 import { useQueryClient } from "@tanstack/react-query";
 import { getLoginToken, getStoredUser, setLoginToken } from "../storage";
 import { getDecodedJWT, isAuthenticated as checkAuth } from "../utils";
-
+import { axiosInstance } from "../axios-instance";
 export const AuthContext = createContext({
   user: null,
   token: null,
@@ -15,49 +15,96 @@ export const AuthContext = createContext({
 
 function AuthContextProvider({ children }) {
   const [authToken, setAuthToken] = useState(() => getLoginToken());
-  const [user, setUser] = useState(() => getStoredUser());
+  const [user, setUser] = useState(null);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [isReady, setIsReady] = useState(false);
 
   const queryClient = useQueryClient();
-
   useEffect(() => {
-    if (authToken && !user) {
-      const decoded = getDecodedJWT();
-      if (decoded) {
-        setUser(decoded);
-        localStorage.setItem("user", JSON.stringify(decoded));
-      }
+    let mounted = true;
+
+    function normalizeUser(payload) {
+      // Wrap payload in tokenUser if not already
+      return payload.tokenUser ? payload : { tokenUser: payload };
     }
-    setIsReady(true);
-  }, [authToken, user]);
+
+    async function hydrate() {
+      // 1️⃣ Cookie-based session (Google OAuth or refreshed login)
+      try {
+        const res = await axiosInstance.get("/authentication/showme");
+
+        if (!mounted) return;
+
+        setUser(normalizeUser(res.data));
+        setIsAuthenticated(true);
+        setIsReady(true);
+        return;
+      } catch {
+        // ignore → fallback to localStorage
+      }
+
+      // 2️⃣ LocalStorage token fallback (email/password)
+      if (authToken && checkAuth()) {
+        const decoded = getDecodedJWT();
+        if (decoded && mounted) {
+          setUser(normalizeUser(decoded));
+          setIsAuthenticated(true);
+        }
+      } else if (mounted) {
+        setUser(null);
+        setIsAuthenticated(false);
+      }
+
+      setIsReady(true);
+    }
+
+    hydrate();
+
+    return () => {
+      mounted = false;
+    };
+  }, []);
 
   function authenticate(token) {
+    if (!token) return;
+
     setLoginToken(token);
     setAuthToken(token);
 
     const decoded = getDecodedJWT();
-    setUser(decoded);
-    localStorage.setItem("user", JSON.stringify(decoded));
+    if (decoded) {
+      setUser(decoded);
+      setIsAuthenticated(true);
+    }
   }
 
   function logout() {
+    axiosInstance.delete("/authentication/logout", {
+      withCredentials: true,
+    });
+
     setAuthToken(null);
     setUser(null);
+    setIsAuthenticated(false);
     localStorage.clear();
     queryClient.clear();
   }
 
-  const value = {
-    user,
-    token: authToken,
-    isAuthenticated: checkAuth(),
-    isAdmin: user?.role === "admin",
-    authenticate,
-    logout,
-    isReady,
-  };
-
-  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
+  return (
+    <AuthContext.Provider
+      value={{
+        user,
+        token: authToken,
+        isAuthenticated,
+        isAdmin: user?.role === "admin",
+        authenticate,
+        logout,
+        isReady,
+      }}
+    >
+      {children}
+    </AuthContext.Provider>
+  );
 }
 
 export default AuthContextProvider;

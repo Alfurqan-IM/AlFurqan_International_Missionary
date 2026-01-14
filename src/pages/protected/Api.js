@@ -122,10 +122,12 @@ async function registerProgram(formData) {
 }
 
 export function useRegisterProgram(options = {}) {
+  const queryClient = useQueryClient();
   const { mutate, ...mutation } = useMutation({
     mutationFn: (formData) => registerProgram(formData),
     onSuccess: (data, variables, context) => {
       options.onSuccess?.(data, variables, context);
+      queryClient.invalidateQueries([queryKeys.myRegistrations]);
       toast.success("Registration successful", toastOptions);
       getMyRegistrations();
       options.onSuccess?.();

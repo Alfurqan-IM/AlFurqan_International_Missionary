@@ -62,7 +62,7 @@ const PublicNav = () => {
       label: <a href="/userprofile">Profile</a>,
     },
     { key: "prayer", label: <a href="/prayer-time">Prayer Time</a> },
-    { key: "zakat", label: "Zakat Calculator" },
+    // { key: "zakat", label: "Zakat Calculator" },
     isAuthenticated
       ? {
           key: "login",
@@ -83,13 +83,19 @@ const PublicNav = () => {
         </div>
 
         <div className={styles.actions}>
-          <button
-            className={styles.donateButton}
-            onClick={donateClick}
-            type="primary"
+          <a
+            href="https://donorbox.org/alfurqan-central-mosque"
+            target="_blank"
+            rel="noopener noreferrer"
           >
-            Donate
-          </button>
+            <button
+              className={styles.donateButton}
+             // onClick={donateClick}
+              type="primary"
+            >
+              Donate
+            </button>
+          </a>
           <FacebookOutlined className={styles.icon} />
           <TwitterOutlined className={styles.icon} />
           <InstagramOutlined className={styles.icon} />

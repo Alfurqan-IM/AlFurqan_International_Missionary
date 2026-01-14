@@ -64,7 +64,13 @@ const Footer = () => {
             <YoutubeOutlined className="footer-icon" />
           </div>
           <div>
-            <button className="footer-button">Donate Now</button>
+            <a className="dtn"
+              href="https://donorbox.org/alfurqan-central-mosque"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <button className="footer-button">Donate Now</button>
+            </a>
           </div>
         </div>
 
@@ -76,15 +82,15 @@ const Footer = () => {
           <a href="/campaigns" className="footer-menu-item">
             Donations
           </a>
-          <a href="#careline" className="footer-menu-item">
+          {/* <a href="#careline" className="footer-menu-item">
             Muslim Care Line
-          </a>
+          </a> */}
           <a href="/team" className="footer-menu-item">
             Get In Touch
           </a>
-          <a href="#blogs" className="footer-menu-item">
+          {/* <a href="#blogs" className="footer-menu-item">
             Blogs
-          </a>
+          </a> */}
         </div>
 
         {/* Right Column */}
@@ -132,7 +138,7 @@ const Footer = () => {
 
       {/* Bottom Section */}
       <div className="footer-bottom-section">
-        © 2024 Al-Furqan Institute Missionary
+        © 2026 Al-Furqan International
       </div>
     </footer>
   );
