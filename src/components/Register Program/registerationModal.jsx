@@ -39,9 +39,13 @@ export default function RegisterProgrammeModal({ open, onClose, editData }) {
 
   const referralSources = [
     "Masjid",
-    "Website",
+    "Social_Media",
     "Email_Campaign",
     "Referral",
+    "Website",
+    "Event_Workshop",
+    "Advertisement",
+    "Friends",
     "Other",
   ];
 
