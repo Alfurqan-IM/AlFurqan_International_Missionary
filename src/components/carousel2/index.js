@@ -53,9 +53,9 @@ const CustomCarousel = ({ items }) => {
                           <li>
                             <strong>Schedule:</strong> {item.time}
                           </li>
-                          <li>
+                          {/* <li>
                             <strong>Academic Year:</strong> {item.year}
-                          </li>
+                          </li> */}
                           <li>
                             <strong>Duration:</strong>{" "}
                             {new Date(item.start_date).toLocaleDateString()} –{" "}
