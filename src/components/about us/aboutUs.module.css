@@ -133,6 +133,7 @@
   box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
   border: none;
   font-family: "Inknut Antiqua";
+  text-decoration: transparent;
 }
 
 .donateButton:hover {

@@ -64,12 +64,38 @@ const Footer = () => {
             <YoutubeOutlined className="footer-icon" />
           </div>
           <div>
-            <a className="dtn"
+            {/* <a
+              className="dtn"
               href="https://donorbox.org/alfurqan-central-mosque"
               target="_blank"
               rel="noopener noreferrer"
             >
               <button className="footer-button">Donate Now</button>
+            </a> */}
+            <a
+              className="dbox-donation-page-button"
+              href="https://donorbox.org/alfurqan-central-mosque"
+              style={{
+                display: "flex",
+                padding: "4px 24px",
+                backgroundColor: "rgba(5, 156, 90, 1)",
+                color: "white",
+                textDecoration: "none",
+                border: "1px solid rgba(255, 255, 255, 1)",
+                fontWeight: 600,
+                fontSize: "16px",
+                lineHeight: "41px",
+                marginTop: "20px",
+                cursor: "pointer",
+                fontFamily: "Inknut Antiqua",
+              }}
+            >
+              <img
+                src="https://donorbox.org/images/white_logo.svg"
+                style={{ display: "none" }}
+                alt="Donorbox logo"
+              />
+              Donate Now
             </a>
           </div>
         </div>

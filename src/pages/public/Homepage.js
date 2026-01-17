@@ -36,7 +36,7 @@ const Homepage = () => {
       />
       <AboutUsSection />
       <div className={"program_container"}>
-        <div className={"heading"}>Our Programs/Events</div>
+        <div className={"heading"}>Our Programs</div>
         <div className={"grid"}>
           {events?.map((event, index) => (
             <EventCard key={index} event={event} loading={isLoadingPrograms} />

@@ -6,6 +6,7 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "../../index.css";
 import backgroundPic from "../../assets/quran.png"; // Placeholder image
+import { Link } from "react-router-dom";
 
 const CustomCarousel = ({ items }) => {
   const hasImages = items && items.length > 0;
@@ -64,9 +65,12 @@ const CustomCarousel = ({ items }) => {
                         </ul>
                       </div>
 
-                      <button className="register-button">
+                      {/* <button className="register-button" href="/programs">
                         Learn More
-                      </button>
+                      </button> */}
+                      <Link to="/campaigns" className="register-button">
+                        Learn More
+                      </Link>
                     </div>
                   </div>
                 </div>
