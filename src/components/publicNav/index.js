@@ -7,6 +7,7 @@ import {
   InstagramOutlined,
   YoutubeOutlined,
   TikTokOutlined,
+  WhatsAppOutlined,
 } from "@ant-design/icons";
 import styles from "./index.module.css"; // Import the CSS module
 import { AuthContext } from "../../contexts";
@@ -93,7 +94,14 @@ const PublicNav = () => {
               Donate your Zakat
             </button>
           </a>
-
+          <a
+            href="https://wa.link/juv16r"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="WhatsApp"
+          >
+            <WhatsAppOutlined className={styles.icon} />
+          </a>
           <a
             href="https://www.instagram.com/alfurqan_intm?igsh=MTluMnhhd3piZ2dvdw=="
             target="_blank"

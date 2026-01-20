@@ -6,6 +6,7 @@ import {
   InstagramOutlined,
   YoutubeOutlined,
   TikTokOutlined,
+  WhatsAppOutlined,
 } from "@ant-design/icons";
 import { errorAlert, successAlert } from "../../utils/index";
 import { useSendMessage } from "../../pages/public/Api";
@@ -59,6 +60,14 @@ const Footer = () => {
             <img src={logo} alt="Logo" className="footer-logo" />
           </div>
           <div className="footer-icons">
+            <a
+              href="https://wa.link/juv16r"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="WhatsApp"
+            >
+              <WhatsAppOutlined className="footer-icon" />
+            </a>
             <a
               href="https://www.instagram.com/alfurqan_intm?igsh=MTluMnhhd3piZ2dvdw=="
               target="_blank"
