@@ -6,6 +6,8 @@
   color: #333; /* Dark text color for readability */
   padding-top: 0;
   width: 100% !important;
+  /* border: 1px solid red; */
+  margin-bottom: 150px;
 }
 
 /* Top Section */

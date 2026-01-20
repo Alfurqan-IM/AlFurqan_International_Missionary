@@ -93,8 +93,11 @@ const Campaign = () => {
 
               <div className="campaign-info">
                 <h3 className="campaign-title">{item.title}</h3>
-                <p className="campaign-description">{item.description}</p>
-
+                <p className="campaign-description">
+                  {item.description.split(" ").length > 15
+                    ? item.description.split(" ").slice(0, 15).join(" ") + "…"
+                    : item.description}
+                </p>
                 <p className="status">
                   Status: <span className="status-active">{item.status}</span>
                 </p>

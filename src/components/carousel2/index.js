@@ -24,7 +24,7 @@ const CustomCarousel = ({ items }) => {
         {hasImages ? (
           <Swiper
             modules={[Navigation, Pagination, Autoplay]}
-            autoplay={{ delay: 3000, disableOnInteraction: false }}
+            autoplay={{ delay: 5000, disableOnInteraction: true }}
             pagination={{ clickable: true }}
             navigation
             loop
@@ -52,7 +52,10 @@ const CustomCarousel = ({ items }) => {
                       <div className="program-section">
                         <ul className="program-list">
                           <li>
-                            <strong>Schedule:</strong> {item.time}
+                            <strong >
+                              Schedule:
+                            </strong>{" "}
+                            {item.time}
                           </li>
                           {/* <li>
                             <strong>Academic Year:</strong> {item.year}

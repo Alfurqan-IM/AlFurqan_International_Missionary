@@ -6,6 +6,7 @@ import {
   TwitterOutlined,
   InstagramOutlined,
   YoutubeOutlined,
+  TikTokOutlined,
 } from "@ant-design/icons";
 import styles from "./index.module.css"; // Import the CSS module
 import { AuthContext } from "../../contexts";
@@ -37,7 +38,7 @@ const PublicNav = () => {
       label: "About Us",
       children: [
         { key: "about1", label: <a href="/about-us">About Us</a> },
-        { key: "Our Team", label: <a href="/team">Our Team</a> },
+        // { key: "Our Team", label: <a href="/team">Our Team</a> },
       ],
     },
     { key: "campaign", label: <a href="/campaigns">Campaigns</a> },
@@ -84,23 +85,56 @@ const PublicNav = () => {
 
         <div className={styles.actions}>
           <a
-            href="https://donorbox.org/alfurqan-central-mosque"
+            href="https://donorbox.org/zakat-sadaqah-campaign"
             target="_blank"
             rel="noopener noreferrer"
           >
-            <button
-              className={styles.donateButton}
-             // onClick={donateClick}
-              type="primary"
-            >
-              Donate
+            <button className={styles.donateButton} type="button">
+              Donate your Zakat
             </button>
           </a>
-          <FacebookOutlined className={styles.icon} />
-          <TwitterOutlined className={styles.icon} />
-          <InstagramOutlined className={styles.icon} />
-          <YoutubeOutlined className={styles.icon} />
-          <MenuOutlined className={styles.menuIcon} onClick={showDrawer} />
+
+          <a
+            href="https://www.instagram.com/alfurqan_intm?igsh=MTluMnhhd3piZ2dvdw=="
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Instagram"
+          >
+            <InstagramOutlined className={styles.icon} />
+          </a>
+
+          <a
+            href="https://x.com/alfurqan_im"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Twitter / X"
+          >
+            <TwitterOutlined className={styles.icon} />
+          </a>
+
+          <a
+            href="https://youtube.com/@alfurqanint_m?si=DamsLCVIIPR8wtA7"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="YouTube"
+          >
+            <YoutubeOutlined className={styles.icon} />
+          </a>
+
+          <a
+            href="https://www.tiktok.com/@alfurqaninternational_m?_r=1&_t=ZS-93Crel84l9e"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="TikTok"
+          >
+            <TikTokOutlined className={styles.icon} />
+          </a>
+
+          <MenuOutlined
+            className={styles.menuIcon}
+            onClick={showDrawer}
+            aria-label="Open menu"
+          />
         </div>
       </Header>
 

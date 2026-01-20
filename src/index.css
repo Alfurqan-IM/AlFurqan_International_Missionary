@@ -142,7 +142,8 @@ p {
   margin-right: 5%;
   flex: 1;
   max-width: 35%;
-  background-color: rgba(255, 255, 255, 0.9);
+  background-color: transparent;
+  /* background-color: rgba(255, 255, 255, 0.9); */
   border-radius: 10px;
   padding: 15px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -157,6 +158,7 @@ p {
 
 .design-content {
   font-size: 16px;
+  /* color: white; */
   color: #555;
 }
 
@@ -165,7 +167,8 @@ p {
   font-weight: bold;
   margin-bottom: 15px;
   text-align: center;
-  color: #333;
+  /* color: #333; */
+  color: white;
 }
 
 .program-category {
@@ -179,7 +182,8 @@ p {
   margin-left: 20px;
   list-style: decimal;
   font-size: 14px;
-  color: #555;
+  color: white;
+  /* color: #555; */
 }
 
 .register-button {
@@ -199,11 +203,12 @@ p {
   margin-top: 20px;
   cursor: pointer;
   transition: background-color 0.3s;
+  /* border: 2px solid red; */
 }
 
 .register-button:hover {
   background-color: #053710d9;
-  width: 60%;
+  /* width: 60%; */
 }
 
 .swiper-button-next,
@@ -230,7 +235,6 @@ p {
     width: 90%;
   }
 }
-
 
 .legal-container {
   max-width: 900px;

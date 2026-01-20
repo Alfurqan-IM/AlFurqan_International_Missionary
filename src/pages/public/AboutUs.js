@@ -214,7 +214,7 @@ const AboutUs = () => {
           </div>
         </div>
 
-        <h5>OUR PROGRAMME</h5>
+        {/* <h5>OUR PROGRAMME</h5> */}
       </section>
 
       <div
@@ -283,7 +283,7 @@ const AboutUs = () => {
             </p>
           </div>
         </div>
-        <h5>JOIN OUR COMMUNITY</h5>
+        {/* <h5>JOIN OUR COMMUNITY</h5> */}
       </section>
 
       <section className="join-community">
@@ -294,7 +294,7 @@ const AboutUs = () => {
           building bridges of understanding the religion of islam and
           cooperation across continents
         </div>
-        <button className="join-button">GET INVOLVED</button>
+        {/* <button className="join-button">GET INVOLVED</button> */}
       </section>
       <Footer />
     </div>

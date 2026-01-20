@@ -5,6 +5,7 @@ import {
   TwitterOutlined,
   InstagramOutlined,
   YoutubeOutlined,
+  TikTokOutlined,
 } from "@ant-design/icons";
 import { errorAlert, successAlert } from "../../utils/index";
 import { useSendMessage } from "../../pages/public/Api";
@@ -58,23 +59,46 @@ const Footer = () => {
             <img src={logo} alt="Logo" className="footer-logo" />
           </div>
           <div className="footer-icons">
-            <FacebookOutlined className="footer-icon" />
-            <TwitterOutlined className="footer-icon" />
-            <InstagramOutlined className="footer-icon" />
-            <YoutubeOutlined className="footer-icon" />
-          </div>
-          <div>
-            {/* <a
-              className="dtn"
-              href="https://donorbox.org/alfurqan-central-mosque"
+            <a
+              href="https://www.instagram.com/alfurqan_intm?igsh=MTluMnhhd3piZ2dvdw=="
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="Instagram"
             >
-              <button className="footer-button">Donate Now</button>
-            </a> */}
+              <InstagramOutlined className="footer-icon" />
+            </a>
+
+            <a
+              href="https://x.com/alfurqan_im"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Twitter / X"
+            >
+              <TwitterOutlined className="footer-icon" />
+            </a>
+
+            <a
+              href="https://youtube.com/@alfurqanint_m?si=DamsLCVIIPR8wtA7"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="YouTube"
+            >
+              <YoutubeOutlined className="footer-icon" />
+            </a>
+
+            <a
+              href="https://www.tiktok.com/@alfurqaninternational_m?_r=1&_t=ZS-93Crel84l9e"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="TikTok"
+            >
+              <TikTokOutlined className="footer-icon" />
+            </a>
+          </div>
+          <div>
             <a
               className="dbox-donation-page-button"
-              href="https://donorbox.org/alfurqan-central-mosque"
+              href="https://donorbox.org/free-ramadan-iftar"
               style={{
                 display: "flex",
                 padding: "4px 24px",
@@ -111,7 +135,7 @@ const Footer = () => {
           {/* <a href="#careline" className="footer-menu-item">
             Muslim Care Line
           </a> */}
-          <a href="/team" className="footer-menu-item">
+          <a href="#" className="footer-menu-item">
             Get In Touch
           </a>
           {/* <a href="#blogs" className="footer-menu-item">
@@ -122,7 +146,9 @@ const Footer = () => {
         {/* Right Column */}
         <div className="footer-right-column">
           <div>
-            <h4 style={{ marginBottom: "10px" }}>GET IN TOUCH</h4>
+            <h4 style={{ marginBottom: "10px" }}>
+              WOULD YOU LIKE TO GET INVOLVED?
+            </h4>
             <input
               type="text"
               placeholder="Name"
@@ -140,7 +166,7 @@ const Footer = () => {
               className="footer-input"
             />
             <textarea
-              placeholder="Message"
+              placeholder="I would like to get involved as a Patron, Volunteer, Partner, Member, Country Representative, or by attending events…"
               name="message"
               value={formData.message}
               onChange={handleInputChange}
