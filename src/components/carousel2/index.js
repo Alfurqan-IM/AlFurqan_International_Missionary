@@ -5,7 +5,8 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "../../index.css";
-import backgroundPic from "../../assets/slide1.png"; // Placeholder image
+import backgroundPic from "../../assets/quran.png"; // Placeholder image
+import { Link } from "react-router-dom";
 
 const CustomCarousel = ({ items }) => {
   const hasImages = items && items.length > 0;
@@ -23,7 +24,7 @@ const CustomCarousel = ({ items }) => {
         {hasImages ? (
           <Swiper
             modules={[Navigation, Pagination, Autoplay]}
-            autoplay={{ delay: 3000, disableOnInteraction: false }}
+            autoplay={{ delay: 5000, disableOnInteraction: true }}
             pagination={{ clickable: true }}
             navigation
             loop
@@ -47,33 +48,32 @@ const CustomCarousel = ({ items }) => {
                       </div>
                     </div>
                     <div className="permanent-design">
-                      <div className="design-title">Program Details</div>
+                      <div className="design-title">Details</div>
                       <div className="program-section">
-                        <ol className="program-list">
+                        <ul className="program-list">
                           <li>
-                            Arabic Language Study: Tuesday 7:00 PM - 9:00 PM
+                            <strong >
+                              Schedule:
+                            </strong>{" "}
+                            {item.time}
                           </li>
+                          {/* <li>
+                            <strong>Academic Year:</strong> {item.year}
+                          </li> */}
                           <li>
-                            Ta’afiz Al-Quran: Thursday 7:00 PM - 9:00 PM,
-                            Saturday/Sunday 7:45 AM - 10:30 PM
+                            <strong>Duration:</strong>{" "}
+                            {new Date(item.start_date).toLocaleDateString()} –{" "}
+                            {new Date(item.end_date).toLocaleDateString()}
                           </li>
-                          <li>
-                            Vocational Courses: Monday & Wednesday 10:00 AM -
-                            12:00 PM
-                          </li>
-                          <li>
-                            Vocational Courses: Monday & Wednesday 10:00 AM -
-                            12:00 PM
-                          </li>
-                          <li>
-                            Ta’afiz Al-Quran: Thursday 7:00 PM - 9:00 PM,
-                            Saturday/Sunday 7:45 AM - 10:30 PM
-                          </li>
-                        </ol>
+                        </ul>
                       </div>
-                      <button className="register-button">
-                        Learn More/Register
-                      </button>
+
+                      {/* <button className="register-button" href="/programs">
+                        Learn More
+                      </button> */}
+                      <Link to="/campaigns" className="register-button">
+                        Learn More
+                      </Link>
                     </div>
                   </div>
                 </div>

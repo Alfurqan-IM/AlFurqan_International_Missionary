@@ -61,7 +61,7 @@ const VerifyEmail = () => {
             </div>
 
             <button type="submit" className="submit-btn">
-              {isLoading ? "Resetting..." : "Reset Password"}
+              {isLoading ? "Submitting..." : "Verify Email"}
             </button>
           </Form>
         </Formik>

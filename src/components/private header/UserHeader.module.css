@@ -1,0 +1,52 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+
+  font-family: "inter", sans-serif;
+  font-weight: 600;
+  font-size: 0.9rem;
+  padding: 8px 2%;
+  color: rgba(8, 90, 54, 1);
+  background-color: rgba(8, 90, 54, 0.15);
+}
+
+.menu span {
+  margin-left: 12px;
+  cursor: pointer;
+}
+
+.user {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.ImageContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.user img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+.userInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  text-transform: capitalize;
+  font-size: 12px;
+  margin-top: 2px;
+}
+
+.userInfo p {
+  font-size: 11px;
+  font-weight: 600;
+  margin: 0;
+  padding: 2px;
+  text-transform: lowercase;
+  color: rgb(137, 135, 135);
+}

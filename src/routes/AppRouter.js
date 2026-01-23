@@ -22,6 +22,9 @@ import EmailMessage from "../pages/public/emailMessage";
 import ResetPassword from "../pages/public/ResetPassword";
 import VerifyEmail from "../pages/public/VerifyEmail";
 import IslamicPage from "../pages/public/Prayertime";
+import GoogleAuthSuccess from "../pages/public/googleAuthSuccess";
+import Terms from "../pages/public/terms";
+import Privacy from "../pages/public/privacy";
 
 const AppRouter = () => {
   return (
@@ -30,28 +33,31 @@ const AppRouter = () => {
         <Routes>
           {/* Public Routes */}
           <Route element={<PublicRoutes />}>
-            <Route path="/" element={<Homepage />} />
-            <Route path="/campaigns" element={<Campaign />} />
-            <Route path="/team" element={<Team />} />
-            <Route path="/event" element={<Event />} />
-            <Route path="/about-us" element={<AboutUs />} />
-            <Route path="/programs/:id" element={<Programs />} />
-            <Route path="/programs" element={<AllPrograms />} />
-            <Route path="/unauthorized" element={<UnAuthorized />} />
-            <Route path="/prayer-time" element={<IslamicPage />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<RegisterForm />} />
             <Route path="/forgotpassword" element={<ForgetPassword />} />
             <Route path="/reset-password" element={<ResetPassword />} />
             <Route path="/verify-account" element={<VerifyEmail />} />
             <Route path="/email-message" element={<EmailMessage />} />
+            <Route path="/oauth-success" element={<GoogleAuthSuccess />} />
           </Route>
+
+          <Route path="/" element={<Homepage />} />
+          <Route path="/campaigns" element={<Campaign />} />
+          <Route path="/team" element={<Team />} />
+          <Route path="/event" element={<Event />} />
+          <Route path="/about-us" element={<AboutUs />} />
+          <Route path="/programs/:id" element={<Programs />} />
+          <Route path="/programs" element={<AllPrograms />} />
+          <Route path="/unauthorized" element={<UnAuthorized />} />
+          <Route path="/prayer-time" element={<IslamicPage />} />
+          <Route path="/privacy" element={<Privacy />} />
+          <Route path="/terms" element={<Terms />} />
 
           {/* Protected Routes */}
           <Route element={<ProtectedRoutes />}>
-            <Route path="/profile" element={<UserProfile />} />
+            <Route path="/userprofile" element={<UserProfile />} />
           </Route>
-
           {/* Admin Routes */}
           <Route element={<AdminRoutes />}>
             <Route path="/admin/dashboard" element={<Dashboard />} />

@@ -15,7 +15,7 @@ const DonationNotifications = () => {
     //  http://localhost:5005 alfurqaninstitute.onrender.com
     // Listen for new donation events
     socket.on("newDonation", (data) => {
-      console.log("New donation received:", data);
+      // console.log("New donation received:", data);
       setDonation(data);
     });
 

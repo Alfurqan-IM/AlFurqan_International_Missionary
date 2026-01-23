@@ -14,10 +14,10 @@ import DonationNotifications from "../../components/DonationNotifications/Donati
 const Homepage = () => {
   const bannerData = useGetBanner();
 
-  const banner = bannerData?.data?.banner;
+  const banner = bannerData?.data?.banners;
 
   const { data, isLoading } = useGetSurah();
-  const surah = data?.data?.surah;
+  const surah = data?.data?.surahs;
   const { data: programsData, isLoading: isLoadingPrograms } = useGetPrograms();
   const events = programsData?.data?.programmes;
 
@@ -36,7 +36,7 @@ const Homepage = () => {
       />
       <AboutUsSection />
       <div className={"program_container"}>
-        <div className={"heading"}>Our Programs/Events</div>
+        <div className={"heading"}>Our Programs</div>
         <div className={"grid"}>
           {events?.map((event, index) => (
             <EventCard key={index} event={event} loading={isLoadingPrograms} />

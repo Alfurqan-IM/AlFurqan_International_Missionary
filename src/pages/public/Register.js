@@ -7,6 +7,7 @@ import PublicNav from "../../components/publicNav";
 import { useRegisterUser } from "./Api";
 import { successAlert, errorAlert } from "../../utils";
 import { useNavigate } from "react-router-dom";
+import { baseURL } from "../../axios-instance/constant";
 
 const initialValues = {
   first_name: "",
@@ -134,7 +135,9 @@ const RegisterForm = () => {
       },
     });
   };
-
+  const handleGoogleLogin = () => {
+    window.location.href = `${baseURL}/authentication/google`;
+  };
   return (
     <div className={"homepage_container"}>
       <Header />
@@ -196,8 +199,8 @@ const RegisterForm = () => {
                 <label>Gender *</label>
                 <Field name="gender" as="select">
                   <option value="">Select Gender</option>
-                  <option value="Male">Male</option>
-                  <option value="Female">Female</option>
+                  <option value="male">Male</option>
+                  <option value="female">Female</option>
                 </Field>
                 <ErrorMessage name="gender" component="div" className="error" />
               </div>
@@ -304,7 +307,11 @@ const RegisterForm = () => {
                 {isSubmitting ? "Registering..." : "Register"}
               </button>
 
-              <button type="button" className="google-btn">
+              <button
+                type="button"
+                className="google-btn"
+                onClick={handleGoogleLogin}
+              >
                 <img
                   src="https://img.icons8.com/color/16/000000/google-logo.png"
                   alt="Google"

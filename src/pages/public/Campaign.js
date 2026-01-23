@@ -46,7 +46,7 @@ const Campaign = () => {
   const isLoading = campaigns.isLoading || campaignsDonor.isLoading;
 
   const mergedCampaigns = React.useMemo(() => {
-    const campaignData = campaigns.data?.data?.campaigns || [];
+    const campaignData = campaigns.data?.data?.campaign || [];
     const donorData = campaignsDonor.data?.data?.campaigns || [];
     return mergeCampaignData(campaignData, donorData);
   }, [campaigns.data, campaignsDonor.data]);
@@ -93,8 +93,11 @@ const Campaign = () => {
 
               <div className="campaign-info">
                 <h3 className="campaign-title">{item.title}</h3>
-                <p className="campaign-description">{item.description}</p>
-
+                <p className="campaign-description">
+                  {item.description.split(" ").length > 15
+                    ? item.description.split(" ").slice(0, 15).join(" ") + "…"
+                    : item.description}
+                </p>
                 <p className="status">
                   Status: <span className="status-active">{item.status}</span>
                 </p>

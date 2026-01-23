@@ -13,25 +13,18 @@ const DELETE_USER = "User deleted successfully";
 export const getDecodedJWT = () => {
   try {
     const token = getLoginToken();
-    const decoded = jwtDecode(token);
-    return decoded;
-  } catch (e) {
+    return jwtDecode(token);
+  } catch {
     return null;
   }
 };
 
 export const isAuthenticated = () => {
-  try {
-    const decode = getDecodedJWT();
-    if (decode) {
-      const { exp } = decode;
-      const currentTime = Date.now() / 1000;
-      return exp > currentTime;
-    }
-    return false;
-  } catch (e) {
-    return false;
-  }
+  const decoded = getDecodedJWT();
+  if (!decoded) return false;
+
+  const currentTime = Date.now() / 1000;
+  return decoded.exp > currentTime;
 };
 
 export const toastOptions = {
@@ -52,11 +45,11 @@ export const successAlert = (msg) => {
 
 export const errorAlert = (error) => {
   const err =
-    error?.response?.data?.detail || error?.response?.data
-      ? error?.response?.data?.detail ||
-        error?.response?.data?.error ||
-        error.response?.data?.msg
-      : SERVER_ERROR;
+    error?.response?.data?.message || 
+    error?.response?.data?.error || 
+    error?.response?.data?.detail || 
+    error?.message || 
+    SERVER_ERROR; 
   toast.error(err, toastOptions);
 };
 export const infoAlert = (msg) => {

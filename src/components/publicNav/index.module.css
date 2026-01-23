@@ -66,6 +66,15 @@
   border-color: rgba(8, 90, 54, 1) !important;
 }
 
+.logoutButton {
+  border: none;
+  font: "Inknut Antiqua";
+
+  color: #004d40;
+  padding: 4px 8px;
+  background-color: transparent;
+}
+
 .icon {
   font-size: 20px;
   color: #ffffff;
