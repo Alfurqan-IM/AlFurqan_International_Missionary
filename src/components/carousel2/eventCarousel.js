@@ -48,7 +48,7 @@ const CustomCarousel2 = ({ items }) => {
               borderRadius: "8px",
             }}
           >
-            Register Below for our upcoming programs
+            Our Upcoming Events
           </h2>
         </div>
         {hasImages ? (
@@ -85,21 +85,23 @@ const CustomCarousel2 = ({ items }) => {
                     style={{
                       position: "absolute",
                       bottom: 0,
-                      width: "100%",
-                      background: "rgba(0,0,0,0.6)",
+                      left: "25vw",
+                      width: "fit-content",
+                      background: "transparent",
                       color: "white",
                       textAlign: "center",
-                      padding: "10px 20px",
+                      // padding: "10px 20px",
+                      //border: "1px solid red",
                     }}
                   >
-                    <h5 style={{ marginBottom: "5px" }}>{item.title}</h5>
+                    {/* <h5 style={{ marginBottom: "5px" }}>{item.title}</h5> */}
                     <a
                       href={item.event_url}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="register-button"
                     >
-                      Register Now
+                      Register
                     </a>
                   </div>
                 </div>

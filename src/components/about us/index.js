@@ -67,7 +67,7 @@ const AboutUsSection = () => {
                 <div className={styles.card}>
                   <div className={styles.cardTitle}>MISSION STATEMENT</div>
                   <div className={styles.cardText}>
-                    We AIM serves communities
+                    We aim to serve communities
                     worldwide through authentic Islamic education and
                     compassionate service, empowering individuals and families
                     while promoting peace, unity, and social harmony rooted in

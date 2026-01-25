@@ -91,7 +91,7 @@ const PublicNav = () => {
             rel="noopener noreferrer"
           >
             <button className={styles.donateButton} type="button">
-              Donate your Zakat
+              Donate Zakat/Sadaqah
             </button>
           </a>
           <a

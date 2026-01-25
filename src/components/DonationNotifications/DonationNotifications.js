@@ -9,7 +9,7 @@ const DonationNotifications = () => {
 
   useEffect(() => {
     // Establish a single socket connection
-    const socket = io("http://localhost:5005", {
+    const socket = io("api.staging.alfurqaninternational.org.com", {
       transports: ["websocket", "polling"], // Ensure compatibility
     });
     //  http://localhost:5005 alfurqaninstitute.onrender.com
