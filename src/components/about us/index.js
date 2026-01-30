@@ -40,14 +40,6 @@ const AboutUsSection = () => {
       <div className={styles.aboutUsTop}>
         <div className={styles.sectionTitle}>ABOUT US</div>
         <div className={styles.description}>
-          {/* Al-Fur’qan Institute Missionary was started by a group of highly
-          dedicated and passionate Muslims, with a focus on knowledge and
-          scholarship. Our vision is to contribute to local communities by
-          creating compassionate leaders and influential educators. At our core,
-          our Islamic charity is focused on paying it forward. Our goal is to
-          help build men and women who will take the initiative to help others
-          throughout the World. When we work together and build strong
-          communities, we create a better world. */}
           Al-Fur'qan International Missionary (AIM) is a Section 501(c)(3)
           organization registered in the State of Michigan, USA. We distinguish
           ourselves through our integrated approach to spiritual growth and
