@@ -6,6 +6,8 @@ const IslamicCommunitySection = () => {
     container: {
       display: "flex",
       flexDirection: "column",
+      justifyContent: "center", 
+      alignItems: "center",
       color: "#fff", // White text color
       padding: "50px 20px",
       textAlign: "center",
@@ -76,25 +78,18 @@ const IslamicCommunitySection = () => {
   return (
     <div style={{ ...styles.container, ...responsiveStyles.container }}>
       <div style={{ ...styles.heading, ...responsiveStyles.heading }}>
-        What Our Islamic Community Is Working On
+        Driven by Purpose. Guided by Faith
       </div>
-      <div style={{ ...styles.paragraph, ...responsiveStyles.paragraph }}>
-        Whether you're a current donor or looking forward to helping us in the
-        future, we invite you to explore our current ongoing programs. Our goal
-        is to provide accessible ways for Muslims to increase their faith,
-        devotion, and knowledge of Islam, and to create unity among all groups
-        of life.
-      </div>
-      <div>
-        <button
-          href="https://youtube.com" // Replace with the actual link
-          style={{ ...styles.button, ...responsiveStyles.button }}
-          onMouseEnter={(e) => (e.target.style.backgroundColor = "#d4e4d4")}
-          onMouseLeave={(e) => (e.target.style.backgroundColor = "#eef5ef")}
-        >
-          Our Youtube
-        </button>
-      </div>
+      <iframe
+        width="560"
+        height="315"
+        src="https://www.youtube.com/embed/bDrRJ_7nbMM?si=bIS6HdUALSW9g3H5"
+        title="YouTube video player"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        referrerpolicy="strict-origin-when-cross-origin"
+        allowfullscreen
+      ></iframe>
     </div>
   );
 };
