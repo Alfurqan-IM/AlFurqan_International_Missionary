@@ -60,8 +60,12 @@ const ForgetPassword = () => {
             </button>
 
             <div className="login-link">
-              Not yet Register? &nbsp; <a href="/login">Register</a>, Remember
-              password ? &nbsp; <a href="/login">Login</a>
+              <div>
+                Not yet Register? &nbsp; <a href="/login">Register</a>
+              </div>
+              <div>
+                Remember password ? &nbsp; <a href="/login">Login</a>
+              </div>
             </div>
           </Form>
         </Formik>

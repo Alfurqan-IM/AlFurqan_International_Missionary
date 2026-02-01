@@ -122,7 +122,7 @@ const AboutUs = () => {
         </div>
       </div>
 
-      <div className="about_story-section">
+      <div className="about_story-section reverseOnMobile">
         <div className="about_story-text">
           <h3>OUR GLOBAL VISION</h3>
           <div className="about_write-up">
@@ -138,10 +138,10 @@ const AboutUs = () => {
 
       <section className="unique-approach">
         <h3>OUR UNIQUE APPROACH</h3>
-        <p>
+        <div className="unique-approach_p">
           We distinguish ourselves through our integrated approach to spiritual
           growth and community service
-        </p>
+        </div>
         <div className="approach-grid">
           <div className="approach-item">
             <div className="approach-item-image">

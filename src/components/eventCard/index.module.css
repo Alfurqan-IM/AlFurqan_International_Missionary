@@ -108,10 +108,14 @@
     display: flex;
     font-size: 16px;
     margin: 5px 0;
+
     color: rgba(8, 90, 54, 1);
     width: 100%;
     justify-content: center;
     align-items: center;
+  }
+  .title2 {
+    text-align: center;
   }
 
   .description {

@@ -99,7 +99,8 @@ select:focus {
   text-align: center;
   font-size: 0.9rem;
   margin: 0.5rem 0;
-
+  flex-direction: column;
+  gap: 10px;
   width: 100%;
 }
 
