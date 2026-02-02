@@ -36,6 +36,7 @@ export default function BasicProfile() {
       first_name: form.first_name,
       last_name: form.last_name,
       phone: form.phone,
+      username: form.username,
       gender: form.gender,
       address: form.address,
       city: form.city,
@@ -59,7 +60,7 @@ export default function BasicProfile() {
         onSuccess: (updated) => {
           setPreview(null);
         },
-      }
+      },
     );
   };
 
@@ -85,7 +86,7 @@ export default function BasicProfile() {
             {[
               ["first_name", "First Name"],
               ["last_name", "Last Name"],
-
+              ["username", "Username"],
               ["email", "Email"],
               ["phone", "Phone"],
               ["gender", "Gender"],

@@ -11,6 +11,11 @@
   border-bottom: 1px dashed #cdded6;
 }
 
+.table_container {
+  width: 100%;
+  overflow-x: scroll;
+}
+
 .card_header h3 {
   margin: 0;
   font-size: 16px;
@@ -101,4 +106,10 @@
 
 .addIcon:hover {
   color: #8a9b94;
+}
+
+@media screen and (max-width: 768px) {
+  .hiddenTitle {
+    display: none;
+  }
 }

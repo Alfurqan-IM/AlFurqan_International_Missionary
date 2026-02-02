@@ -82,17 +82,19 @@ export default function MyFeedbacks() {
           }}
           className={styles.addIcon}
         >
-          New Feedback&nbsp;
+          <span className={styles.hiddenTitle}>New Feedback&nbsp;</span>
           <PlusOutlined />
         </span>
       </div>
 
-      <Table
-        columns={columns}
-        dataSource={feedbacks}
-        loading={isLoading}
-        rowKey="id"
-      />
+      <div className={styles.table_container}>
+        <Table
+          columns={columns}
+          dataSource={feedbacks}
+          loading={isLoading}
+          rowKey="id"
+        />
+      </div>
 
       <FeedbackModal
         open={open}

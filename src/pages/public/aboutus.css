@@ -42,6 +42,7 @@
   padding-top: 20px;
   font-weight: 600;
   font-family: "Inknut Antiqua";
+  padding: 2%;
 }
 
 .about_story-section {
@@ -83,7 +84,9 @@
   overflow: hidden;
   max-width: 1200px;
   width: 100%;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
 .campaign-card:hover {
@@ -277,11 +280,12 @@
   color: rgba(8, 90, 54, 1);
 }
 
-.unique-approach p {
+.unique-approach_p {
   color: rgba(8, 90, 54, 1);
   font-weight: 600;
-  margin-bottom: 1.8rem;
+  text-align: center;
   font-size: 1rem;
+  margin-bottom: 2rem;
 }
 
 .approach-grid,
@@ -565,6 +569,47 @@
 
 /* Responsive adjustments (optional example) */
 @media (max-width: 768px) {
+  .about_story-section {
+    display: flex;
+    flex-direction: column;
+  }
+  .about_story-section.reverseOnMobile {
+    flex-direction: column-reverse;
+  }
+  .about_story-section h3 {
+    font-family: "Inknut Antiqua";
+    transform: uppercase;
+    font-size: 0.8rem;
+    margin-bottom: 20px;
+    font-weight: 600;
+    text-align: center;
+  }
+  .about_write-up {
+    text-align: center;
+  }
+  .unique-approach_p {
+    color: rgba(8, 90, 54, 1);
+    font-weight: 600;
+    padding: 2%;
+    font-size: 0.8rem;
+    margin-bottom: 0.5rem;
+  }
+  .join-community-text {
+    font-size: 0.7rem;
+    padding: 2%;
+  }
+  .unique-approach h3,
+  .impact-area h3 {
+    font-size: 0.8rem;
+    padding-top: 8px;
+    justify-content: center;
+    align-items: center;
+  }
+  .about_us_banner-overlay p {
+    padding: 2%;
+    text-align: center;
+    font-size: 0.75rem;
+  }
 }
 
 @media (max-width: 480px) {

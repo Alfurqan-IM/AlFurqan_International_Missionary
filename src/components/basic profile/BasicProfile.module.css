@@ -192,6 +192,10 @@
   .container {
     padding: 15px;
   }
+  .card {
+    width: 100%;
+    box-shadow: none;
+  }
 
   .card {
     width: 100%;
@@ -250,7 +254,7 @@
   }
 
   .title {
-    font-size: 20px;
+    font-size: 16px;
     margin-bottom: 24px;
   }
 

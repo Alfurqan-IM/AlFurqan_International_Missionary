@@ -35,14 +35,6 @@ const EventCard = ({ event, loading }) => {
             </div>
             <div className={styles.description}>
               {showFullDescription ? event?.description : truncatedDescription}
-              {/* {event?.description?.length > 60 && (
-                <span
-                  className={styles.readMore}
-                  onClick={() => setShowFullDescription(!showFullDescription)}
-                >
-                  {showFullDescription ? " Show Less" : " Read more"}
-                </span>
-              )} */}
             </div>
 
             <Link

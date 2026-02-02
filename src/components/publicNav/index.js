@@ -2,7 +2,6 @@ import React, { useContext, useState } from "react";
 import { Layout, Menu, Drawer } from "antd";
 import {
   MenuOutlined,
-  FacebookOutlined,
   TwitterOutlined,
   InstagramOutlined,
   YoutubeOutlined,
@@ -86,6 +85,7 @@ const PublicNav = () => {
 
         <div className={styles.actions}>
           <a
+            className={styles.donateLink}
             href="https://donorbox.org/zakat-sadaqah-campaign"
             target="_blank"
             rel="noopener noreferrer"

@@ -59,7 +59,7 @@ export default function MyProgrammes() {
   ];
 
   return (
-    <>
+    <div>
       <div className={styles.tableHeader}>
         <span className={styles.tableTitle}>My Programmes</span>
 
@@ -70,26 +70,28 @@ export default function MyProgrammes() {
           }}
           className={styles.addIcon}
         >
-          Register New Programme&nbsp;
+          <span className={styles.hiddenTitle}>
+            Register New Programme&nbsp;
+          </span>
           <PlusOutlined />
         </span>
       </div>
-
-      <Table
-        columns={columns}
-        dataSource={registrations}
-        loading={isLoading}
-        rowKey="id"
-      />
-
-      <RegisterProgrammeModal
-        open={open}
-        onClose={() => {
-          setOpen(false);
-          setEditData(null);
-        }}
-        editData={editData}
-      />
-    </>
+      <div className={styles.table_container}>
+        <Table
+          columns={columns}
+          dataSource={registrations}
+          loading={isLoading}
+          rowKey="id"
+        />
+        <RegisterProgrammeModal
+          open={open}
+          onClose={() => {
+            setOpen(false);
+            setEditData(null);
+          }}
+          editData={editData}
+        />
+      </div>
+    </div>
   );
 }

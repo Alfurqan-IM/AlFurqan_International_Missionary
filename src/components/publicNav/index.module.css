@@ -8,7 +8,6 @@
   line-height: 46px;
   font-size: 18px;
   font-weight: 600;
-  margin-top: -5px;
 }
 
 .logo {
@@ -46,6 +45,10 @@
   display: flex;
   align-items: center;
   gap: 10px;
+}
+
+.donateLink {
+  display: none;
 }
 
 .donateButton {
@@ -101,6 +104,10 @@
     display: flex; /* Show on desktop */
   }
 
+  .donateLink {
+    display: inline-flex;
+  }
+
   .menuIcon {
     display: none; /* Hide on desktop */
   }
@@ -109,10 +116,33 @@
 @media (max-width: 768px) {
   .naviagtion_container {
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
+
+    width: 100%;
+
+    background-color: rgba(255, 251, 245, 1);
   }
   .donateButton {
     padding: 5px 12px;
+  }
+
+  .icon {
+    font-size: 12px;
+    color: #ffffff;
+    cursor: pointer;
+    border: none;
+    height: 24px;
+    width: 24px;
+    border-radius: 50%;
+    background: #004d40;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .menuIcon {
+    font-size: 16px;
+    margin-top: 4px;
+    margin-left: 6px;
   }
 }
