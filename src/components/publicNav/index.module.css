@@ -128,12 +128,12 @@
   }
 
   .icon {
-    font-size: 12px;
+    font-size: 14px;
     color: #ffffff;
     cursor: pointer;
     border: none;
-    height: 24px;
-    width: 24px;
+    height: 26px;
+    width: 26px;
     border-radius: 50%;
     background: #004d40;
     justify-content: center;

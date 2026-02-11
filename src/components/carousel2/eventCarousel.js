@@ -46,6 +46,7 @@ const CustomCarousel2 = ({ items }) => {
               padding: "4px 12px",
               background: "rgba(8, 90, 54, 1)",
               borderRadius: "8px",
+              fontSize: "1rem",
             }}
           >
             Our Upcoming Events

@@ -101,28 +101,28 @@ const Campaign = () => {
               </div>
 
               <div className="campaign-info">
-                <h3 className="campaign-title">{item.title}</h3>
+                <div className="campaign-title">{item.title}</div>
 
-                <p className="campaign-description">
+                <div className="campaign-description">
                   {item.description.split(" ").length > 15
                     ? item.description.split(" ").slice(0, 15).join(" ") + "…"
                     : item.description}
-                </p>
+                </div>
 
-                <p className="status">
+                <div className="status">
                   Status: <span className="status-active">{item.status}</span>
-                </p>
+                </div>
 
-                <p className="raised">
+                <div className="raised">
                   {item.formatted_total_raised} raised out of{" "}
                   {item.formatted_goal_amount}
-                </p>
+                </div>
 
-                <p className="dates">
+                <div className="dates">
                   Start Date: {new Date(item.start_date).toLocaleDateString()}
                   <br />
                   End Date: {new Date(item.end_date).toLocaleDateString()}
-                </p>
+                </div>
 
                 <div className="campaign-stats">
                   <span>{item.donations_count} Donors</span>

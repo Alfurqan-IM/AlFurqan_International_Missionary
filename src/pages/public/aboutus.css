@@ -121,7 +121,7 @@
 }
 
 .campaign-title {
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   font-weight: 700;
   color: #1b1b1b;
   margin-bottom: 10px;
@@ -131,11 +131,10 @@
   font-size: 1rem;
   line-height: 1.6;
   color: #444;
-  margin-bottom: 20px;
+  margin-bottom: 5px;
 }
 
 .status {
-  margin-bottom: 6px;
   font-weight: 600;
 }
 
@@ -146,13 +145,11 @@
 .raised {
   color: #0b5324;
   font-weight: 600;
-  margin-bottom: 12px;
 }
 
 .dates {
   color: #777;
   font-size: 0.95rem;
-  margin-bottom: 15px;
 }
 
 /* Donors + Remaining Days */
@@ -205,7 +202,8 @@
 
   .campaign-image-container,
   .campaign-info {
-    width: 100%;
+    width: 90%;
+    padding: 0 4%;
   }
 
   .campaign-info {
@@ -214,6 +212,17 @@
 
   .campaign-list {
     padding: 40px 4%;
+  }
+  .raised,
+  .status,
+  .dates {
+    font-size: 12px;
+  }
+  .campaign-title {
+    font-size: 16px;
+  }
+  .campaign-description {
+    font-size: 12px;
   }
 }
 
@@ -572,6 +581,12 @@
   .about_story-section {
     display: flex;
     flex-direction: column;
+  }
+  .about_us_banner-container {
+    height: 300px;
+  }
+  .about_us_banner-overlay {
+    height: 300px;
   }
   .about_story-section.reverseOnMobile {
     flex-direction: column-reverse;
