@@ -98,7 +98,7 @@ const Team = () => {
           </div>
         </div>
       </div>
-      <div className="matronPatron">
+      {/* <div className="matronPatron">
         {members.patrons.map((member, index) => (
           <MatronPatronCard
             image={member.image}
@@ -107,7 +107,7 @@ const Team = () => {
             role={member.role}
           />
         ))}
-      </div>
+      </div> */}
       <div className="leadershipContainer">
         <div className="leadershipHeader">Executive leadership</div>
         <div className="teamMembers">

@@ -45,4 +45,16 @@
   .intro_textContainer {
     width: 80%;
   }
+  .intro_englishText {
+    font-size: 12px;
+    line-height: 27px;
+  }
+  .intro_quoteText {
+    font-size: 12px;
+    line-height: 27px;
+  }
+  .intro_arabicText {
+    font-size: 18px;
+    line-height: 27px;
+  }
 }

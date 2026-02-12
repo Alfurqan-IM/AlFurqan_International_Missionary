@@ -10,7 +10,6 @@ const Event = () => {
   const eventData = useGetEvent();
 
   const events = eventData?.data?.data?.event;
-  console.log(events);
 
   return (
     <div className={"homepage_container"}>

@@ -6,7 +6,7 @@ const IslamicCommunitySection = () => {
     container: {
       display: "flex",
       flexDirection: "column",
-      justifyContent: "center", 
+      justifyContent: "center",
       alignItems: "center",
       color: "#fff", // White text color
       padding: "50px 20px",
@@ -59,7 +59,7 @@ const IslamicCommunitySection = () => {
         padding: "2%",
       },
       paragraph: {
-        fontSize: "14px",
+        fontSize: "12px",
         lineHeight: "20px",
         width: "86%",
       },
