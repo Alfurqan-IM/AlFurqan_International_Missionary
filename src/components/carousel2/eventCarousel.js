@@ -95,7 +95,7 @@ const CustomCarousel2 = ({ items }) => {
                       //border: "1px solid red",
                     }}
                   >
-                    <h5 style={{ marginBottom: "5px" }}>{item.title}</h5>
+                    {/* <h5 style={{ marginBottom: "5px" }}>{item.title}</h5> */}
                     <a
                       href={item.event_url}
                       target="_blank"
