@@ -6,7 +6,7 @@ const IslamicCommunitySection = () => {
     container: {
       display: "flex",
       flexDirection: "column",
-      justifyContent: "center", 
+      justifyContent: "center",
       alignItems: "center",
       color: "#fff", // White text color
       padding: "50px 20px",
@@ -59,7 +59,7 @@ const IslamicCommunitySection = () => {
         padding: "2%",
       },
       paragraph: {
-        fontSize: "14px",
+        fontSize: "12px",
         lineHeight: "20px",
         width: "86%",
       },
@@ -78,7 +78,7 @@ const IslamicCommunitySection = () => {
   return (
     <div style={{ ...styles.container, ...responsiveStyles.container }}>
       <div style={{ ...styles.heading, ...responsiveStyles.heading }}>
-        Driven by Purpose. Guided by Faith
+        Driven by Purpose, Guided by Faith.
       </div>
       <iframe
         width="560"

@@ -52,10 +52,7 @@ const CustomCarousel = ({ items }) => {
                       <div className="program-section">
                         <ul className="program-list">
                           <li>
-                            <strong >
-                              Schedule:
-                            </strong>{" "}
-                            {item.time}
+                            <strong>Schedule:</strong> {item.time}
                           </li>
                           {/* <li>
                             <strong>Academic Year:</strong> {item.year}

@@ -50,3 +50,9 @@
   text-transform: lowercase;
   color: rgb(137, 135, 135);
 }
+
+@media (max-width: 768px) {
+  .headerTitle {
+    display: none;
+  }
+}

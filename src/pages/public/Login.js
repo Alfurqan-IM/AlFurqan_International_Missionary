@@ -82,8 +82,12 @@ const Login = () => {
               </button>
 
               <div className="login-link">
-                Not yet Registered? <a href="/register">Register</a> | Forgot
-                password? <a href="/forgotpassword">Reset</a>
+                <div>
+                  Not yet Registered? <a href="/register">Register</a>
+                </div>
+                <div>
+                  Forgot password? <a href="/forgotpassword">Reset</a>
+                </div>
               </div>
 
               <button

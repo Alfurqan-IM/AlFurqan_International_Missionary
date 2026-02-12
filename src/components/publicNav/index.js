@@ -2,7 +2,6 @@ import React, { useContext, useState } from "react";
 import { Layout, Menu, Drawer } from "antd";
 import {
   MenuOutlined,
-  FacebookOutlined,
   TwitterOutlined,
   InstagramOutlined,
   YoutubeOutlined,
@@ -77,6 +76,41 @@ const PublicNav = () => {
       : { key: "login", label: <a href="/login">Login</a> },
   ];
 
+  const menuItemsMobile = [
+    { key: "home", label: <a href="/">Home</a> },
+    { key: "about", label: <a href="/about-us">About Us</a> },
+    { key: "Our Team", label: <a href="/team">Our Team</a> },
+
+    { key: "campaign", label: <a href="/campaigns">Campaigns</a> },
+    { key: "programs", label: <a href="/programs">Programs</a> },
+    { key: "events", label: <a href="/event">Events</a> },
+
+    // !isAuthenticated && {
+    //   key: "members",
+    //   label: "Members",
+    //   children: [
+    //     { key: "member1", label: <a href="/login">Membership</a> },
+    //     { key: "member2", label: <a href="/register">Join Us</a> },
+    //   ],
+    // },
+    isAuthenticated && {
+      key: "profile",
+      label: <a href="/userprofile">Profile</a>,
+    },
+    { key: "prayer", label: <a href="/prayer-time">Prayer Time</a> },
+    // { key: "zakat", label: "Zakat Calculator" },
+    isAuthenticated
+      ? {
+          key: "login",
+          label: (
+            <button className={styles.logoutButton} onClick={logout}>
+              Logout
+            </button>
+          ),
+        }
+      : { key: "login", label: <a href="/login">Login</a> },
+  ];
+
   return (
     <div className={styles.naviagtion_container}>
       <Header className={styles.header}>
@@ -86,6 +120,7 @@ const PublicNav = () => {
 
         <div className={styles.actions}>
           <a
+            className={styles.donateLink}
             href="https://donorbox.org/zakat-sadaqah-campaign"
             target="_blank"
             rel="noopener noreferrer"
@@ -153,7 +188,7 @@ const PublicNav = () => {
         visible={isDrawerVisible}
         className={styles.drawer}
       >
-        <Menu mode="vertical" items={menuItems} />
+        <Menu mode="vertical" items={menuItemsMobile} />
       </Drawer>
     </div>
   );

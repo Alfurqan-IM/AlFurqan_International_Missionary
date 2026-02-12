@@ -9,6 +9,11 @@
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
+.table_container {
+  width: 100%;
+  overflow-x: scroll;
+}
+
 .card {
   background: #fff;
   padding: 16px;
@@ -147,4 +152,10 @@
   background: #2ecc71;
   color: #fff;
   border: none;
+}
+
+@media screen and (max-width: 768px) {
+  .hiddenTitle {
+    display: none;
+  }
 }

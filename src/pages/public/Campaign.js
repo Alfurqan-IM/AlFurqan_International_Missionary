@@ -6,6 +6,7 @@ import Header from "../../components/header";
 import PublicNav from "../../components/publicNav";
 import Footer from "../../components/footer";
 import { useGetCampaigns, useGetCampaignsDonor } from "./Api";
+import { Loading3QuartersOutlined } from "@ant-design/icons";
 
 const Campaign = () => {
   const campaigns = useGetCampaigns();
@@ -20,7 +21,7 @@ const Campaign = () => {
         ?.trim();
 
       const donorInfo = donorsData.find(
-        (donor) => donor.slug.toLowerCase() === campaignSlug?.toLowerCase()
+        (donor) => donor.slug.toLowerCase() === campaignSlug?.toLowerCase(),
       );
 
       return {
@@ -66,16 +67,24 @@ const Campaign = () => {
           <div className="about_us_banner-title">
             Explore campaigns that need your support
           </div>
-          <p style={{ color: "white" }}>
-            The world is filled with heroes championing meaningful causes — and
-            in this space, you are the hero.
-          </p>
+          <div style={{ color: "white" }}>
+            <p>
+              The world is filled with heroes championing meaningful causes —
+              and in this space, you are the hero.
+            </p>
+          </div>
         </div>
       </div>
 
       {/* Campaign Cards Section */}
       {isLoading ? (
-        <div>Loading campaigns...</div>
+        <div className="campaign-loading" style={{ textAlign: "center" }}>
+          Loading campaigns... <Loading3QuartersOutlined spin />
+        </div>
+      ) : mergedCampaigns.length === 0 ? (
+        <div style={{ textAlign: "center" }}>
+          No available campaign at the moment, please check back later.
+        </div>
       ) : (
         <section className="campaign-list">
           {mergedCampaigns.map((item, index) => (
@@ -92,26 +101,28 @@ const Campaign = () => {
               </div>
 
               <div className="campaign-info">
-                <h3 className="campaign-title">{item.title}</h3>
-                <p className="campaign-description">
+                <div className="campaign-title">{item.title}</div>
+
+                <div className="campaign-description">
                   {item.description.split(" ").length > 15
                     ? item.description.split(" ").slice(0, 15).join(" ") + "…"
                     : item.description}
-                </p>
-                <p className="status">
-                  Status: <span className="status-active">{item.status}</span>
-                </p>
+                </div>
 
-                <p className="raised">
+                <div className="status">
+                  Status: <span className="status-active">{item.status}</span>
+                </div>
+
+                <div className="raised">
                   {item.formatted_total_raised} raised out of{" "}
                   {item.formatted_goal_amount}
-                </p>
+                </div>
 
-                <p className="dates">
-                  Start Date: {new Date(item.start_date).toLocaleDateString()}{" "}
+                <div className="dates">
+                  Start Date: {new Date(item.start_date).toLocaleDateString()}
                   <br />
                   End Date: {new Date(item.end_date).toLocaleDateString()}
-                </p>
+                </div>
 
                 <div className="campaign-stats">
                   <span>{item.donations_count} Donors</span>
@@ -120,8 +131,8 @@ const Campaign = () => {
                       0,
                       Math.floor(
                         (new Date(item.end_date) - new Date()) /
-                          (1000 * 60 * 60 * 24)
-                      )
+                          (1000 * 60 * 60 * 24),
+                      ),
                     )}{" "}
                     Days Left
                   </span>
@@ -131,7 +142,7 @@ const Campaign = () => {
                   <div
                     className="progress"
                     style={{ width: `${item.progress.toFixed(0)}%` }}
-                  ></div>
+                  />
                 </div>
 
                 <button

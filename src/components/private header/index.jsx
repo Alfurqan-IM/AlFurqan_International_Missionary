@@ -9,13 +9,14 @@ export default function UserHeader() {
   return (
     <div className={styles.header}>
       <div className={styles.menu}>
-        <strong>USER MENU</strong>
+        <strong className={styles.headerTitle}>USER MENU</strong>
         <span>
           {" "}
-          <ProfileFilled /> User Profile
+          <ProfileFilled />{" "}
+          <span className={styles.headerTitle}>User Profile</span>
         </span>
         <span onClick={logout} style={{ cursor: "pointer" }}>
-          <LogoutOutlined /> Logout
+          <LogoutOutlined /> <span className={styles.headerTitle}>Logout</span>
         </span>
       </div>
 
@@ -25,7 +26,7 @@ export default function UserHeader() {
         </div>
         <div className={styles.userInfo}>
           <strong>{user?.tokenUser?.firsttName || " "}</strong>
-          <p>{user?.tokenUser?.email || " "}</p>
+          <p className={styles.headerTitle}>{user?.tokenUser?.email || " "}</p>
         </div>
       </div>
     </div>

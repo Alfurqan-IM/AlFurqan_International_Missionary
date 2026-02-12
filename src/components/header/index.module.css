@@ -34,3 +34,22 @@
   font-size: 14px;
   color: #004d40; /* Matching green */
 }
+
+@media (max-width: 768px) {
+  .logo {
+    gap: 5px;
+  }
+
+  .logoImage {
+    height: 50px;
+  }
+
+  .mainText {
+    font-size: 14px;
+  }
+
+  .subText {
+    font-size: 12px;
+    margin-top: -2px;
+  }
+}

@@ -56,13 +56,12 @@ const RegisterForm = () => {
     reset: resetMutation,
     isLoading: isSubmitting,
   } = useRegisterUser({
-    onSuccess: (data, variables, context) => {
+    onSuccess: () => {
       successAlert("Registration successful!");
       navigate("/email-message");
     },
     onError: (error) => {
       errorAlert(error || "Failed to send message");
-      resetMutation();
     },
   });
 
@@ -70,7 +69,7 @@ const RegisterForm = () => {
     const fetchCountries = async () => {
       try {
         const response = await fetch(
-          "https://restcountries.com/v3.1/all?fields=name,cca2,idd"
+          "https://restcountries.com/v3.1/all?fields=name,cca2,idd",
         );
         const data = await response.json();
         const sortedCountries = data
@@ -98,7 +97,7 @@ const RegisterForm = () => {
 
   const handleCountryChange = (countryName, setFieldValue) => {
     const selectedCountry = countries.find(
-      (country) => country.name === countryName
+      (country) => country.name === countryName,
     );
     if (selectedCountry) {
       setCountryCode(selectedCountry.callingCode);
@@ -115,13 +114,14 @@ const RegisterForm = () => {
     }
   };
 
-  const handleSubmit = (values, { resetForm }) => {
+  const handleSubmit = (values, formikHelpers) => {
+    const { resetForm, setSubmitting } = formikHelpers;
+
     const { confirmPassword, ...submitData } = values;
+
     const formData = new FormData();
     Object.keys(submitData).forEach((key) => {
-      if (submitData[key] !== null && submitData[key] !== undefined) {
-        formData.append(key, submitData[key]);
-      }
+      formData.append(key, submitData[key]);
     });
 
     mutate(formData, {
@@ -129,12 +129,19 @@ const RegisterForm = () => {
         resetForm();
         setCountryCode("");
         setFormResetKey((prev) => prev + 1);
+        setSubmitting(false);
       },
-      error: () => {
-        resetMutation();
+      onError: () => {
+        // 🔑 THIS is the missing piece
+        setSubmitting(false);
+      },
+      onSettled: () => {
+        // 🔐 Safety net (handles edge cases)
+        setSubmitting(false);
       },
     });
   };
+
   const handleGoogleLogin = () => {
     window.location.href = `${baseURL}/authentication/google`;
   };
@@ -148,13 +155,6 @@ const RegisterForm = () => {
         </h2>
 
         {isError && (
-          <div className="error-message">
-            {error?.response?.data?.message ||
-              "Registration failed. Please try again."}
-          </div>
-        )}
-
-        {isSuccess && (
           <div className="error-message">
             {error?.response?.data?.message ||
               "Registration failed. Please try again."}
