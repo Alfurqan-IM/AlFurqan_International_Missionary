@@ -115,7 +115,7 @@ const PublicNav = () => {
             rel="noopener noreferrer"
           >
             <button className={styles.donateButton} type="button">
-              Donate 
+              Donate
             </button>
           </a>
           <a
