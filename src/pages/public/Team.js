@@ -6,9 +6,7 @@ import leader from "../../assets/backgroundAbout.jpg";
 import leader2 from "../../assets/leader5.png";
 import team from "../../assets/teamBanner.png";
 import Footer from "../../components/footer";
-import { useParams } from "react-router-dom";
 import TeamCard from "../../components/teamCard";
-import MatronPatronCard from "../../components/matronPatron";
 
 const Team = () => {
   const members = {

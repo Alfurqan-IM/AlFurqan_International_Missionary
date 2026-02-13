@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import backupImg from "../../assets/quran.png";
 
 const EventCard = ({ event, loading }) => {
-  const [showFullDescription, setShowFullDescription] = useState(false);
+  const [showFullDescription] = useState(false);
 
   const truncatedDescription =
     event?.description?.length > 100

@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import logo from "../../assets/aim logo.png";
 import {
-  FacebookOutlined,
   TwitterOutlined,
   InstagramOutlined,
   YoutubeOutlined,
@@ -110,7 +109,7 @@ const Footer = () => {
               href="https://donorbox.org/free-ramadan-iftar"
               style={{
                 display: "flex",
-                padding: "4px 24px",
+                padding: "4px 20px",
                 backgroundColor: "rgba(5, 156, 90, 1)",
                 color: "white",
                 textDecoration: "none",
@@ -134,7 +133,7 @@ const Footer = () => {
         </div>
 
         {/* Middle Column */}
-        <div className="footer-middle-column">
+        <div className="footer-middle-column" id="bottom">
           <a href="/" className="footer-menu-item">
             Home
           </a>
@@ -144,7 +143,7 @@ const Footer = () => {
           {/* <a href="#careline" className="footer-menu-item">
             Muslim Care Line
           </a> */}
-          <a href="#" className="footer-menu-item">
+          <a href="#bottom" className="footer-menu-item">
             Get In Touch
           </a>
           {/* <a href="#blogs" className="footer-menu-item">

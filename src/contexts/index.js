@@ -1,6 +1,6 @@
 import { createContext, useEffect, useState } from "react";
 import { useQueryClient } from "@tanstack/react-query";
-import { getLoginToken, getStoredUser, setLoginToken } from "../storage";
+import { getLoginToken, setLoginToken } from "../storage";
 import { getDecodedJWT, isAuthenticated as checkAuth } from "../utils";
 import { axiosInstance } from "../axios-instance";
 export const AuthContext = createContext({

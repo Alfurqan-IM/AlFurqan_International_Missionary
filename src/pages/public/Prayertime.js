@@ -4,6 +4,8 @@ import Header from "../../components/header";
 import PublicNav from "../../components/publicNav";
 import Footer from "../../components/footer";
 import centralMosque from "../../assets/centralMosque.png";
+import aimLogo from "../../assets/aim logo.png";
+import { Loading3QuartersOutlined } from "@ant-design/icons";
 
 const IslamicPage = () => {
   const [userLocation, setUserLocation] = useState(null);
@@ -35,7 +37,7 @@ const IslamicPage = () => {
         {
           timeout: 10000,
           enableHighAccuracy: true,
-        }
+        },
       );
     });
   };
@@ -49,7 +51,7 @@ const IslamicPage = () => {
         const gregorianDate = today.toISOString().split("T")[0];
 
         const prayerResponse = await fetch(
-          `https://api.aladhan.com/v1/timings/${gregorianDate}?latitude=${latitude}&longitude=${longitude}&method=2`
+          `https://api.aladhan.com/v1/timings/${gregorianDate}?latitude=${latitude}&longitude=${longitude}&method=2`,
         );
 
         if (!prayerResponse.ok) {
@@ -59,7 +61,7 @@ const IslamicPage = () => {
         const prayerData = await prayerResponse.json();
 
         const calendarResponse = await fetch(
-          `https://api.aladhan.com/v1/gToHCalendar/${month}/${year}?latitude=${latitude}&longitude=${longitude}`
+          `https://api.aladhan.com/v1/gToHCalendar/${month}/${year}?latitude=${latitude}&longitude=${longitude}`,
         );
 
         if (!calendarResponse.ok) {
@@ -78,7 +80,7 @@ const IslamicPage = () => {
         setLoading(false);
       }
     },
-    [currentMonth, currentYear]
+    [currentMonth, currentYear],
   );
 
   const handleNextMonth = () => {
@@ -98,7 +100,7 @@ const IslamicPage = () => {
         userLocation.latitude,
         userLocation.longitude,
         newMonth,
-        newYear
+        newYear,
       );
     }
   };
@@ -120,7 +122,7 @@ const IslamicPage = () => {
         userLocation.latitude,
         userLocation.longitude,
         newMonth,
-        newYear
+        newYear,
       );
     }
   };
@@ -139,7 +141,7 @@ const IslamicPage = () => {
         setUserLocation(defaultLocation);
         await fetchIslamicData(
           defaultLocation.latitude,
-          defaultLocation.longitude
+          defaultLocation.longitude,
         );
       }
     };
@@ -171,8 +173,12 @@ const IslamicPage = () => {
 
   if (loading) {
     return (
-      <div className="islamic-page">
-        <div className="loading">Loading Islamic data...</div>
+      <div className="loading_design">
+        <img
+          src={aimLogo} // Replace with the path to your logo
+          alt="Al-Furqan Institute Missionary"
+        />
+        <Loading3QuartersOutlined spin />
       </div>
     );
   }
@@ -264,9 +270,9 @@ const IslamicPage = () => {
             <button onClick={handlePreviousMonth} className="nav-button">
               ← Previous
             </button>
-            <h2>
+            <div>
               {getMonthName(currentMonth)} {currentYear} - Islamic Calendar
-            </h2>
+            </div>
             <button onClick={handleNextMonth} className="nav-button">
               Next →
             </button>
