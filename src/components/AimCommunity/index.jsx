@@ -78,7 +78,7 @@ const IslamicCommunitySection = () => {
   return (
     <div style={{ ...styles.container, ...responsiveStyles.container }}>
       <div style={{ ...styles.heading, ...responsiveStyles.heading }}>
-        Driven by Purpose. Guided by Faith
+        Driven by Purpose, Guided by Faith.
       </div>
       <iframe
         width="560"
