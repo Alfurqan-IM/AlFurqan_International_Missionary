@@ -106,7 +106,7 @@ const Footer = () => {
           <div>
             <a
               className="dbox-donation-page-button"
-              href="https://donorbox.org/free-ramadan-iftar"
+              href="https://donorbox.org/alfurqan-international-general-mission-fund"
               style={{
                 display: "flex",
                 padding: "4px 20px",

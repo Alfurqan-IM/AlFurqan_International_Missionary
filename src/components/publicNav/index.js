@@ -110,12 +110,12 @@ const PublicNav = () => {
         <div className={styles.actions}>
           <a
             className={styles.donateLink}
-            href="https://donorbox.org/zakat-sadaqah-campaign"
+            href="https://donorbox.org/alfurqan-international-general-mission-fund"
             target="_blank"
             rel="noopener noreferrer"
           >
             <button className={styles.donateButton} type="button">
-              Donate Zakat/Sadaqah
+              Donate 
             </button>
           </a>
           <a
