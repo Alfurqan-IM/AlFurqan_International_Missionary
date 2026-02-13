@@ -10,7 +10,6 @@ import {
 } from "@ant-design/icons";
 import styles from "./index.module.css"; // Import the CSS module
 import { AuthContext } from "../../contexts";
-import { useNavigate } from "react-router-dom";
 
 const { Header } = Layout;
 
@@ -25,21 +24,12 @@ const PublicNav = () => {
   const closeDrawer = () => {
     setIsDrawerVisible(false);
   };
-  const navigate = useNavigate();
-
-  const donateClick = () => {
-    navigate("/donate");
-  };
 
   const menuItems = [
     { key: "home", label: <a href="/">Home</a> },
     {
       key: "about",
-      label: "About Us",
-      children: [
-        { key: "about1", label: <a href="/about-us">About Us</a> },
-        // { key: "Our Team", label: <a href="/team">Our Team</a> },
-      ],
+      label: <a href="/about-us">About Us</a>,
     },
     { key: "campaign", label: <a href="/campaigns">Campaigns</a> },
     {
@@ -79,8 +69,7 @@ const PublicNav = () => {
   const menuItemsMobile = [
     { key: "home", label: <a href="/">Home</a> },
     { key: "about", label: <a href="/about-us">About Us</a> },
-    { key: "Our Team", label: <a href="/team">Our Team</a> },
-
+    // { key: "Our Team", label: <a href="/team">Our Team</a> },
     { key: "campaign", label: <a href="/campaigns">Campaigns</a> },
     { key: "programs", label: <a href="/programs">Programs</a> },
     { key: "events", label: <a href="/event">Events</a> },
@@ -121,12 +110,12 @@ const PublicNav = () => {
         <div className={styles.actions}>
           <a
             className={styles.donateLink}
-            href="https://donorbox.org/zakat-sadaqah-campaign"
+            href="https://donorbox.org/alfurqan-international-general-mission-fund"
             target="_blank"
             rel="noopener noreferrer"
           >
             <button className={styles.donateButton} type="button">
-              Donate Zakat/Sadaqah
+              Donate
             </button>
           </a>
           <a

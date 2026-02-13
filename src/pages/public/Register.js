@@ -50,10 +50,10 @@ const RegisterForm = () => {
 
   const {
     mutate,
-    isSuccess,
+
     isError,
     error,
-    reset: resetMutation,
+
     isLoading: isSubmitting,
   } = useRegisterUser({
     onSuccess: () => {

@@ -26,7 +26,7 @@
 
 .loading {
   text-align: center;
-  font-size: 1.2rem;
+  font-size: 1rem;
   color: white;
   padding: 50px;
 }
@@ -52,7 +52,7 @@
 
 .gregorian-date,
 .islamic-date {
-  font-size: 1.6rem;
+  font-size: 1rem;
   margin: 5px 0;
 }
 
@@ -103,7 +103,7 @@
 }
 
 .prayer-time-value {
-  font-size: 1.1rem;
+  font-size: 1rem;
   font-weight: 500;
 }
 
@@ -166,7 +166,7 @@
 }
 
 .gregorian-date {
-  font-size: 1.2rem;
+  font-size: 1rem;
   font-weight: 600;
   margin-bottom: 5px;
 }

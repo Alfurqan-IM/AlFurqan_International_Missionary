@@ -3,7 +3,7 @@
   align-items: center;
   justify-content: center;
   background-color: rgba(255, 251, 245, 1); /* Matches the light beige color */
-  padding-top: 5px;
+  padding-top: 10px;
 
   margin-bottom: -10px;
 }
@@ -41,11 +41,11 @@
   }
 
   .logoImage {
-    height: 50px;
+    height: 60px;
   }
 
   .mainText {
-    font-size: 14px;
+    font-size: 16px;
   }
 
   .subText {
