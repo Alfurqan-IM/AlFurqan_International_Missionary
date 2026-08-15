@@ -18,7 +18,7 @@ const AboutUsSection = () => {
       // Donorbox attributes
       script.setAttribute(
         "data-href",
-        "https://donorbox.org/free-ramadan-iftar"
+        "https://donorbox.org/alfurqan-international-general-mission-fund"
       );
       script.setAttribute("data-button-cta", "Donate");
       script.setAttribute(

@@ -114,7 +114,7 @@ const PublicNav = () => {
             type="button"
             onClick={openDonation}
           >
-            Donate Zakat/Sadaqah
+            Donate
           </button>
           <a
             href="https://wa.link/juv16r"

@@ -110,40 +110,44 @@ const Campaign = () => {
                 </div>
 
                 <div className="status">
-                  Status: <span className="status-active">{item.status}</span>
+                  Status:{" "}
+                  <span className="status-active">
+                    {item.status?.charAt(0).toUpperCase() +
+                      item.status?.slice(1)}
+                  </span>
                 </div>
 
-                <div className="raised">
+                {/* <div className="raised">
                   {item.formatted_total_raised} raised out of{" "}
                   {item.formatted_goal_amount}
-                </div>
+                </div> */}
 
                 <div className="dates">
-                  Start Date: {new Date(item.start_date).toLocaleDateString()}
+                  Open since: {new Date(item.start_date).toLocaleDateString()}
                   <br />
-                  End Date: {new Date(item.end_date).toLocaleDateString()}
+                  {/* End Date: {new Date(item.end_date).toLocaleDateString()} */}
                 </div>
 
                 <div className="campaign-stats">
-                  <span>{item.donations_count} Donors</span>
+                  {/* <span>{item.donations_count} Donors</span> */}
                   <span>
                     {Math.max(
                       0,
                       Math.floor(
                         (new Date(item.end_date) - new Date()) /
-                          (1000 * 60 * 60 * 24),
-                      ),
+                          (1000 * 60 * 60 * 24)
+                      )
                     )}{" "}
                     Days Left
                   </span>
                 </div>
 
-                <div className="progress-bar">
+                {/* <div className="progress-bar">
                   <div
                     className="progress"
                     style={{ width: `${item.progress.toFixed(0)}%` }}
                   />
-                </div>
+                </div> */}
 
                 <button
                   className="donate-btn"
