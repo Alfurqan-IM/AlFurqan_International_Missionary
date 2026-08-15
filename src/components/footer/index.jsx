@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import logo from "../../assets/aim logo.png";
 import {
   TwitterOutlined,
@@ -10,9 +10,11 @@ import {
 import { errorAlert, successAlert } from "../../utils/index";
 import { useSendMessage } from "../../pages/public/Api";
 import { useIsMutating } from "@tanstack/react-query";
+import { DonationContext } from "../../contexts";
 import "./footer.css"; // Import the CSS file
 
 const Footer = () => {
+  const { openDonation } = useContext(DonationContext);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -104,9 +106,10 @@ const Footer = () => {
             </a>
           </div>
           <div>
-            <a
+            <button
+              type="button"
+              onClick={openDonation}
               className="dbox-donation-page-button"
-              href="https://donorbox.org/free-ramadan-iftar"
               style={{
                 display: "flex",
                 padding: "4px 20px",
@@ -122,13 +125,8 @@ const Footer = () => {
                 fontFamily: "Inknut Antiqua",
               }}
             >
-              <img
-                src="https://donorbox.org/images/white_logo.svg"
-                style={{ display: "none" }}
-                alt="Donorbox logo"
-              />
               Donate Now
-            </a>
+            </button>
           </div>
         </div>
 
