@@ -107,7 +107,7 @@ function CopyField({ label, value, mono = false }) {
 export default function DonationModal({ open, onClose }) {
   if (!open) return null;
 
-  const zelleEmail = "alfurqanaim@gmail.com";
+  const zelleEmail = "info@alfurqaninternational.org";
   const stripeUrl =
     "https://donorbox.org/alfurqan-international-general-mission-fund";
   const accountNumber = "375029375263";

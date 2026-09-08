@@ -117,7 +117,7 @@ const PublicNav = () => {
             Donate
           </button>
           <a
-            href="https://wa.link/juv16r"
+            href="https://wa.me/message/2UYWYQGM4VV7K1"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="WhatsApp"

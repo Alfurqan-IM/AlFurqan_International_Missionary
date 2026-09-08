@@ -62,7 +62,7 @@ const Footer = () => {
           </div>
           <div className="footer-icons">
             <a
-              href="https://wa.link/juv16r"
+              href="https://wa.me/message/2UYWYQGM4VV7K1"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="WhatsApp"
@@ -197,6 +197,8 @@ const Footer = () => {
       {/* Bottom Section */}
       <div className="footer-bottom-section">
         © 2026 Al-Furqan International
+        <br />
+        info@alfurqaninternational.org
       </div>
     </footer>
   );
