@@ -3,6 +3,27 @@ import { useQueryClient } from "@tanstack/react-query";
 import { getLoginToken, setLoginToken } from "../storage";
 import { getDecodedJWT, isAuthenticated as checkAuth } from "../utils";
 import { axiosInstance } from "../axios-instance";
+import DonationModal from "../components/modal/DonationModal";
+
+export const DonationContext = createContext({
+  openDonation: () => {},
+  closeDonation: () => {},
+});
+
+function DonationContextProvider({ children }) {
+  const [isDonationOpen, setIsDonationOpen] = useState(false);
+
+  const openDonation = () => setIsDonationOpen(true);
+  const closeDonation = () => setIsDonationOpen(false);
+
+  return (
+    <DonationContext.Provider value={{ openDonation, closeDonation }}>
+      {children}
+      <DonationModal open={isDonationOpen} onClose={closeDonation} />
+    </DonationContext.Provider>
+  );
+}
+
 export const AuthContext = createContext({
   user: null,
   token: null,
@@ -108,3 +129,4 @@ function AuthContextProvider({ children }) {
 }
 
 export default AuthContextProvider;
+export { DonationContextProvider };

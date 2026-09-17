@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import logo from "../../assets/aim logo.png";
 import {
   TwitterOutlined,
@@ -10,9 +10,11 @@ import {
 import { errorAlert, successAlert } from "../../utils/index";
 import { useSendMessage } from "../../pages/public/Api";
 import { useIsMutating } from "@tanstack/react-query";
+import { DonationContext } from "../../contexts";
 import "./footer.css"; // Import the CSS file
 
 const Footer = () => {
+  const { openDonation } = useContext(DonationContext);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -60,7 +62,7 @@ const Footer = () => {
           </div>
           <div className="footer-icons">
             <a
-              href="https://wa.link/juv16r"
+              href="https://wa.me/message/2UYWYQGM4VV7K1"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="WhatsApp"
@@ -104,9 +106,10 @@ const Footer = () => {
             </a>
           </div>
           <div>
-            <a
+            <button
+              type="button"
+              onClick={openDonation}
               className="dbox-donation-page-button"
-              href="https://donorbox.org/alfurqan-international-general-mission-fund"
               style={{
                 display: "flex",
                 padding: "4px 20px",
@@ -122,13 +125,8 @@ const Footer = () => {
                 fontFamily: "Inknut Antiqua",
               }}
             >
-              <img
-                src="https://donorbox.org/images/white_logo.svg"
-                style={{ display: "none" }}
-                alt="Donorbox logo"
-              />
               Donate Now
-            </a>
+            </button>
           </div>
         </div>
 
@@ -199,6 +197,8 @@ const Footer = () => {
       {/* Bottom Section */}
       <div className="footer-bottom-section">
         © 2026 Al-Furqan International
+        <br />
+        info@alfurqaninternational.org
       </div>
     </footer>
   );

@@ -9,13 +9,14 @@ import {
   WhatsAppOutlined,
 } from "@ant-design/icons";
 import styles from "./index.module.css"; // Import the CSS module
-import { AuthContext } from "../../contexts";
+import { AuthContext, DonationContext } from "../../contexts";
 
 const { Header } = Layout;
 
 const PublicNav = () => {
   const [isDrawerVisible, setIsDrawerVisible] = useState(false);
   const { isAuthenticated, logout } = useContext(AuthContext);
+  const { openDonation } = useContext(DonationContext);
 
   const showDrawer = () => {
     setIsDrawerVisible(true);
@@ -108,18 +109,15 @@ const PublicNav = () => {
         </div>
 
         <div className={styles.actions}>
-          <a
-            className={styles.donateLink}
-            href="https://donorbox.org/alfurqan-international-general-mission-fund"
-            target="_blank"
-            rel="noopener noreferrer"
+          <button
+            className={styles.donateButton}
+            type="button"
+            onClick={openDonation}
           >
-            <button className={styles.donateButton} type="button">
-              Donate
-            </button>
-          </a>
+            Donate
+          </button>
           <a
-            href="https://wa.link/juv16r"
+            href="https://wa.me/message/2UYWYQGM4VV7K1"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="WhatsApp"
