@@ -144,9 +144,14 @@ const Footer = () => {
           <a href="#bottom" className="footer-menu-item">
             Get In Touch
           </a>
-          {/* <a href="#blogs" className="footer-menu-item">
-            Blogs
-          </a> */}
+          <a
+            href="https://www.nikahpathway.com"
+            className="footer-menu-item"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Nikah Pathway
+          </a>
         </div>
 
         {/* Right Column */}

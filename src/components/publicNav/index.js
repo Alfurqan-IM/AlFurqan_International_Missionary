@@ -41,14 +41,7 @@ const PublicNav = () => {
         { key: "event2", label: <a href="/event">Events</a> },
       ],
     },
-    // !isAuthenticated && {
-    //   key: "members",
-    //   label: "Members",
-    //   children: [
-    //     { key: "member1", label: <a href="/login">Membership</a> },
-    //     { key: "member2", label: <a href="/register">Join Us</a> },
-    //   ],
-    // },
+    { key: "nikah", label: <a href="https://www.nikahpathway.com">Nikah</a> },
     isAuthenticated && {
       key: "profile",
       label: <a href="/userprofile">Profile</a>,
@@ -74,15 +67,8 @@ const PublicNav = () => {
     { key: "campaign", label: <a href="/campaigns">Campaigns</a> },
     { key: "programs", label: <a href="/programs">Programs</a> },
     { key: "events", label: <a href="/event">Events</a> },
+    { key: "nikah", label: <a href="https://www.nikahpathway.com">Nikah</a> },
 
-    // !isAuthenticated && {
-    //   key: "members",
-    //   label: "Members",
-    //   children: [
-    //     { key: "member1", label: <a href="/login">Membership</a> },
-    //     { key: "member2", label: <a href="/register">Join Us</a> },
-    //   ],
-    // },
     isAuthenticated && {
       key: "profile",
       label: <a href="/userprofile">Profile</a>,
